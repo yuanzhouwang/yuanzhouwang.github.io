@@ -1,9 +1,23 @@
 name: "Andrew Yuanzhou Wang"
 output_dir: docs
 navbar:
-  title: "My Website"
+  title: "Andrew Wang"
   left:
-    - text: "Home"
-      href: index.html
     - text: "About"
-      href: about.html
+      href: index.html
+    - text: "CS&SS 321"
+      menu:
+      - text: "Overview"
+        href: teaching.html
+      - text: "Week 1"
+        href: lab1.html
+    - text: "Research"
+      menu:
+      - text: "Papers"
+        href: research.html
+
+      
+output:
+  html_document:
+    css: custom.css
+    theme: paper

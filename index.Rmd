@@ -1,9 +1,7 @@
 ---
-title: "My Website"
+title: "About"
 ---
 
-Hello, Website!
+I am a PhD student in Political Science at the University of Washington. My research interests are in two distinct topics: Chinese industrial policy and the nexus of collective action and repression. I am also interested in a variety of methodological themes, especially estimation of latent variables and machine learning applications in causal inference.
 
-For more information about simple R Markdown websites, please read the documentation at https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html.
-
-Please also note that simple R Markdown sites are _not_ based on **blogdown**. They are probably good for websites with only a few Rmd documents. For larger-scale and more sophisticated websites (such as blogs), you may want to use **blogdown** instead: https://github.com/rstudio/blogdown.
+I previously earned my BA (First-class) in Philosophy, Politics, and Economics (PPE) from the University of Oxford, where I was avidly involved in student journalism.
