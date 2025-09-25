@@ -15,7 +15,8 @@ navbar:
       menu:
       - text: "Papers"
         href: research.html
-
+      - text: "Protest-Repression Model"
+        href: edit/
       
 output:
   html_document:
