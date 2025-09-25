@@ -1,0 +1,9 @@
+---
+title: "A Simultaneous Model of Protest and Repression"
+---
+
+Social Movement Best-Response Curve Explorer
+
+<iframe src="https://wcnwoy-andrew-wang.shinyapps.io/apsa2025appv3" width="100%" height="800" loading="lazy" style="border:0"></iframe>
+
+Currently under Construction: Sequential Regime-Movement Solver

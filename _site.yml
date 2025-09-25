@@ -1,8 +1,5 @@
 name: "Andrew Yuanzhou Wang"
 output_dir: "docs"
-include:
-  - apps
-  - shinylive
 navbar:
   title: "Andrew Wang"
   left:
@@ -19,7 +16,7 @@ navbar:
       - text: "Papers"
         href: research.html
       - text: "Protest-Repression Model"
-        href: apps/myapp
+        href: simmodel.html
       
 output:
   html_document:
