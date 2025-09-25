@@ -3,7 +3,7 @@ title: "Lab 1 - Setting Up R"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
 
 rm(list = ls())
 ```
