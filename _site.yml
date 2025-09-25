@@ -8,13 +8,13 @@ navbar:
     - text: "CS&SS 321"
       menu:
       - text: "Overview"
-        href: teaching.html
+        href: Teaching.html
       - text: "Week 1"
         href: lab1.html
     - text: "Research"
       menu:
       - text: "Papers"
-        href: research.html
+        href: Research.html
       - text: "Protest-Repression Model"
         href: simmodel.html
       
