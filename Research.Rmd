@@ -6,8 +6,8 @@ title: "Research"
 Andrew Wang. “A Simultaneous Model of Protest-Repression Events,” *American Political Science Association Annual Meeting*, 2025.
 
 ### IN PROGRESS
-Andrew Wang. “Do Chemical Agents Work for Crowd Control? A Synthetic Control Approach.”
+- Andrew Wang. “Do Chemical Agents Work for Crowd Control? A Synthetic Control Approach.”
 
-Hassan Aziz, Andrew Wang. “Does Chinese Ownership Affect Contract Renegotiation for Independent Power Producers in Pakistan?”
+- Hassan Aziz, Andrew Wang. “Does Chinese Ownership Affect Contract Renegotiation for Independent Power Producers in Pakistan?”
 
-Andrew Wang. “Detecting Collective Action: Protest Size Classification with Machine Learning Methods.”
+- Andrew Wang. “Detecting Collective Action: Protest Size Classification with Machine Learning Methods.”
