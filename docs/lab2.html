@@ -315,12 +315,6 @@ href="https://github.com/yuanzhouwang/yzwang-teaching">here</a>.</p>
 <p>Load the data into a data frame <code>turnout</code> and quickly
 verify its structure. Keep the vector of <code>year</code> and the list
 of column names.</p>
-<pre class="r"><code># YOUR CODE HERE
-# turnout &lt;- read.csv(&quot;turnout.csv&quot;)
-# years &lt;- turnout$year
-# cols &lt;- names(turnout)
-# n_rows &lt;- nrow(turnout); n_cols &lt;- ncol(turnout)
-# c(n_rows, n_cols); cols</code></pre>
 <hr />
 </div>
 <div id="part-b-construct-the-two-turnout-measures"
@@ -335,11 +329,6 @@ your later subsetting is self-documenting.</p>
 <li>VEP turnout: total votes divided by VEP × 100</li>
 </ul>
 <p>Name your vectors <code>VAPtr</code>, <code>VEPtr</code>.</p>
-<pre class="r"><code># YOUR CODE HERE
-# VAPtr &lt;- (turnout$total / (turnout$VAP + turnout$overseas)) * 100
-# VEPtr &lt;- (turnout$total / turnout$VEP) * 100
-# names(VAPtr) &lt;- years
-# names(VEPtr) &lt;- years</code></pre>
 <hr />
 </div>
 <div id="part-c-reliability-vs.-anes" class="section level2">
@@ -347,12 +336,6 @@ your later subsetting is self-documenting.</p>
 <p>Create the gaps between ANES self-reported turnout and each measure:
 <code>gapVAP</code> and <code>gapVEP</code>. Summarize both and
 <strong>decide which measure aligns better</strong>.</p>
-<pre class="r"><code># YOUR CODE HERE
-# gapVAP &lt;- turnout$ANES - VAPtr
-# gapVEP &lt;- turnout$ANES - VEPtr
-# sumVAP &lt;- summary(gapVAP)
-# sumVEP &lt;- summary(gapVEP)
-# better_measure &lt;- &quot;VEPtr&quot; # or &quot;VAPtr&quot; — choose based on your summaries</code></pre>
 <hr />
 </div>
 <div id="part-d-presidential-vs.-midterms-using-indices"
@@ -363,12 +346,6 @@ class="section level2">
 rows (years alternate). Subset <code>VEPtr</code> into
 <code>pVEPtr</code> and <code>mVEPtr</code>. Compute average VEP turnout
 for each and the difference.</p>
-<pre class="r"><code># YOUR CODE HERE
-# pres &lt;- c(1,3,5,7,9,11,13,14)  # indices for presidential years in this data
-# mids &lt;- c(2,4,6,8,10,12)       # indices for midterms
-# pVEPtr &lt;- VEPtr[pres]; names(pVEPtr) &lt;- years[pres]
-# mVEPtr &lt;- VEPtr[mids]; names(mVEPtr) &lt;- years[mids]
-# vepp_diff &lt;- mean(pVEPtr) - mean(mVEPtr)</code></pre>
 </div>
 
 
