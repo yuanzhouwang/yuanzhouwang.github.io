@@ -1,0 +1,80 @@
+---
+title: "Lab 2 - Basic Data Management and Manipulation"
+output: html_document
+---
+
+> **Scenario:** You are a data assistant to a newsroom editor. They want a **one-page brief** answering:  
+> 1) How has U.S. voter turnout changed since 1980?  
+> 2) Which measure— **VEP turnout** or **VAP turnout**—better matches ANES self-reports?  
+> 3) How do **presidential** and **midterm** elections compare on VEP turnout?  
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = "##", collapse = TRUE)
+```
+
+---
+
+The R Markdown file for this lab can be found here.
+The data for this lab can be found [here]().
+
+## Part A — Loading Data
+
+Load the data into a data frame `turnout` and quickly verify its structure. Keep the vector of `year` and the list of column names.
+
+```{r}
+# YOUR CODE HERE
+# turnout <- read.csv("turnout.csv")
+# years <- turnout$year
+# cols <- names(turnout)
+# n_rows <- nrow(turnout); n_cols <- ncol(turnout)
+# c(n_rows, n_cols); cols
+```
+
+---
+
+## Part B — Construct the two turnout measures
+
+Compute **VAP-based turnout** and **VEP-based turnout** (percent). Label both with the corresponding year so your later subsetting is self-documenting.
+
+- VAP turnout: total votes divided by (VAP + overseas) × 100  
+- VEP turnout: total votes divided by VEP × 100
+
+Name your vectors `VAPtr`, `VEPtr`.
+
+```{r}
+# YOUR CODE HERE
+# VAPtr <- (turnout$total / (turnout$VAP + turnout$overseas)) * 100
+# VEPtr <- (turnout$total / turnout$VEP) * 100
+# names(VAPtr) <- years
+# names(VEPtr) <- years
+```
+
+---
+
+## Part C — Reliability vs. ANES
+
+Create the gaps between ANES self-reported turnout and each measure: `gapVAP` and `gapVEP`. Summarize both and **decide which measure aligns better**.
+
+```{r}
+# YOUR CODE HERE
+# gapVAP <- turnout$ANES - VAPtr
+# gapVEP <- turnout$ANES - VEPtr
+# sumVAP <- summary(gapVAP)
+# sumVEP <- summary(gapVEP)
+# better_measure <- "VEPtr" # or "VAPtr" — choose based on your summaries
+```
+
+---
+
+## Part D — Presidential vs. Midterms using indices
+
+Define index vectors for **presidential** (`pres`) and **midterm** (`mids`) rows (years alternate). Subset `VEPtr` into `pVEPtr` and `mVEPtr`. Compute average VEP turnout for each and the difference.
+
+```{r}
+# YOUR CODE HERE
+# pres <- c(1,3,5,7,9,11,13,14)  # indices for presidential years in this data
+# mids <- c(2,4,6,8,10,12)       # indices for midterms
+# pVEPtr <- VEPtr[pres]; names(pVEPtr) <- years[pres]
+# mVEPtr <- VEPtr[mids]; names(mVEPtr) <- years[mids]
+# vepp_diff <- mean(pVEPtr) - mean(mVEPtr)
+```

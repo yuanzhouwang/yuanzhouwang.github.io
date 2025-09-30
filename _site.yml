@@ -11,6 +11,8 @@ navbar:
         href: teaching.html
       - text: "Week 1"
         href: lab1.html
+      - text: "Week 2"
+        href: lab2.html
     - text: "Research"
       menu:
       - text: "Papers"
