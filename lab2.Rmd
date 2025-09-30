@@ -9,7 +9,7 @@ output: html_document
 > 3) How do **presidential** and **midterm** elections compare on VEP turnout?  
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=FALSE)
+knitr::opts_chunk$set(include=FALSE)
 ```
 
 ---
