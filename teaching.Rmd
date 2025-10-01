@@ -4,7 +4,7 @@ title: "CS&SS 321"
 
 This section provides teaching materials for the 2025 Autumn Quarter of CS&SS 321 - Data Science and Statistics for Social Sciences I.
 
-My Office Hours are Wednesdays 11:30 - 12:30 and 3:30 - 4:30 in Gowen 42. If you cannot make these times please email me to set up a different time.
+My Office Hours are Thursday 2:00 - 3:30 and Friday 9:30 - 11:00 in Gowen 42. If you cannot make these times please email me to set up a different time.
 
 ## R Markdown files
 
