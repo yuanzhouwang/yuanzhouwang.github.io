@@ -22,7 +22,8 @@ The data for this lab can be found [here](https://github.com/yuanzhouwang/yzwang
 Load the data into a data frame `turnout` and quickly verify its structure. Keep the vector of `year` and the list of column names.
 
 ```{r}
-
+turnout <- read.csv("turnout.csv")
+years <- turnout$year
 ```
 
 ---
@@ -37,7 +38,10 @@ Compute **VAP-based turnout** and **VEP-based turnout** (percent). Label both wi
 Name your vectors `VAPtr`, `VEPtr`.
 
 ```{r}
-
+VAPtr <- turnout$total / (turnout$VAP + turnout$overseas) * 100
+VEPtr <- turnout$total / turnout$VEP * 100
+names(VAPtr) <- years
+names(VEPtr) <- years
 ```
 
 ---
@@ -47,7 +51,10 @@ Name your vectors `VAPtr`, `VEPtr`.
 Create the gaps between ANES self-reported turnout and each measure: `gapVAP` and `gapVEP`. Summarize both and **decide which measure aligns better**.
 
 ```{r}
-
+gapVAP <- turnout$ANES - VAPtr
+gapVEP <- turnout$ANES - VEPtr
+summary(gapVAP)
+summary(gapVEP)
 ```
 
 ---
@@ -57,5 +64,11 @@ Create the gaps between ANES self-reported turnout and each measure: `gapVAP` an
 Define index vectors for **presidential** (`pres`) and **midterm** (`mids`) rows (years alternate). Subset `VEPtr` into `pVEPtr` and `mVEPtr`. Compute average VEP turnout for each and the difference.
 
 ```{r}
-
+pres <- c(1,3,5,7,9,11,13,14)
+mids <- c(2,4,6,8,10,12)
+pVEPtr <- VEPtr[pres]
+names(pVEPtr) <- years[pres]
+mVEPtr <- VEPtr[mids]
+names(mVEPtr) <- years[mids]
+vepp_dif <- mean(pVEPtr) - mean(mVEPtr)
 ```
