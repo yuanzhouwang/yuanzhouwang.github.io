@@ -9,3 +9,4 @@ My Office Hours are Wednesdays 11:30 - 12:30 and 3:30 - 4:30 in Gowen 42. If you
 ## R Markdown files
 
 [Lab 1](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/CSSS321%20Lab%201.Rmd)
+[Lab 2](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/CSSS321%20Lab%202.Rmd)

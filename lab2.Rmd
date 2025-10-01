@@ -14,7 +14,7 @@ knitr::opts_chunk$set(include=FALSE)
 
 ---
 
-The R Markdown file for this lab can be found here (link posted after class).
+The R Markdown file for this lab can be found [here](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/CSSS321%20Lab%202.Rmd).
 The data for this lab can be found [here](https://github.com/yuanzhouwang/yzwang-teaching).
 
 ## Part A — Loading Data
