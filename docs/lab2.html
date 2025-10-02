@@ -367,20 +367,29 @@ publication:</p>
 <p>Raghabendra Chattopadhyay and Esther Duflo. 2004. “Women as Policy
 Makers: Evidence from a Randomized Policy Experiment in India.”
 Econometrica, 72 (5): 1409–43.)</p>
-<p>In this article, the authors conduct an experiment in India, randomly
-assigning villages to have a female council head. The dataset we will be
-analyzing is in a file called <a
-href="https://github.com/yuanzhouwang/yzwang-teaching/blob/main/india2.csv">“india2.csv”</a>.
-This is further modified from “india.csv”.</p>
+<p>Today our data will be completely made up. The scenario is as
+follows:</p>
+<p>I hypothesize that the ingestion of spiders while asleep
+<strong>causes</strong> individuals’ propensity to buy blind boxes to
+increase. To tes this, I survey some number of individuals in my
+neighborhood, collecting data on:</p>
+<ol style="list-style-type: decimal">
+<li><code>adult</code>: whether they are an adult. <code>=1</code> if
+yes and <code>=0</code> if no.</li>
+<li><code>spiders</code>: how many spiders they ingested in their sleep
+the previous week.</li>
+<li><code>blindbox</code>: how many blindboxes they bought this
+week.</li>
+</ol>
 <hr />
 </div>
 </div>
 <div id="getting-started" class="section level1">
 <h1>Getting Started</h1>
 <p>Read the CSV file <a
-href="https://github.com/yuanzhouwang/yzwang-teaching/blob/main/india2.csv">“india2.csv”</a>
-into an object called <code>india2</code>. Read the first few
-observations of the dataset.</p>
+href="https://github.com/yuanzhouwang/yzwang-teaching/blob/main/lab2data.csv">“lab2data.csv”</a>
+into an object called <code>df</code>. Read the first few observations
+of the dataset.</p>
 <ul>
 <li>What does each observation in this dataset represent?</li>
 <li>Please substantively interpret the first observation in the
@@ -392,24 +401,33 @@ dataset?</li>
 </div>
 <div id="exploratory-data-analaysis" class="section level1">
 <h1>Exploratory Data Analaysis</h1>
-<p>How many observations are in the dataset? What does this mean,
-substantively?</p>
-<p>What percent of villages surveyed had a female politician?</p>
-<p>On average, how many new or repaired drinking water facilities were
-built in each village surveyed?</p>
+<p>Please provide your code for the following statistics:</p>
+<ul>
+<li>How many observations are in the dataset?</li>
+<li>What percent of survey respondents were adults?</li>
+<li>On average, how many spiders did respondents ingest the previous
+week?</li>
+</ul>
 <hr />
 </div>
 <div id="methodology" class="section level1">
 <h1>Methodology</h1>
-<p>We want to estimate the <em>average causal effect</em> of having a
-female politician on the number of new (and repaired) drinking water
-facilities: 1. What would be the treatment variable? 2. What would be
-the outcome variable? 3. What would be the treatment group? 4. What
-would be the control group?</p>
-<p>We also wanted to estimate the average causal effect of having a
-female politician on the number of new (and repaired) irrigation
-facilities: 1. What would be the treatment variable? 2. What would be
-the outcome variable? 4. What would be the control group?</p>
+<p>We want to estimate the <em>average causal effect</em> of ingesting
+spiders on buying blind boxes.</p>
+<ol style="list-style-type: decimal">
+<li>What would be the treatment variable?</li>
+<li>What would be the outcome variable?</li>
+<li>What would be the treatment group?</li>
+<li>What would be the control group?</li>
+</ol>
+<p>We also wanted to estimate the average causal effect of being an
+adult on the propensity to buy blind boxes:</p>
+<ol style="list-style-type: decimal">
+<li>What would be the treatment variable?</li>
+<li>What would be the outcome variable?</li>
+<li>What would be the treatment group?</li>
+<li>What would be the control group?</li>
+</ol>
 </div>
 
 
