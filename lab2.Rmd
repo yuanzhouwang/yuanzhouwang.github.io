@@ -3,6 +3,8 @@ title: "Lab 2 - Basic Data Management and Manipulation"
 output: html_document
 ---
 
+# Part 1
+
 > **Scenario:** You are a data assistant to a newsroom editor. They want a **one-page brief** answering:  
 > 1) How has U.S. voter turnout changed since 1980?  
 > 2) Which measure— **VEP turnout** or **VAP turnout**—better matches ANES self-reports?  
@@ -22,8 +24,8 @@ The data for this lab can be found [here](https://github.com/yuanzhouwang/yzwang
 Load the data into a data frame `turnout` and quickly verify its structure. Keep the vector of `year` and the list of column names.
 
 ```{r}
-turnout <- read.csv("turnout.csv")
-years <- turnout$year
+# turnout <- read.csv("turnout.csv")
+# years <- turnout$year
 ```
 
 ---
@@ -38,10 +40,10 @@ Compute **VAP-based turnout** and **VEP-based turnout** (percent). Label both wi
 Name your vectors `VAPtr`, `VEPtr`.
 
 ```{r}
-VAPtr <- turnout$total / (turnout$VAP + turnout$overseas) * 100
-VEPtr <- turnout$total / turnout$VEP * 100
-names(VAPtr) <- years
-names(VEPtr) <- years
+# VAPtr <- turnout$total / (turnout$VAP + turnout$overseas) * 100
+# VEPtr <- turnout$total / turnout$VEP * 100
+# names(VAPtr) <- years
+# names(VEPtr) <- years
 ```
 
 ---
@@ -51,10 +53,10 @@ names(VEPtr) <- years
 Create the gaps between ANES self-reported turnout and each measure: `gapVAP` and `gapVEP`. Summarize both and **decide which measure aligns better**.
 
 ```{r}
-gapVAP <- turnout$ANES - VAPtr
-gapVEP <- turnout$ANES - VEPtr
-summary(gapVAP)
-summary(gapVEP)
+# gapVAP <- turnout$ANES - VAPtr
+# gapVEP <- turnout$ANES - VEPtr
+# summary(gapVAP)
+# summary(gapVEP)
 ```
 
 ---
@@ -64,11 +66,63 @@ summary(gapVEP)
 Define index vectors for **presidential** (`pres`) and **midterm** (`mids`) rows (years alternate). Subset `VEPtr` into `pVEPtr` and `mVEPtr`. Compute average VEP turnout for each and the difference.
 
 ```{r}
-pres <- c(1,3,5,7,9,11,13,14)
-mids <- c(2,4,6,8,10,12)
-pVEPtr <- VEPtr[pres]
-names(pVEPtr) <- years[pres]
-mVEPtr <- VEPtr[mids]
-names(mVEPtr) <- years[mids]
-vepp_dif <- mean(pVEPtr) - mean(mVEPtr)
+# pres <- c(1,3,5,7,9,11,13,14)
+# mids <- c(2,4,6,8,10,12)
+# pVEPtr <- VEPtr[pres]
+# names(pVEPtr) <- years[pres]
+# mVEPtr <- VEPtr[mids]
+# names(mVEPtr) <- years[mids]
+# vepp_dif <- mean(pVEPtr) - mean(mVEPtr)
 ```
+
+---
+
+# Part 2
+
+> Let's apply some of the syntax we've learned this week to some problems.
+> This should be similar to Problem Set 1, but be warned that the data is different.
+
+---
+
+Your problem set is based on resources produced by Elena Llaudet and Kosuke Imai. It draws on the data and research in the following publication:
+
+Raghabendra Chattopadhyay and Esther Duflo. 2004. “Women as Policy Makers: Evidence from a
+Randomized Policy Experiment in India." Econometrica, 72 (5): 1409–43.)
+
+In this article, the authors conduct an experiment in India, randomly assigning villages to have a female council head. The dataset we will be analyzing is in a file called [“india2.csv”](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/india2.csv). This is further modified from "india.csv".
+
+---
+
+## Getting Started
+
+Read the CSV file ["india2.csv"](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/india2.csv) into an object called `india2`. Read the first few observations of the dataset.
+
+-   What does each observation in this dataset represent?
+-   Please substantively interpret the first observation in the dataset.
+-   What is the **type** of each variable in the dataset?
+
+---
+
+## Exploratory Data Analaysis
+
+How many observations are in the dataset? What does this mean, substantively?
+
+What percent of villages surveyed had a female politician?
+
+On average, how many new or repaired drinking water facilities were built in each village surveyed?
+
+---
+
+## Methodology
+We want to estimate the *average causal effect* of having a female politician on the number of
+new (and repaired) drinking water facilities:
+1. What would be the treatment variable?
+2. What would be the outcome variable?
+3. What would be the treatment group?
+4. What would be the control group?
+
+We also wanted to estimate the average causal effect of having a female politician on the number of
+new (and repaired) irrigation facilities:
+1. What would be the treatment variable?
+2. What would be the outcome variable?
+4. What would be the control group?
