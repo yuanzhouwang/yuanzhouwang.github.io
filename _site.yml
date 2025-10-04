@@ -17,8 +17,11 @@ navbar:
       menu:
       - text: "Papers"
         href: research.html
+    - text: "Toys"
       - text: "Protest-Repression Model"
         href: simmodel.html
+      - text: "Should I Pay to Park in PDL?"
+        href: pdlparking.Rmd
       
 output:
   html_document:
