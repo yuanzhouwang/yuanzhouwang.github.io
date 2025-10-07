@@ -2,4 +2,6 @@
 title: "Should I Pay for Parking?"
 ---
 
+Please report any additional data you have [here](https://docs.google.com/forms/d/1KVo8Omm-0xpy0nYrmf1ZcCOhwdCMQtnBj7oz-comefc/edit). The model takes too long to run online, so it is run locally and updated whenever I have time (last update: 3 October 2025).
+
 <iframe src="https://wcnwoy-andrew-wang.shinyapps.io/PDLParkingWeb/" width="100%" height="800" loading="lazy" style="border:0"></iframe>
