@@ -20,6 +20,7 @@ navbar:
       - text: "Papers"
         href: research.html
     - text: "Toys"
+      menu:
       - text: "Protest-Repression Model"
         href: simmodel.html
       - text: "Should I Pay to Park in PDL?"

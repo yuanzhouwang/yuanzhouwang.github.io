@@ -1,7 +1,12 @@
 ---
-title: "Lab 3 - Potential Outcomes, Randomization, Expectation"
-output: html_document
+title: "Lab 3"
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
+
+rm(list = ls())
+```
 
 The R Markdown file for this lab can be found [here](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/CSSS321%20Lab%203.Rmd).
 
@@ -52,10 +57,12 @@ By the end of this part, you should be able to:
 Let's start by simulating some data. You do not need to know how this simulation works. Simply run the below code chunk and treat the resulting data as you would any other dataset. For the sake of avoiding too much abstraction at this stage, let's consider the following fake scenario:
 
 ---
+
 > The Department of Health wants to answer the following question:
 > Does watching short-form video media cause worse brain development among children?
 > We have enough funding to hire 600 test subjects, and no moral qualms about humane treatment.
 > We can measure whatever we need, but we also have data on previous exposure, actual IQ, number of incidences of academic probations, and sex (assume M/F).
+
 ---
 
 ```{r simulate-data}
@@ -138,13 +145,13 @@ mean_A_exposure <- tapply(dat$exposure, dat$group, mean)[["A"]]
 Let's plot the above results. You don't need to know how to do the below yet.
 
 ```{r}
-balance_table <- data.frame(
-  covariate = c("Exposure", "IQ", "Gender"),
-  mean_A = c(mean_A_exposure, mean_A_IQ, mean_A_gender),
-  mean_B = c(mean_B_exposure, mean_B_IQ, mean_B_gender)
-)
-balance_table$diff_in_means <- with(balance_table, mean_A - mean_B)
-balance_table
+# balance_table <- data.frame(
+#   covariate = c("Exposure", "IQ", "Gender"),
+#   mean_A = c(mean_A_exposure, mean_A_IQ, mean_A_gender),
+#   mean_B = c(mean_B_exposure, mean_B_IQ, mean_B_gender)
+# )
+# balance_table$diff_in_means <- with(balance_table, mean_A - mean_B)
+# balance_table
 ```
 
 For each covariate, are the A and B means close? Explain why randomization implies they should be close **in expectation** even if any one draw shows some noise.
@@ -157,7 +164,7 @@ We illustrate this by simulating an outcome `Y` that depends on our covariates, 
 
 ```{r}
 # outcome depends on covariates (nonlinear), but not on group
-Y <- 1.5 + 0.4*log(1+X1) + 0.6*(X2 > 1.5) + 0.3*sqrt(X3) - 0.8*X4 + rnorm(N, 0, 0.7)
+Y <- 1.5 + 0.4*log(1+exposure) + 0.6*(IQ > 1.5) - 0.8*IQ + rnorm(N, 0, 0.7)
 dat$Y <- Y
 ```
 
