@@ -35,7 +35,7 @@ Please sort yourselves into $3n$ groups, $n \in \mathbb{N}$. Ideally, you should
 Each group will discuss among themselves and present a 3-5 minute summary as follows:
 
 - What question are the authors trying to answer?
-- What is the identification strategy? (What is the treatment variable/treatment groups? What is the outcome variable?)
+- What is the treatment variable/treatment groups? What is the outcome variable?
 - What are two potential threats to validity that the authors address?
 - What is one potential threat to validity that the authors do not address?
 - What is the authors' answer to the question?
