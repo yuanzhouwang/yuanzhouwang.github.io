@@ -13,6 +13,8 @@ navbar:
         href: lab1.html
       - text: "Week 2"
         href: lab2.html
+      - text: "Week 3"
+        href: lab3.html
     - text: "Research"
       menu:
       - text: "Papers"
@@ -21,7 +23,7 @@ navbar:
       - text: "Protest-Repression Model"
         href: simmodel.html
       - text: "Should I Pay to Park in PDL?"
-        href: pdlparking.Rmd
+        href: pdlparking.html
       
 output:
   html_document:
