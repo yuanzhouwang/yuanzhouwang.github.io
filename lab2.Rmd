@@ -103,6 +103,12 @@ I hypothesize that the ingestion of spiders while asleep **causes** individuals'
 
 Read the CSV file ["lab2data.csv"](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/lab2data.csv) into an object called `df`. Read the first few observations of the dataset.
 
+```{r}
+# df <- read.csv("lab2data.csv")
+# head("lab2data.csv")
+```
+
+
 -   What does each observation in this dataset represent?
 -   Please substantively interpret the first observation in the dataset.
 -   What is the **type** of each variable in the dataset?
@@ -116,6 +122,14 @@ Please provide your code for the following statistics:
 -   How many observations are in the dataset?
 -   What percent of survey respondents were adults?
 -   On average, how many spiders did respondents ingest the previous week?
+
+```{r}
+# dim(df)[1]
+# nrow(df) # This also works
+# mean(df$adult)
+# mean(df$spiders)
+```
+
 
 ---
 
