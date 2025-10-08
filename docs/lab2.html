@@ -262,6 +262,9 @@ $(document).ready(function () {
     <li>
       <a href="lab2.html">Week 2</a>
     </li>
+    <li>
+      <a href="lab3.html">Week 3</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -274,8 +277,20 @@ $(document).ready(function () {
     <li>
       <a href="research.html">Papers</a>
     </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Toys
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
     <li>
       <a href="simmodel.html">Protest-Repression Model</a>
+    </li>
+    <li>
+      <a href="pdlparking.html">Should I Pay to Park in PDL?</a>
     </li>
   </ul>
 </li>
@@ -297,6 +312,8 @@ Manipulation</h1>
 </div>
 
 
+<div id="part-1" class="section level2">
+<h2>Part 1</h2>
 <blockquote>
 <p><strong>Scenario:</strong> You are a data assistant to a newsroom
 editor. They want a <strong>one-page brief</strong> answering:<br />
@@ -307,19 +324,23 @@ turnout</strong>—better matches ANES self-reports?<br />
 elections compare on VEP turnout?</p>
 </blockquote>
 <hr />
-<p>The R Markdown file for this lab can be found here (link posted after
-class). The data for this lab can be found <a
+<p>The R Markdown file for this lab can be found <a
+href="https://github.com/yuanzhouwang/yzwang-teaching/blob/main/CSSS321%20Lab%202.Rmd">here
+for Part 1</a> and <a
+href="https://github.com/yuanzhouwang/yzwang-teaching/blob/main/Lab%202%20Pt2.Rmd">here
+for Part 2</a>. The data for this lab can be found <a
 href="https://github.com/yuanzhouwang/yzwang-teaching">here</a>.</p>
-<div id="part-a-loading-data" class="section level2">
-<h2>Part A — Loading Data</h2>
+</div>
+<div id="part-a-loading-data" class="section level1">
+<h1>Part A — Loading Data</h1>
 <p>Load the data into a data frame <code>turnout</code> and quickly
 verify its structure. Keep the vector of <code>year</code> and the list
 of column names.</p>
 <hr />
 </div>
 <div id="part-b-construct-the-two-turnout-measures"
-class="section level2">
-<h2>Part B — Construct the two turnout measures</h2>
+class="section level1">
+<h1>Part B — Construct the two turnout measures</h1>
 <p>Compute <strong>VAP-based turnout</strong> and <strong>VEP-based
 turnout</strong> (percent). Label both with the corresponding year so
 your later subsetting is self-documenting.</p>
@@ -331,21 +352,97 @@ your later subsetting is self-documenting.</p>
 <p>Name your vectors <code>VAPtr</code>, <code>VEPtr</code>.</p>
 <hr />
 </div>
-<div id="part-c-reliability-vs.-anes" class="section level2">
-<h2>Part C — Reliability vs. ANES</h2>
+<div id="part-c-reliability-vs.-anes" class="section level1">
+<h1>Part C — Reliability vs. ANES</h1>
 <p>Create the gaps between ANES self-reported turnout and each measure:
 <code>gapVAP</code> and <code>gapVEP</code>. Summarize both and
 <strong>decide which measure aligns better</strong>.</p>
 <hr />
 </div>
 <div id="part-d-presidential-vs.-midterms-using-indices"
-class="section level2">
-<h2>Part D — Presidential vs. Midterms using indices</h2>
+class="section level1">
+<h1>Part D — Presidential vs. Midterms using indices</h1>
 <p>Define index vectors for <strong>presidential</strong>
 (<code>pres</code>) and <strong>midterm</strong> (<code>mids</code>)
 rows (years alternate). Subset <code>VEPtr</code> into
 <code>pVEPtr</code> and <code>mVEPtr</code>. Compute average VEP turnout
 for each and the difference.</p>
+<hr />
+<div id="part-2" class="section level2">
+<h2>Part 2</h2>
+<blockquote>
+<p>Let’s apply some of the syntax we’ve learned this week to some
+problems. This should be similar to Problem Set 1, but be warned that
+the data is different.</p>
+</blockquote>
+<hr />
+<p>Your problem set is based on resources produced by Elena Llaudet and
+Kosuke Imai. It draws on the data and research in the following
+publication:</p>
+<p>Raghabendra Chattopadhyay and Esther Duflo. 2004. “Women as Policy
+Makers: Evidence from a Randomized Policy Experiment in India.”
+Econometrica, 72 (5): 1409–43.)</p>
+<p>Today our data will be completely made up. The scenario is as
+follows:</p>
+<p>I hypothesize that the ingestion of spiders while asleep
+<strong>causes</strong> individuals’ propensity to buy blind boxes to
+increase. To tes this, I survey some number of individuals in my
+neighborhood, collecting data on:</p>
+<ol style="list-style-type: decimal">
+<li><code>adult</code>: whether they are an adult. <code>=1</code> if
+yes and <code>=0</code> if no.</li>
+<li><code>spiders</code>: how many spiders they ingested in their sleep
+the previous week.</li>
+<li><code>blindbox</code>: how many blindboxes they bought this
+week.</li>
+</ol>
+<hr />
+</div>
+</div>
+<div id="getting-started" class="section level1">
+<h1>Getting Started</h1>
+<p>Read the CSV file <a
+href="https://github.com/yuanzhouwang/yzwang-teaching/blob/main/lab2data.csv">“lab2data.csv”</a>
+into an object called <code>df</code>. Read the first few observations
+of the dataset.</p>
+<ul>
+<li>What does each observation in this dataset represent?</li>
+<li>Please substantively interpret the first observation in the
+dataset.</li>
+<li>What is the <strong>type</strong> of each variable in the
+dataset?</li>
+</ul>
+<hr />
+</div>
+<div id="exploratory-data-analaysis" class="section level1">
+<h1>Exploratory Data Analaysis</h1>
+<p>Please provide your code for the following statistics:</p>
+<ul>
+<li>How many observations are in the dataset?</li>
+<li>What percent of survey respondents were adults?</li>
+<li>On average, how many spiders did respondents ingest the previous
+week?</li>
+</ul>
+<hr />
+</div>
+<div id="methodology" class="section level1">
+<h1>Methodology</h1>
+<p>We want to estimate the <em>average causal effect</em> of ingesting
+spiders on buying blind boxes.</p>
+<ol style="list-style-type: decimal">
+<li>What would be the treatment variable?</li>
+<li>What would be the outcome variable?</li>
+<li>What would be the treatment group?</li>
+<li>What would be the control group?</li>
+</ol>
+<p>We also wanted to estimate the average causal effect of being an
+adult on the propensity to buy blind boxes:</p>
+<ol style="list-style-type: decimal">
+<li>What would be the treatment variable?</li>
+<li>What would be the outcome variable?</li>
+<li>What would be the treatment group?</li>
+<li>What would be the control group?</li>
+</ol>
 </div>
 
 

@@ -13,12 +13,18 @@ navbar:
         href: lab1.html
       - text: "Week 2"
         href: lab2.html
+      - text: "Week 3"
+        href: lab3.html
     - text: "Research"
       menu:
       - text: "Papers"
         href: research.html
+    - text: "Toys"
+      menu:
       - text: "Protest-Repression Model"
         href: simmodel.html
+      - text: "Should I Pay to Park in PDL?"
+        href: pdlparking.html
       
 output:
   html_document:
