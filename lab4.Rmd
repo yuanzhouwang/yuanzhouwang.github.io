@@ -91,12 +91,63 @@ We want to keep a single year (**2007**) and three continents (**Africa, Europe,
 
 ```
 
-Review: check the following diagnostics:
+Review: check the following diagnostics, using the pipe rather than nesting where appropriate:
 - How many rows are in `df` now?
-- How many unique countries are represented?
-- What is the year range?
+- How many unique countries are represented? (Use `unique()`)
+- What is the year range? (Use `range`)
 - How many unique continents are represented?
+- What should we expect for each? Do our diagnostics match what we should expect?
 
 ```{r}
 # [Your code here]
+
+```
+
+# Build Two Overlapping Tables
+
+Let's now create two tables using `subset()`.
+
+- Table `A` contains observations from Africa and Europe, and should retain the variables `country` and `lifeExp`.
+- Table `B` contains observations from Europe and Asia, and should retain the variables `country`, `gdpPercap`, and `gdp_total`.
+
+
+```{r}
+# Table A: Africa + Europe with life expectancy
+# [Your Code Here]
+
+# Table B: Europe + Asia with GDP per capita (and gdp_total)
+# [Your Code Here]
+
+```
+
+# Joining tables with `merge()`
+
+Sometimes we have variables that are split across two separate tables. In those cases we may need to **join** the tables together so each row can contain all the variables we need.
+
+We can join tables by an indexed variable using the function `merge(tableA, tableB, by = "indexvariable")`. You can do so with multiple index variables but we refrain from doing so for now as it follows simply from single-variable joins. There are broadly four ways to join tables.
+
+- **INNER**: keep only rows present in both tables. (Default)
+- **LEFT**: keep all rows from the left table, add rows from the right table when available. (Add argument `all.x = TRUE`)
+- **RIGHT**: keep all rows from the right table, add rows from the left table when available. (Add argument `all.y = TRUE`)
+- **OUTER**: keep all rows from both tables. (Add argument `all = TRUE`)
+
+Let's try each of these in turn. Imagine we do not have the full gapminder dataframe, but only tables `A` and `B` above. How can we get the following?
+
+- All countries in Africa, Europe, and Asia that have data for `lifeExp`, `gdpPercap`, and `gdp_total`.
+- All countries in Africa, Europe, and Asia that have data for any one of these variables.
+- All countries in Africa, Europe, and Asia that have data for `lifeExp` regardless of whether they have data for the other two
+- All countries in Africa, Europe, and Asia that have data fro `gdpPercap` and `gdp_total` regardless of whether they have data for `lifeExp`.
+
+```{r}
+# INNER
+# [Your Code Here]
+
+# LEFT
+# [Your Code Here]
+
+# RIGHT
+# [Your Code Here]
+
+# OUTER
+# [Your Code Here]
 ```
