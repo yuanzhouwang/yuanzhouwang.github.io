@@ -2,6 +2,9 @@
 title: "Lab 4 - Merging Data in R"
 output: html_document
 ---
+
+The R Markdown file for this lab can be found [here](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/CSSS321%20Lab%204.Rmd).
+
 > In today's lab you will learn:
 
 > 1) The `dplyr` pipe, as well as functions `filter()` and `mutate()`.
