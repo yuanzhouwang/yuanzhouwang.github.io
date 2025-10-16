@@ -373,7 +373,7 @@ sum and the sum of the squares using the pipe.</p>
 # df$lifeExp %&gt;%
 #   sum() %&gt;%
 #   .^2
-
+# 
 # Sum of squares
 # [Your code here]
 # df$lifeExp %&gt;%
@@ -420,16 +420,28 @@ continents (<strong>Africa, Europe, Asia</strong>), then create
 with GDP per capita over 20,000 and 0 otherwise.</p>
 <pre class="r"><code># Create gdp_total, rich
 # [Your code here]
-# df %&gt;%
-#   filter(year == 2007 &amp; continent %in% c(&quot;Africa&quot;, &quot;Europe&quot;, &quot;Asia&quot;)) %&gt;%
-#   mutate(gdp_total = gdpPercap * pop, rich = ifelse(lifeExp &gt;= 20000, 1, 0))</code></pre>
+df &lt;- df %&gt;%
+  filter(year == 2007 &amp; continent %in% c(&quot;Africa&quot;, &quot;Europe&quot;, &quot;Asia&quot;)) %&gt;%
+  mutate(gdp_total = gdpPercap * pop, rich = ifelse(gdpPercap &gt;= 20000, 1, 0))</code></pre>
 <p>Review: check the following diagnostics, using the pipe rather than
-nesting where appropriate: - How many rows are in <code>df</code> now? -
-How many unique countries are represented? (Use <code>unique()</code>) -
-What is the year range? (Use <code>range</code>) - How many unique
-continents are represented? - What should we expect for each? Do our
-diagnostics match what we should expect?</p>
-<pre class="r"><code># [Your code here]</code></pre>
+nesting where appropriate:</p>
+<ul>
+<li>How many rows are in <code>df</code> now?</li>
+<li>How many unique countries are represented? (Use
+<code>unique()</code>)</li>
+<li>What is the year range? (Use <code>range()</code>)</li>
+<li>How many unique continents are represented?</li>
+<li>What should we expect for the year range and unique continents? Do
+our diagnostics match what we should expect?</li>
+</ul>
+<pre class="r"><code># [Your code here]
+nrow(df)
+df$country %&gt;%
+  unique()
+df$year %&gt;%
+  range()
+df$continent %&gt;%
+  unique()</code></pre>
 </div>
 <div id="build-two-overlapping-tables" class="section level1">
 <h1>Build Two Overlapping Tables</h1>
@@ -444,9 +456,17 @@ should retain the variables <code>country</code>,
 </ul>
 <pre class="r"><code># Table A: Africa + Europe with life expectancy
 # [Your Code Here]
+A &lt;- df %&gt;% subset(continent %in% c(&quot;Africa&quot;, &quot;Europe&quot;), select = c(country, lifeExp))
+A &lt;- df %&gt;%
+  filter(continent %in% c(&quot;Africa&quot;, &quot;Europe&quot;)) %&gt;%
+  subset(select = c(country, lifeExp))
 
 # Table B: Europe + Asia with GDP per capita (and gdp_total)
-# [Your Code Here]</code></pre>
+# [Your Code Here]
+B &lt;- df %&gt;% subset(continent %in% c(&quot;Europe&quot;, &quot;Asia&quot;), select = c(country, gdp_total, gdpPercap))
+B &lt;- df %&gt;%
+  filter(continent %in% c(&quot;Europe&quot;, &quot;Asia&quot;)) %&gt;%
+  subset(select = c(country, gdp_total, gdpPercap))</code></pre>
 </div>
 <div id="joining-tables-with-merge" class="section level1">
 <h1>Joining tables with <code>merge()</code></h1>
@@ -472,31 +492,29 @@ argument <code>all = TRUE</code>)</li>
 </ul>
 <p>Let’s try each of these in turn. Imagine we do not have the full
 gapminder dataframe, but only tables <code>A</code> and <code>B</code>
-above. How can we get the following?</p>
+above. Which merge gives us the following?</p>
 <ul>
-<li>All countries in Africa, Europe, and Asia that have data for
-<code>lifeExp</code>, <code>gdpPercap</code>, and
-<code>gdp_total</code>.</li>
-<li>All countries in Africa, Europe, and Asia that have data for any one
-of these variables.</li>
-<li>All countries in Africa, Europe, and Asia that have data for
-<code>lifeExp</code> regardless of whether they have data for the other
-two</li>
-<li>All countries in Africa, Europe, and Asia that have data fro
-<code>gdpPercap</code> and <code>gdp_total</code> regardless of whether
-they have data for <code>lifeExp</code>.</li>
+<li>Only countries in Europe.</li>
+<li>Countries in Africa, Europe, and Asia.</li>
+<li>Countries in Europe and Asia only.</li>
+<li>Countries in Africa and Europe only.</li>
 </ul>
 <pre class="r"><code># INNER
 # [Your Code Here]
+merge(A, B, by = &quot;country&quot;)
 
 # LEFT
 # [Your Code Here]
+merge(A, B, by = &quot;country&quot;, all.x = TRUE)
 
 # RIGHT
 # [Your Code Here]
+merge(A, B, by = &quot;country&quot;, all.y = TRUE)
+
 
 # OUTER
-# [Your Code Here]</code></pre>
+# [Your Code Here]
+merge(A, B, by = &quot;country&quot;, all = TRUE)</code></pre>
 </div>
 
 

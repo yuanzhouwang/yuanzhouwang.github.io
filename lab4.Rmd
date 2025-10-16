@@ -85,9 +85,9 @@ We want to keep a single year (**2007**) and three continents (**Africa, Europe,
 ```{r}
 # Create gdp_total, rich
 # [Your code here]
-# df %>%
-#   filter(year == 2007 & continent %in% c("Africa", "Europe", "Asia")) %>%
-#   mutate(gdp_total = gdpPercap * pop, rich = ifelse(gdpPercap >= 20000, 1, 0))
+df <- df %>%
+  filter(year == 2007 & continent %in% c("Africa", "Europe", "Asia")) %>%
+  mutate(gdp_total = gdpPercap * pop, rich = ifelse(gdpPercap >= 20000, 1, 0))
 
 ```
 
@@ -101,7 +101,13 @@ Review: check the following diagnostics, using the pipe rather than nesting wher
 
 ```{r}
 # [Your code here]
-
+nrow(df)
+df$country %>%
+  unique()
+df$year %>%
+  range()
+df$continent %>%
+  unique()
 ```
 
 # Build Two Overlapping Tables
@@ -115,9 +121,18 @@ Let's now create two tables using `subset()`.
 ```{r}
 # Table A: Africa + Europe with life expectancy
 # [Your Code Here]
+A <- df %>% subset(continent %in% c("Africa", "Europe"), select = c(country, lifeExp))
+A <- df %>%
+  filter(continent %in% c("Africa", "Europe")) %>%
+  subset(select = c(country, lifeExp))
 
 # Table B: Europe + Asia with GDP per capita (and gdp_total)
 # [Your Code Here]
+B <- df %>% subset(continent %in% c("Europe", "Asia"), select = c(country, gdp_total, gdpPercap))
+B <- df %>%
+  filter(continent %in% c("Europe", "Asia")) %>%
+  subset(select = c(country, gdp_total, gdpPercap))
+
 
 ```
 
@@ -132,23 +147,28 @@ We can join tables by an indexed variable using the function `merge(tableA, tabl
 - **RIGHT**: keep all rows from the right table, add rows from the left table when available. (Add argument `all.y = TRUE`)
 - **OUTER**: keep all rows from both tables. (Add argument `all = TRUE`)
 
-Let's try each of these in turn. Imagine we do not have the full gapminder dataframe, but only tables `A` and `B` above. How can we get the following?
+Let's try each of these in turn. Imagine we do not have the full gapminder dataframe, but only tables `A` and `B` above. Which merge gives us the following?
 
-- All countries in Africa, Europe, and Asia that have data for `lifeExp`, `gdpPercap`, and `gdp_total`.
-- All countries in Africa, Europe, and Asia that have data for any one of these variables.
-- All countries in Africa, Europe, and Asia that have data for `lifeExp` regardless of whether they have data for the other two
-- All countries in Africa, Europe, and Asia that have data fro `gdpPercap` and `gdp_total` regardless of whether they have data for `lifeExp`.
+- Only countries in Europe.
+- Countries in Africa, Europe, and Asia.
+- Countries in Europe and Asia only.
+- Countries in Africa and Europe only.
 
 ```{r}
 # INNER
 # [Your Code Here]
+merge(A, B, by = "country")
 
 # LEFT
 # [Your Code Here]
+merge(A, B, by = "country", all.x = TRUE)
 
 # RIGHT
 # [Your Code Here]
+merge(A, B, by = "country", all.y = TRUE)
+
 
 # OUTER
 # [Your Code Here]
+merge(A, B, by = "country", all = TRUE)
 ```

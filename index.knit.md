@@ -1,7 +1,0 @@
----
-title: "About"
----
-
-I am a PhD student in Political Science at the University of Washington. My research interests are in two distinct topics: Chinese industrial policy and the nexus of collective action and repression. I am also interested in a variety of methodological themes, especially estimation of latent variables and machine learning applications in causal inference.
-
-I previously earned my BA (First-class) in Philosophy, Politics, and Economics (PPE) from the University of Oxford, where I was avidly involved in student journalism.
