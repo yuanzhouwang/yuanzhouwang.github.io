@@ -370,9 +370,15 @@ pipe will assume the first argument is taking the previous input.</p>
 sum and the sum of the squares using the pipe.</p>
 <pre class="r"><code># Square of sum
 # [Your code here]
+# df$lifeExp %&gt;%
+#   sum() %&gt;%
+#   .^2
 
 # Sum of squares
-# [Your code here]</code></pre>
+# [Your code here]
+# df$lifeExp %&gt;%
+#   .^2 %&gt;%
+#   sum()</code></pre>
 </div>
 <div id="filter-and-mutate" class="section level1">
 <h1>Filter and Mutate</h1>
@@ -413,11 +419,84 @@ continents (<strong>Africa, Europe, Asia</strong>), then create
 <code>rich</code>, a numeric binary variable that is 1 for countries
 with GDP per capita over 20,000 and 0 otherwise.</p>
 <pre class="r"><code># Create gdp_total, rich
-# [Your code here]</code></pre>
-<p>Review: check the following diagnostics: - How many rows are in
-<code>df</code> now? - How many unique countries are represented? - What
-is the year range? - How many unique continents are represented?</p>
+# [Your code here]
+# df %&gt;%
+#   filter(year == 2007 &amp; continent %in% c(&quot;Africa&quot;, &quot;Europe&quot;, &quot;Asia&quot;)) %&gt;%
+#   mutate(gdp_total = gdpPercap * pop, rich = ifelse(lifeExp &gt;= 20000, 1, 0))</code></pre>
+<p>Review: check the following diagnostics, using the pipe rather than
+nesting where appropriate: - How many rows are in <code>df</code> now? -
+How many unique countries are represented? (Use <code>unique()</code>) -
+What is the year range? (Use <code>range</code>) - How many unique
+continents are represented? - What should we expect for each? Do our
+diagnostics match what we should expect?</p>
 <pre class="r"><code># [Your code here]</code></pre>
+</div>
+<div id="build-two-overlapping-tables" class="section level1">
+<h1>Build Two Overlapping Tables</h1>
+<p>Let’s now create two tables using <code>subset()</code>.</p>
+<ul>
+<li>Table <code>A</code> contains observations from Africa and Europe,
+and should retain the variables <code>country</code> and
+<code>lifeExp</code>.</li>
+<li>Table <code>B</code> contains observations from Europe and Asia, and
+should retain the variables <code>country</code>,
+<code>gdpPercap</code>, and <code>gdp_total</code>.</li>
+</ul>
+<pre class="r"><code># Table A: Africa + Europe with life expectancy
+# [Your Code Here]
+
+# Table B: Europe + Asia with GDP per capita (and gdp_total)
+# [Your Code Here]</code></pre>
+</div>
+<div id="joining-tables-with-merge" class="section level1">
+<h1>Joining tables with <code>merge()</code></h1>
+<p>Sometimes we have variables that are split across two separate
+tables. In those cases we may need to <strong>join</strong> the tables
+together so each row can contain all the variables we need.</p>
+<p>We can join tables by an indexed variable using the function
+<code>merge(tableA, tableB, by = "indexvariable")</code>. You can do so
+with multiple index variables but we refrain from doing so for now as it
+follows simply from single-variable joins. There are broadly four ways
+to join tables.</p>
+<ul>
+<li><strong>INNER</strong>: keep only rows present in both tables.
+(Default)</li>
+<li><strong>LEFT</strong>: keep all rows from the left table, add rows
+from the right table when available. (Add argument
+<code>all.x = TRUE</code>)</li>
+<li><strong>RIGHT</strong>: keep all rows from the right table, add rows
+from the left table when available. (Add argument
+<code>all.y = TRUE</code>)</li>
+<li><strong>OUTER</strong>: keep all rows from both tables. (Add
+argument <code>all = TRUE</code>)</li>
+</ul>
+<p>Let’s try each of these in turn. Imagine we do not have the full
+gapminder dataframe, but only tables <code>A</code> and <code>B</code>
+above. How can we get the following?</p>
+<ul>
+<li>All countries in Africa, Europe, and Asia that have data for
+<code>lifeExp</code>, <code>gdpPercap</code>, and
+<code>gdp_total</code>.</li>
+<li>All countries in Africa, Europe, and Asia that have data for any one
+of these variables.</li>
+<li>All countries in Africa, Europe, and Asia that have data for
+<code>lifeExp</code> regardless of whether they have data for the other
+two</li>
+<li>All countries in Africa, Europe, and Asia that have data fro
+<code>gdpPercap</code> and <code>gdp_total</code> regardless of whether
+they have data for <code>lifeExp</code>.</li>
+</ul>
+<pre class="r"><code># INNER
+# [Your Code Here]
+
+# LEFT
+# [Your Code Here]
+
+# RIGHT
+# [Your Code Here]
+
+# OUTER
+# [Your Code Here]</code></pre>
 </div>
 
 
