@@ -53,7 +53,7 @@ Let's try with some basic examples. For the vector `lifeExp`, please provide scr
 # df$lifeExp %>%
 #   sum() %>%
 #   .^2
-
+# 
 # Sum of squares
 # [Your code here]
 # df$lifeExp %>%
@@ -87,16 +87,17 @@ We want to keep a single year (**2007**) and three continents (**Africa, Europe,
 # [Your code here]
 # df %>%
 #   filter(year == 2007 & continent %in% c("Africa", "Europe", "Asia")) %>%
-#   mutate(gdp_total = gdpPercap * pop, rich = ifelse(lifeExp >= 20000, 1, 0))
+#   mutate(gdp_total = gdpPercap * pop, rich = ifelse(gdpPercap >= 20000, 1, 0))
 
 ```
 
 Review: check the following diagnostics, using the pipe rather than nesting where appropriate:
+
 - How many rows are in `df` now?
 - How many unique countries are represented? (Use `unique()`)
-- What is the year range? (Use `range`)
+- What is the year range? (Use `range()`)
 - How many unique continents are represented?
-- What should we expect for each? Do our diagnostics match what we should expect?
+- What should we expect for the year range and unique continents? Do our diagnostics match what we should expect?
 
 ```{r}
 # [Your code here]
