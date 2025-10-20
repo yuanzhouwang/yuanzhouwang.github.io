@@ -21,6 +21,8 @@ navbar:
       menu:
       - text: "Papers"
         href: research.html
+      - text: "CV"
+        href: CV.html
     - text: "Toys"
       menu:
       - text: "Protest-Repression Model"
