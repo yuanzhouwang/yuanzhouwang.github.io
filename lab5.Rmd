@@ -40,13 +40,15 @@ peng <- penguins
 peng <- peng %>% filter(!is.na(flipper_length_mm)) # drop NAs in outcome when needed
 ```
 
-# 1. What is the **average flipper length** among **Gentoo** penguins?
+# 1. What is the **sample average flipper length** among **Gentoo** penguins?
 
 ```{r}
 # [Your Code Here]
+tapply(peng$flipper_length_mm, peng$species, mean)
+mean(peng$flipper_length_mm[peng$species == "Gentoo"])
 ```
 
-# 2. What is the **average flipper length** among **Adelie** penguins?
+# 2. What is the **sample average flipper length** among **Adelie** penguins?
 
 ```{r}
 # [Your Code Here]
@@ -56,6 +58,8 @@ peng <- peng %>% filter(!is.na(flipper_length_mm)) # drop NAs in outcome when ne
 
 ```{r}
 # [Your Code Here]
+mean(peng$flipper_length_mm[peng$species == "Gentoo"]) - mean(peng$flipper_length_mm[peng$species == "Adelie"]) %>%
+  abs()
 ```
 
 
@@ -63,9 +67,9 @@ peng <- peng %>% filter(!is.na(flipper_length_mm)) # drop NAs in outcome when ne
 
 ## Tidyverse (ggplot2) histogram
 ```{r}
-# ggplot(peng, aes(x = flipper_length_mm)) +
-#   geom_histogram(binwidth = 5, boundary = 0, closed = "left") +
-#   labs(title = "Distribution of Flipper Length", x = "Flipper length (mm)", y = "Count")
+# [Your Code Here]
+ggplot(data = peng, mapping = aes(x = flipper_length_mm)) +
+  geom_histogram(binwidth = 10)
 ```
 
 ## Base R histogram
@@ -77,41 +81,35 @@ peng <- peng %>% filter(!is.na(flipper_length_mm)) # drop NAs in outcome when ne
 ```
 
 ## Count near 200 mm
-### Tidyverse
-```{r}
-# approx_200 <- peng %>% summarize(n = sum(abs(flipper_length_mm - 200) <= 5, na.rm = TRUE)) %>% pull(n)
-# approx_200
-```
 
-### Base R
 ```{r}
-# approx_200_base <- sum(abs(peng$flipper_length_mm - 200) <= 5, na.rm = TRUE)
-# approx_200_base
+peng %>% filter(abs(flipper_length_mm -  200) < 5) %>%
+  nrow()
+
 ```
 
 # 5. Explore the relationship between `flipper_length_mm` and `body_mass_g`. Does it look positive or negative?
 
 ## Tidyverse (ggplot2) scatter with trend
 ```{r}
-# ggplot(peng, aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
-#   geom_point(na.rm = TRUE, alpha = 0.8) +
-#   geom_smooth(method = "lm", se = FALSE, na.rm = TRUE) +
-#   labs(title = "Flipper length vs Body mass", x = "Body mass (g)", y = "Flipper length (mm)")
+ggplot(peng, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+ggplot(peng, aes(y = flipper_length_mm, x = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = "lm")
 ```
 
 ## Base R scatter with fitted line
 ```{r}
-# plot(peng$body_mass_g, peng$flipper_length_mm,
-#      xlab = "Body mass (g)", ylab = "Flipper length (mm)",
-#      main = "Flipper length vs Body mass (base R)")
-# ok <- complete.cases(peng$body_mass_g, peng$flipper_length_mm)
-# abline(lm(flipper_length_mm ~ body_mass_g, data = peng[ok, ]))
+plot(peng$flipper_length_mm, peng$body_mass_g)
 ```
 
 # 6. Compute the correlation between `flipper_length_mm` and `body_mass_g`.
 
 ```{r}
-# [Your Code Here]
+cor(peng$flipper_length_mm, peng$body_mass_g)
 ```
 
 **(a)** Are you surprised by the sign?

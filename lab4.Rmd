@@ -1,0 +1,177 @@
+---
+title: "Lab 4 - Merging Data in R"
+output: html_document
+---
+
+The R Markdown file for this lab can be found [here](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/CSSS321%20Lab%204.Rmd).
+
+> In today's lab you will learn:
+
+> 1) The `dplyr` pipe, as well as functions `filter()` and `mutate()`.
+> 2) The various types of `merge()` - inner, outer, left, right.
+> 3) Diagnostic functions for checking merged data.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, results = 'hide', warning = FALSE, message = FALSE)
+```
+
+# Data & Variables
+
+We’ll use the `gapminder` package. If needed, install it with `install.packages("gapminder")`.
+
+**Gapminder** contains columns:
+
+- `country`: country name
+- `continent`: continent
+- `year`: observation year
+- `lifeExp`: life expectancy at birth, in years
+- `pop`: population
+- `gdpPercap`: GDP per capita (inflation-adjusted, USD)
+
+Review: What is the type of each variable?
+
+We will also create two new variables.
+
+# Load Packages
+
+```{r}
+# install.packages("gapminder") # uncomment if not installed
+library(dplyr)
+library(gapminder)
+df <- gapminder
+```
+
+# The `dplyr` pipe (`%>%`)
+
+The dplyr pipe (`%>%`, and in modern R also the base pipe `|>`) lets you express a sequence of data transformations from left to right, reading like a sentence. Instead of nesting function calls, you “pipe” the output of one step into the next, which keeps code legible and encourages small, composable operations.
+
+Given some function `function1(input1)` returns `output 1`, and `function2(input2)`,
+`function1(input1) %>% function2()` is equivalent to `function2(output1)`. If `function2(input2a,input2b)` has multiple arguments, you can indicate the argument to replace with `.`. Otherwise, the pipe will assume the first argument is taking the previous input.
+
+Let's try with some basic examples. For the vector `lifeExp`, please provide script to compute the square of the sum and the sum of the squares using the pipe.
+
+```{r}
+# Square of sum
+# [Your code here]
+# df$lifeExp %>%
+#   sum() %>%
+#   .^2
+# 
+# Sum of squares
+# [Your code here]
+# df$lifeExp %>%
+#   .^2 %>%
+#   sum()
+
+
+```
+
+
+# Filter and Mutate
+
+`filter(condition)` keeps rows that satisfy logical condition `condition==TRUE`. These conditions use standard comparison operators (`==`, `>`, `<=`), logical connectors (`&`, `|`), and helpers like `%in%` for set membership and `is.na()` for missingness.
+
+- `&` (AND): `TRUE` if and only if both conditions are `TRUE`. What does `filter(continent == "Asia" & lifeExp > 70)` do?
+
+- `|` (OR): at least one condition must be `TRUE`. What does `filter(continent == "Asia" | continent == "Europe")` do?
+
+- `%in%` (set membership): tests whether a value is in a vector of allowed values (cleaner than chaining many `OR`s). What does `filter(continent %in% c("Asia", "Europe"))` do?
+
+- `is.na()` (missingness): returns TRUE for missing values; combine with ! (NOT) to exclude missingness.
+What does `filter(!is.na(lifeExp))` do?
+
+
+`mutate()` creates or modifies columns, computing values rowwise in a vectorized way. The syntax is `mutate(new_or_modified = function(column1, column2, etc.))` You can build on columns created earlier in the same `mutate()` call, overwrite existing columns, and use helpers like `if_else()`, `case_when()`, or `across()` for many-column operations. Here we focus only on `if_else()`.
+
+We want to keep a single year (**2007**) and three continents (**Africa, Europe, Asia**), then create `gdp_total`, the total GDP of the country, and `rich`, a numeric binary variable that is 1 for countries with GDP per capita over 20,000 and 0 otherwise.
+
+```{r}
+# Create gdp_total, rich
+# [Your code here]
+df <- df %>%
+  filter(year == 2007 & continent %in% c("Africa", "Europe", "Asia")) %>%
+  mutate(gdp_total = gdpPercap * pop, rich = ifelse(gdpPercap >= 20000, 1, 0))
+
+```
+
+Review: check the following diagnostics, using the pipe rather than nesting where appropriate:
+
+- How many rows are in `df` now?
+- How many unique countries are represented? (Use `unique()`)
+- What is the year range? (Use `range()`)
+- How many unique continents are represented?
+- What should we expect for the year range and unique continents? Do our diagnostics match what we should expect?
+
+```{r}
+# [Your code here]
+nrow(df)
+df$country %>%
+  unique()
+df$year %>%
+  range()
+df$continent %>%
+  unique()
+```
+
+# Build Two Overlapping Tables
+
+Let's now create two tables using `subset()`.
+
+- Table `A` contains observations from Africa and Europe, and should retain the variables `country` and `lifeExp`.
+- Table `B` contains observations from Europe and Asia, and should retain the variables `country`, `gdpPercap`, and `gdp_total`.
+
+
+```{r}
+# Table A: Africa + Europe with life expectancy
+# [Your Code Here]
+A <- df %>% subset(continent %in% c("Africa", "Europe"), select = c(country, lifeExp))
+A <- df %>%
+  filter(continent %in% c("Africa", "Europe")) %>%
+  subset(select = c(country, lifeExp))
+
+# Table B: Europe + Asia with GDP per capita (and gdp_total)
+# [Your Code Here]
+B <- df %>% subset(continent %in% c("Europe", "Asia"), select = c(country, gdp_total, gdpPercap))
+B <- df %>%
+  filter(continent %in% c("Europe", "Asia")) %>%
+  subset(select = c(country, gdp_total, gdpPercap))
+
+
+```
+
+# Joining tables with `merge()`
+
+Sometimes we have variables that are split across two separate tables. In those cases we may need to **join** the tables together so each row can contain all the variables we need.
+
+We can join tables by an indexed variable using the function `merge(tableA, tableB, by = "indexvariable")`. You can do so with multiple index variables but we refrain from doing so for now as it follows simply from single-variable joins. There are broadly four ways to join tables.
+
+- **INNER**: keep only rows present in both tables. (Default)
+- **LEFT**: keep all rows from the left table, add rows from the right table when available. (Add argument `all.x = TRUE`)
+- **RIGHT**: keep all rows from the right table, add rows from the left table when available. (Add argument `all.y = TRUE`)
+- **OUTER**: keep all rows from both tables. (Add argument `all = TRUE`)
+
+Let's try each of these in turn. Imagine we do not have the full gapminder dataframe, but only tables `A` and `B` above. Which merge gives us the following?
+
+- Only countries in Europe.
+- Countries in Africa, Europe, and Asia.
+- Countries in Europe and Asia only.
+- Countries in Africa and Europe only.
+
+```{r}
+# INNER
+# [Your Code Here]
+merge(A, B, by = "country")
+
+# LEFT
+# [Your Code Here]
+merge(A, B, by = "country", all.x = TRUE)
+
+# RIGHT
+# [Your Code Here]
+merge(A, B, by = "country", all.y = TRUE)
+
+
+# OUTER
+# [Your Code Here]
+merge(A, B, by = "country", all = TRUE)
+```
