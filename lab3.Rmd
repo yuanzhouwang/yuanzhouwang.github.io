@@ -98,8 +98,11 @@ How should we answer the question? Please identify:
 Let's look at how each of the confounding variables is distributed using ``hist()``.
 
 ```{r}
-hist(dat$exposure)
 # [Your code here]
+hist(dat$IQ)
+hist(dat$exposure)
+hist(dat$male)
+
 ```
 If we randomly assign individuals into treatment groups, what shape should we expect for the within-group distributions of each variable?
 
@@ -121,12 +124,18 @@ Now create two subsets of ``dat``.
 
 ```{r}
 # [Your code here]
+dat_A <- dat[dat$group=="A", ]
+dat_B <- dat[dat$group=="B", ]
+
 ```
 
 Plot the within-subset distributions for each variable. Do they look the same? Are the two groups comparable?
 
 ```{r}
 # [Your code here]
+hist(dat_A$IQ)
+hist(dat_B$IQ)
+
 ```
 
 Bonus: Let's reduce the sample size ``N``. Are the two groups comparable now?
@@ -139,19 +148,27 @@ We will compute group means of each covariate using `tapply()`, which we learned
 
 ```{r}
 # [Your code here]
-mean_A_exposure <- tapply(dat$exposure, dat$group, mean)[["A"]]
+mean_A_exposure <- tapply(dat$exposure,dat$group,mean)[["A"]]
+mean_B_exposure <- tapply(dat$exposure,dat$group,mean)[["B"]]
+
+mean_A_IQ <- tapply(dat$IQ,dat$group,mean)[["A"]]
+mean_B_IQ <- tapply(dat$IQ,dat$group,mean)[["B"]]
+
+mean_A_male <- tapply(dat$male,dat$group,mean)[["A"]]
+mean_B_male <- tapply(dat$male,dat$group,mean)[["B"]]
+
 ```
 
 Let's plot the above results. You don't need to know how to do the below yet.
 
 ```{r}
-# balance_table <- data.frame(
-#   covariate = c("Exposure", "IQ", "Gender"),
-#   mean_A = c(mean_A_exposure, mean_A_IQ, mean_A_gender),
-#   mean_B = c(mean_B_exposure, mean_B_IQ, mean_B_gender)
-# )
-# balance_table$diff_in_means <- with(balance_table, mean_A - mean_B)
-# balance_table
+balance_table <- data.frame(
+  covariate = c("Exposure", "IQ", "Gender"),
+  mean_A = c(mean_A_exposure, mean_A_IQ, mean_A_male),
+  mean_B = c(mean_B_exposure, mean_B_IQ, mean_B_male)
+)
+balance_table$diff_in_means <- with(balance_table, mean_A - mean_B)
+balance_table
 ```
 
 For each covariate, are the A and B means close? Explain why randomization implies they should be close **in expectation** even if any one draw shows some noise.

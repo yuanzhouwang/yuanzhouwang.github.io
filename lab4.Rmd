@@ -109,13 +109,13 @@ abline(lm(flipper_length_mm ~ body_mass_g, data = peng[ok, ]))
 # 6. Compute the correlation between `flipper_length_mm` and `body_mass_g`.
 
 ## Tidyverse
-```{r q6-tidy}
+```{r}
 corr_val <- cor(peng$flipper_length_mm, peng$body_mass_g, use = "complete.obs")
 corr_val
 ```
 
 ## Base R
-```{r q6-base}
+```{r}
 corr_val_base <- cor(peng$flipper_length_mm, peng$body_mass_g, use = "complete.obs")
 corr_val_base
 ```

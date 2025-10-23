@@ -15,10 +15,14 @@ navbar:
         href: lab2.html
       - text: "Week 3"
         href: lab3.html
+      - text: "Week 4"
+        href: lab4.html
     - text: "Research"
       menu:
       - text: "Papers"
         href: research.html
+      - text: "CV"
+        href: CV.html
     - text: "Toys"
       menu:
       - text: "Protest-Repression Model"

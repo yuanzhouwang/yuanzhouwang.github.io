@@ -265,6 +265,9 @@ $(document).ready(function () {
     <li>
       <a href="lab3.html">Week 3</a>
     </li>
+    <li>
+      <a href="lab4.html">Week 4</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -276,6 +279,9 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="research.html">Papers</a>
+    </li>
+    <li>
+      <a href="CV.html">CV</a>
     </li>
   </ul>
 </li>
@@ -440,10 +446,14 @@ variables?</li>
 <h1>Data exploration</h1>
 <p>Let’s look at how each of the confounding variables is distributed
 using <code>hist()</code>.</p>
-<pre class="r"><code>hist(dat$exposure)</code></pre>
+<pre class="r"><code># [Your code here]
+hist(dat$IQ)</code></pre>
 <p><img src="lab3_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code># [Your code here]</code></pre>
-<p>If we randomly assign individuals into treatment groups, what shape
+<pre class="r"><code>hist(dat$exposure)</code></pre>
+<p><img src="lab3_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<pre class="r"><code>hist(dat$male)</code></pre>
+<p><img src="lab3_files/figure-html/unnamed-chunk-1-3.png" width="672" />
+If we randomly assign individuals into treatment groups, what shape
 should we expect for the within-group distributions of each
 variable?</p>
 </div>
@@ -466,10 +476,16 @@ table(dat$group)</code></pre>
 ##         A         B 
 ## 0.4666667 0.5333333</code></pre>
 <p>Now create two subsets of <code>dat</code>.</p>
-<pre class="r"><code># [Your code here]</code></pre>
+<pre class="r"><code># [Your code here]
+dat_A &lt;- dat[dat$group==&quot;A&quot;, ]
+dat_B &lt;- dat[dat$group==&quot;B&quot;, ]</code></pre>
 <p>Plot the within-subset distributions for each variable. Do they look
 the same? Are the two groups comparable?</p>
-<pre class="r"><code># [Your code here]</code></pre>
+<pre class="r"><code># [Your code here]
+hist(dat_A$IQ)</code></pre>
+<p><img src="lab3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>hist(dat_B$IQ)</code></pre>
+<p><img src="lab3_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <p>Bonus: Let’s reduce the sample size <code>N</code>. Are the two
 groups comparable now?</p>
 <p>Bonus: In general, how can we assess whether our two groups are
@@ -482,16 +498,27 @@ comparable?</p>
 means of each variable for each subgroup. Name each as follows:
 <code>mean_groupletter_variablename</code>.</p>
 <pre class="r"><code># [Your code here]
-mean_A_exposure &lt;- tapply(dat$exposure, dat$group, mean)[[&quot;A&quot;]]</code></pre>
+mean_A_exposure &lt;- tapply(dat$exposure,dat$group,mean)[[&quot;A&quot;]]
+mean_B_exposure &lt;- tapply(dat$exposure,dat$group,mean)[[&quot;B&quot;]]
+
+mean_A_IQ &lt;- tapply(dat$IQ,dat$group,mean)[[&quot;A&quot;]]
+mean_B_IQ &lt;- tapply(dat$IQ,dat$group,mean)[[&quot;B&quot;]]
+
+mean_A_male &lt;- tapply(dat$male,dat$group,mean)[[&quot;A&quot;]]
+mean_B_male &lt;- tapply(dat$male,dat$group,mean)[[&quot;B&quot;]]</code></pre>
 <p>Let’s plot the above results. You don’t need to know how to do the
 below yet.</p>
-<pre class="r"><code># balance_table &lt;- data.frame(
-#   covariate = c(&quot;Exposure&quot;, &quot;IQ&quot;, &quot;Gender&quot;),
-#   mean_A = c(mean_A_exposure, mean_A_IQ, mean_A_gender),
-#   mean_B = c(mean_B_exposure, mean_B_IQ, mean_B_gender)
-# )
-# balance_table$diff_in_means &lt;- with(balance_table, mean_A - mean_B)
-# balance_table</code></pre>
+<pre class="r"><code>balance_table &lt;- data.frame(
+  covariate = c(&quot;Exposure&quot;, &quot;IQ&quot;, &quot;Gender&quot;),
+  mean_A = c(mean_A_exposure, mean_A_IQ, mean_A_male),
+  mean_B = c(mean_B_exposure, mean_B_IQ, mean_B_male)
+)
+balance_table$diff_in_means &lt;- with(balance_table, mean_A - mean_B)
+balance_table</code></pre>
+<pre><code>##   covariate     mean_A    mean_B diff_in_means
+## 1  Exposure  1.8242908  1.606882    0.21740922
+## 2        IQ 95.9481691 93.691826    2.25634358
+## 3    Gender  0.4928571  0.443750    0.04910714</code></pre>
 <p>For each covariate, are the A and B means close? Explain why
 randomization implies they should be close <strong>in
 expectation</strong> even if any one draw shows some noise.</p>
