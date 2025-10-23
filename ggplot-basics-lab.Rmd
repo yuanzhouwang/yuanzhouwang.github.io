@@ -1,0 +1,113 @@
+---
+title: "Lab 4 Appendix: ggplot"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+if (!requireNamespace("palmerpenguins", quietly = TRUE)) install.packages("palmerpenguins")
+if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+if (!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
+
+library(ggplot2)
+library(dplyr)
+library(palmerpenguins)
+
+
+```
+
+## Setup
+
+```{r}
+peng <- palmerpenguins::penguins
+peng <- peng %>% filter(!is.na(flipper_length_mm), !is.na(body_mass_g))
+```
+
+## Learning objectives
+
+- Build a plot with the ggplot grammar: `ggplot(data) + aes(...) + geom_*()`  
+- Understand **aesthetic mapping vs. setting** (e.g., `aes(color = species)` vs `color = "steelblue"`).  
+- Make **histograms, bar charts, and scatterplots**; add trend lines.  
+- Add **labels, scales, themes**.
+
+---
+
+## Basics
+
+A ggplot has three core parts:
+
+1. **Data**: a data frame
+2. **Aesthetics**: variables mapped to visual channels (eg x, y, color, fill, size, shape)
+3. **Geometries**: what you want ggplot to draw (eg points, lines, bars, boxes, histograms, etc.)
+
+```{r}
+ggplot(data = peng, mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+```
+
+### Mapping vs. Setting
+
+- **Mapping** (inside `aes()`): change a style based on a variable.
+- **Setting** (outside `aes()`): a constant style.
+
+```{r}
+# Mapping color to species (legend appears)
+ggplot(peng, aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
+  geom_point(alpha = 0.8)
+
+# Setting color to a single value (no legend)
+ggplot(peng, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(color = "steelblue", alpha = 0.8)
+```
+
+---
+
+## Univariate plots
+
+### Histogram (numeric)
+
+```{r hist}
+ggplot(peng, aes(x = flipper_length_mm)) +
+  geom_histogram(binwidth = 5, boundary = 0, closed = "left", fill = "grey70", color = "white") +
+  labs(x = "Flipper length (mm)", y = "Count", title = "Distribution of flipper length")
+```
+
+### Bar chart (counts per category)
+
+```{r bar}
+ggplot(peng, aes(x = species)) +
+  geom_bar(fill = "grey70", color = "white") +
+  labs(x = "Species", y = "Count", title = "How many penguins per species?")
+```
+
+*Try it:* Change the histogram `binwidth` to 2. What differences do you see?
+
+```{r}
+# [Your Code Here]
+```
+
+---
+
+## Bivariate plots
+
+### Scatter with groups and a trend line
+
+```{r scatter-smooth}
+ggplot(peng, aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point(alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Body mass (g)", y = "Flipper length (mm)", color = "Species",
+       title = "Flipper length vs body mass by species")
+```
+
+### Aesthetics you might use
+- `color`/`fill` for categories  
+- `shape` for categories (works with points)  
+- `size` for numeric (use sparingly)
+
+```{r aesthetics-ex}
+ggplot(peng, aes(body_mass_g, flipper_length_mm, shape = species)) +
+  geom_point(alpha = 0.8, size = 2.8)
+```
+
+*Try it:* Map `alpha` to a variable. Why is this usually a bad idea?
