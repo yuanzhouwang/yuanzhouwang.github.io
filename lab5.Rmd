@@ -20,6 +20,8 @@ library(ggplot2)
 library(dplyr)
 ```
 
+You'll also want to reference [this](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/CSSS321%20ggplotlab.Rmd) tutorial on ggplot.
+
 # Dataset
 
 We'll use the **palmerpenguins** dataset, which contains measurements for three penguin species (Adelie, Chinstrap, Gentoo) from the Palmer Archipelago, Antarctica. Key variables include:
