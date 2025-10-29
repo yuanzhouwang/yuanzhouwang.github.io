@@ -301,6 +301,9 @@ $(document).ready(function () {
     <li>
       <a href="pdlparking.html">Should I Pay to Park in PDL?</a>
     </li>
+    <li>
+      <a href="regplot.html">Visualizing Multiple Regression</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -346,15 +349,22 @@ the outcome of interest and compare across species.</p>
 <pre class="r"><code>peng &lt;- penguins
 peng &lt;- peng %&gt;% filter(!is.na(flipper_length_mm)) # drop NAs in outcome when needed</code></pre>
 </div>
-<div id="what-is-the-average-flipper-length-among-gentoo-penguins"
+<div
+id="what-is-the-sample-average-flipper-length-among-gentoo-penguins"
 class="section level1">
-<h1>1. What is the <strong>average flipper length</strong> among
+<h1>1. What is the <strong>sample average flipper length</strong> among
 <strong>Gentoo</strong> penguins?</h1>
-<pre class="r"><code># [Your Code Here]</code></pre>
+<pre class="r"><code># [Your Code Here]
+tapply(peng$flipper_length_mm, peng$species, mean)</code></pre>
+<pre><code>##    Adelie Chinstrap    Gentoo 
+##  189.9536  195.8235  217.1870</code></pre>
+<pre class="r"><code>mean(peng$flipper_length_mm[peng$species == &quot;Gentoo&quot;])</code></pre>
+<pre><code>## [1] 217.187</code></pre>
 </div>
-<div id="what-is-the-average-flipper-length-among-adelie-penguins"
+<div
+id="what-is-the-sample-average-flipper-length-among-adelie-penguins"
 class="section level1">
-<h1>2. What is the <strong>average flipper length</strong> among
+<h1>2. What is the <strong>sample average flipper length</strong> among
 <strong>Adelie</strong> penguins?</h1>
 <pre class="r"><code># [Your Code Here]</code></pre>
 </div>
@@ -363,7 +373,10 @@ id="what-is-the-estimated-difference-in-average-flipper-length-of-gentoo-vs-adel
 class="section level1">
 <h1>3. What is the estimated difference in average flipper length of
 <strong>Gentoo vs Adelie</strong>? Is this effect Causal?</h1>
-<pre class="r"><code># [Your Code Here]</code></pre>
+<pre class="r"><code># [Your Code Here]
+mean(peng$flipper_length_mm[peng$species == &quot;Gentoo&quot;]) - mean(peng$flipper_length_mm[peng$species == &quot;Adelie&quot;]) %&gt;%
+  abs()</code></pre>
+<pre><code>## [1] 27.23335</code></pre>
 </div>
 <div
 id="visualize-the-distribution-of-flipper_length_mm.-about-how-many-observations-are-near-200-mm-5-mm"
@@ -373,9 +386,10 @@ About how many observations are near <strong>200 mm</strong> (±5
 mm)?</h1>
 <div id="tidyverse-ggplot2-histogram" class="section level2">
 <h2>Tidyverse (ggplot2) histogram</h2>
-<pre class="r"><code># ggplot(peng, aes(x = flipper_length_mm)) +
-#   geom_histogram(binwidth = 5, boundary = 0, closed = &quot;left&quot;) +
-#   labs(title = &quot;Distribution of Flipper Length&quot;, x = &quot;Flipper length (mm)&quot;, y = &quot;Count&quot;)</code></pre>
+<pre class="r"><code># [Your Code Here]
+ggplot(data = peng, mapping = aes(x = flipper_length_mm)) +
+  geom_histogram(binwidth = 10)</code></pre>
+<p><img src="lab5_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="base-r-histogram" class="section level2">
 <h2>Base R histogram</h2>
@@ -386,16 +400,9 @@ mm)?</h1>
 </div>
 <div id="count-near-200-mm" class="section level2">
 <h2>Count near 200 mm</h2>
-<div id="tidyverse" class="section level3">
-<h3>Tidyverse</h3>
-<pre class="r"><code># approx_200 &lt;- peng %&gt;% summarize(n = sum(abs(flipper_length_mm - 200) &lt;= 5, na.rm = TRUE)) %&gt;% pull(n)
-# approx_200</code></pre>
-</div>
-<div id="base-r" class="section level3">
-<h3>Base R</h3>
-<pre class="r"><code># approx_200_base &lt;- sum(abs(peng$flipper_length_mm - 200) &lt;= 5, na.rm = TRUE)
-# approx_200_base</code></pre>
-</div>
+<pre class="r"><code>peng %&gt;% filter(abs(flipper_length_mm -  200) &lt; 5) %&gt;%
+  nrow()</code></pre>
+<pre><code>## [1] 53</code></pre>
 </div>
 </div>
 <div
@@ -405,18 +412,19 @@ class="section level1">
 and <code>body_mass_g</code>. Does it look positive or negative?</h1>
 <div id="tidyverse-ggplot2-scatter-with-trend" class="section level2">
 <h2>Tidyverse (ggplot2) scatter with trend</h2>
-<pre class="r"><code># ggplot(peng, aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
-#   geom_point(na.rm = TRUE, alpha = 0.8) +
-#   geom_smooth(method = &quot;lm&quot;, se = FALSE, na.rm = TRUE) +
-#   labs(title = &quot;Flipper length vs Body mass&quot;, x = &quot;Body mass (g)&quot;, y = &quot;Flipper length (mm)&quot;)</code></pre>
+<pre class="r"><code>ggplot(peng, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;)</code></pre>
+<p><img src="lab5_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(peng, aes(y = flipper_length_mm, x = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;)</code></pre>
+<p><img src="lab5_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
 </div>
 <div id="base-r-scatter-with-fitted-line" class="section level2">
 <h2>Base R scatter with fitted line</h2>
-<pre class="r"><code># plot(peng$body_mass_g, peng$flipper_length_mm,
-#      xlab = &quot;Body mass (g)&quot;, ylab = &quot;Flipper length (mm)&quot;,
-#      main = &quot;Flipper length vs Body mass (base R)&quot;)
-# ok &lt;- complete.cases(peng$body_mass_g, peng$flipper_length_mm)
-# abline(lm(flipper_length_mm ~ body_mass_g, data = peng[ok, ]))</code></pre>
+<pre class="r"><code>plot(peng$flipper_length_mm, peng$body_mass_g)</code></pre>
+<p><img src="lab5_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 </div>
 <div
@@ -424,7 +432,8 @@ id="compute-the-correlation-between-flipper_length_mm-and-body_mass_g."
 class="section level1">
 <h1>6. Compute the correlation between <code>flipper_length_mm</code>
 and <code>body_mass_g</code>.</h1>
-<pre class="r"><code># [Your Code Here]</code></pre>
+<pre class="r"><code>cor(peng$flipper_length_mm, peng$body_mass_g)</code></pre>
+<pre><code>## [1] 0.8712018</code></pre>
 <p><strong>(a)</strong> Are you surprised by the sign?
 <strong>(b)</strong> Are you surprised by the absolute value
 (magnitude)?</p>

@@ -1,0 +1,10 @@
+---
+title: "Regression in Three Variables"
+author: "Andrew Yuanzhou Wang"
+date: "2025-10-28"
+output: html_document
+---
+
+A learning aid for multiple regression using the ``palmerpenguins`` dataset.
+
+<iframe src="https://wcnwoy-andrew-wang.shinyapps.io/mreg3d/" width="100%" height="800" loading="lazy" style="border:0"></iframe>
