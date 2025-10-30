@@ -1,0 +1,96 @@
+---
+title: "Lab 6 - Regression and Multiple Regression"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+# Install if needed
+if (!requireNamespace("ivreg", quietly = TRUE)) {
+  install.packages("ivreg")
+}
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  install.packages("ggplot2")
+}
+if (!requireNamespace("dplyr", quietly = TRUE)) {
+  install.packages("dplyr")
+}
+library(ggplot2)
+library(dplyr)
+```
+
+In this lab, we will estimate the average effect of years of schooling on individuals’ earnings. This classic empirical relationship — often called the Mincer earnings function — is one of the most influential findings in labor economics and the social sciences.
+
+## Background
+
+Jacob Mincer (1974) proposed a simple model relating the logarithm of an individual’s wage to their years of schooling and work experience. The model provides an intuitive measure of the “returns to education” — how much wages increase, on average, for each additional year of schooling.
+
+For simplicity, we’ll start with a simple regression model using only schooling as a predictor, then extend it to include experience.
+
+We will estimate two models. The first model we’ll estimate is:
+
+$$
+\log(\text{wage}) = \alpha + \beta_1 \times \text{schooling} + \varepsilon
+$$
+And the second model is:
+
+$$
+\log(\text{wage}) = \alpha + \beta_1 \times \text{schooling} + \beta_2 \times \text{experience} + \varepsilon
+$$
+
+We’ll use the dataset ``SchoolingReturns``, where each observation represents one individual. The variables of interest are:
+
+- ``lwage``: log of hourly wage
+- ``education``: years of schooling completed
+- ``experience``: years of labor market experience
+= ``female``: 1 if respondent is female, 0 otherwise
+
+Load the data with the following chunk:
+
+```{r message = FALSE, warning= FALSE}
+library(ivreg)
+data("SchoolingReturns", package = "ivreg")
+df <- SchoolingReturns
+```
+
+
+## Identify the Variables
+
+- What is the outcome variable (Y) in our model? Is it binary or continuous?
+- What is the main explanatory variable (X)? Is it binary or continuous?
+- What other variables might be useful control variables, and why?
+
+Please create the variable ``lwage`` in the dataframe using ``mutate()``.
+
+## The Difference-in-Means Estimator
+To get an intuitive sense of the data, compute the average log wage for people with 12 or fewer years of schooling and for those with more than 12 years. What is the difference between these two averages?
+
+```{r}
+# [Your Code Here]
+```
+
+## Simple Regression
+Using our first model, estimate a linear regression model where log wages are predicted by years of schooling.
+
+```{r}
+# [Your Code Here]
+```
+
+Write out the fitted regression equation and provide a substantive interpretation of the coefficient $\beta_1$. What does it tell us about the relationship between schooling and log wages? How would you express this in percentage terms?
+
+## Multiple Regression (Two Predictors)
+Now let's use our second model, which includes experience in the regression.
+
+```{r}
+# [Your Code Here]
+```
+
+- Does the $\beta_1$ change?
+- How do you interpret $]beta_2$?
+- Why might including an additional variable improve our estimate of the return to education?
+
+## Visualizing the Regressions
+
+Create a scatterplot of the relationship between schooling and log wages. Add the best-fit line based on the first model in ``"red"``, and a best-fit line based on the first model in ``"darkred"``. What does this tell us about the effect of adding controls in a regression study?
+

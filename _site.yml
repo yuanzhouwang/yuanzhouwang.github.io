@@ -19,6 +19,8 @@ navbar:
         href: lab4.html
       - text: "Week 5"
         href: lab5.html
+      - text: "Week 6"
+        href: lab6.html
     - text: "Research"
       menu:
       - text: "Papers"
