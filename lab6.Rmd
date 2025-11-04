@@ -74,7 +74,10 @@ To get an intuitive sense of the data, compute the average log wage for people w
 Using our first model, estimate a linear regression model where log wages are predicted by years of schooling.
 
 ```{r}
-# [Your Code Here]
+df <- df %>%
+  mutate(lwage = log(wage))
+
+lm(lwage ~ education, data = df)
 ```
 
 Write out the fitted regression equation and provide a substantive interpretation of the coefficient $\beta_1$. What does it tell us about the relationship between schooling and log wages? How would you express this in percentage terms?
@@ -83,7 +86,7 @@ Write out the fitted regression equation and provide a substantive interpretatio
 Now let's use our second model, which includes experience in the regression.
 
 ```{r}
-# [Your Code Here]
+lm(lwage ~ education + experience, data = df)
 ```
 
 - Does the $\beta_1$ change?
