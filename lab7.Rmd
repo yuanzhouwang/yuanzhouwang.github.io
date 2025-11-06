@@ -1,7 +1,5 @@
 ---
 title: "Lab 7 - Midterm Review"
-author: "Andrew Yuanzhou Wang"
-date: "2025-11-06"
 output:
   html_document:
     toc: true
