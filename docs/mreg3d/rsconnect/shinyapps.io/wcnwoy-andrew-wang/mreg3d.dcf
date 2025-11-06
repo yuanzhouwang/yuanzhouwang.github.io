@@ -5,7 +5,7 @@ account: wcnwoy-andrew-wang
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 15901499
-bundleId: 11099457
+bundleId: 11129036
 url: https://wcnwoy-andrew-wang.shinyapps.io/mreg3d/
 version: 1
 asMultiple: FALSE

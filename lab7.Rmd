@@ -1,0 +1,126 @@
+---
+title: "Lab 7 - Midterm Review"
+author: "Andrew Yuanzhou Wang"
+date: "2025-11-06"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+  pdf_document:
+    toc: true
+    toc_depth: 2
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+```
+
+
+# Instructions
+There are two parts: Part I (Causal Inference), Part II (Prediction). Use clear causal language and avoid causal claims for purely predictive models. Show work for any calculations.The data and required libraries are loaded with the chunk below.
+
+```{r}
+data(Seatbelts, package = "datasets")
+data(swiss, package = "datasets")
+sb_df <- cbind.data.frame(as.data.frame(Seatbelts))
+sb_df$year <- rep(1969:1984, each = 12)
+sb_df$month <- rep(1:12, times = 16)
+
+sw <- swiss
+```
+
+
+
+# Part I — Causal Inference
+Research Question: Did the introduction of the 1983 seat belt law in the UK reduce the number of monthly driver fatalities?
+
+> Dataset: Seatbelts
+>
+> - `DriversKilled` (monthly count)
+> - `law` (0 = before Jan 1983, 1 = after)
+> - `month`
+> - `kms` (traffic volume)
+> - `PetrolPrice`
+> - `VanKilled`
+
+1. Research Design & Concepts
+a) What should we set as the outcome variable? What about the treatment variable?
+c) What is the unit of analysis?
+d) Why is this considered an observational rather than experimental study?
+
+2. Average Causal Effect — Difference in Means
+Write R code to estimate the difference in average DriversKilled before and after the law change. You may use any method you know but ``tapply()`` is recommended.
+
+a) What quantity does this code estimate?
+b) In 2–3 sentences, explain why this estimate might be biased.
+
+3. Simple Linear Regression Interpretation
+Suppose you estimate:
+```{r echo}
+m1 <- lm(DriversKilled ~ law, data = sb_df)
+summary(m1)
+```
+
+a) Write the fitted regression equation.
+b) Interpret the coefficients clearly in terms of this study.
+c) Can this coefficient be interpreted as a causal effect? Why or why not? Which variable(s) might be a confounder?
+
+4. Confounding & Observational Design
+Name one specific variable that could confound the relationship between law and DriversKilled. Explain why it is a confounder.
+
+5. External Validity
+Would you expect this result to generalize to other countries? Would it generalize to the modern-day? Explain why or why not using correct causal language.
+
+# Part II — Prediction
+Research Question: Can socio-economic indicators predict fertility rates in Swiss provinces?
+
+> Dataset: ``swiss``
+> 
+> - ``province``
+> - `Fertility`
+> - `Education`
+> - `Catholic`
+> - `Agriculture`
+> - `Infant.Mortality`
+
+6. Direction & Strength of Relationship
+Consider this scatter plot of Fertility vs Education.
+
+```{r}
+plot(Fertility ~ Education, data = sw,
+xlab = "Education (%) beyond primary (men)",
+ylab = "Standardized Fertility")
+```
+
+
+a) Draw a line of best fit by hand. Is the relationship positive or negative?
+b) Does it look strong or weak?
+c) Does this plot alone tell us if education causes lower fertility? Explain.
+
+7. Simple Regression with lm()
+Using ``lm()``, write a script to model the effect of education quality on fertility.
+
+```{r echo=FALSE}
+g1 <- lm(Fertility ~ Education, data = sw)
+summary(g1)
+```
+
+Assume the output shows: $\hat{\alpha} = 79.6$, $\hat{\beta} = -0.86$.
+
+a) Write the fitted line.
+b) Interpret $\hat{\beta}$: If `Education` increases by 1 unit (1 percentage point of men with post-primary education), how does predicted `fertility` change?
+c) Predict `fertility` when `Education` = 15.
+
+8. Multiple Regression: Adding Control Variables
+Now predict ``fertility`` using ``Education``, ``Catholic``, and ``Infant.Mortality``. Write a script to evaluate the model, then write out the fitted equation using:
+```{r echo = FALSE}
+g2 <- lm(Fertility ~ Education + Catholic, Infant.Mortality, data = sw)
+summary(g2)
+```
+
+
+a) Why might we add more predictors in a prediction-focused model? Why might we not want to add too many?
+b) If the magnitude of $\hat{\beta}$ for Education changes after adding variables, what does that suggest (in terms of confounding or omitted variable bias)?
+c) Why is this not a causal study?
+d) Explain the difference between predicting fertility and estimating causal effects of education on fertility. Why would it be inappropriate to say “increasing education will cause fertility to fall” based only on this regression?

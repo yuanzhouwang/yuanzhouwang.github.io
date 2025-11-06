@@ -90,7 +90,7 @@ lm(lwage ~ education + experience, data = df)
 ```
 
 - Does the $\beta_1$ change?
-- How do you interpret $]beta_2$?
+- How do you interpret $\beta_2$?
 - Why might including an additional variable improve our estimate of the return to education?
 
 ## Visualizing the Regressions

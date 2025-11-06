@@ -271,6 +271,12 @@ $(document).ready(function () {
     <li>
       <a href="lab5.html">Week 5</a>
     </li>
+    <li>
+      <a href="lab6.html">Week 6</a>
+    </li>
+    <li>
+      <a href="lab7.html">Week 7</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -347,17 +353,18 @@ schooling as a predictor, then extend it to include experience.</p>
 \times \text{experience} + \varepsilon
 \]</span></p>
 <p>We’ll use the dataset <code>SchoolingReturns</code>, where each
-observation represents one individual. The main variables are:</p>
+observation represents one individual. The variables of interest
+are:</p>
 <ul>
 <li><code>lwage</code>: log of hourly wage</li>
-<li><code>educ</code>: years of schooling completed</li>
-<li><code>exper</code>: years of labor market experience =
+<li><code>education</code>: years of schooling completed</li>
+<li><code>experience</code>: years of labor market experience =
 <code>female</code>: 1 if respondent is female, 0 otherwise</li>
 </ul>
 <p>Load the data with the following chunk:</p>
-<pre class="r"><code># install.packages(&quot;ivreg&quot;)
-library(ivreg)
-data(&quot;SchoolingReturns&quot;, package = &quot;ivreg&quot;)</code></pre>
+<pre class="r"><code>library(ivreg)
+data(&quot;SchoolingReturns&quot;, package = &quot;ivreg&quot;)
+df &lt;- SchoolingReturns</code></pre>
 </div>
 <div id="identify-the-variables" class="section level2">
 <h2>Identify the Variables</h2>
@@ -369,6 +376,8 @@ continuous?</li>
 <li>What other variables might be useful control variables, and
 why?</li>
 </ul>
+<p>Please create the variable <code>lwage</code> in the dataframe using
+<code>mutate()</code>.</p>
 </div>
 <div id="the-difference-in-means-estimator" class="section level2">
 <h2>The Difference-in-Means Estimator</h2>
@@ -381,7 +390,17 @@ than 12 years. What is the difference between these two averages?</p>
 <h2>Simple Regression</h2>
 <p>Using our first model, estimate a linear regression model where log
 wages are predicted by years of schooling.</p>
-<pre class="r"><code># [Your Code Here]</code></pre>
+<pre class="r"><code>df &lt;- df %&gt;%
+  mutate(lwage = log(wage))
+
+lm(lwage ~ education, data = df)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = lwage ~ education, data = df)
+## 
+## Coefficients:
+## (Intercept)    education  
+##     5.57088      0.05209</code></pre>
 <p>Write out the fitted regression equation and provide a substantive
 interpretation of the coefficient <span
 class="math inline">\(\beta_1\)</span>. What does it tell us about the
@@ -392,11 +411,18 @@ in percentage terms?</p>
 <h2>Multiple Regression (Two Predictors)</h2>
 <p>Now let’s use our second model, which includes experience in the
 regression.</p>
-<pre class="r"><code># [Your Code Here]</code></pre>
+<pre class="r"><code>lm(lwage ~ education + experience, data = df)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = lwage ~ education + experience, data = df)
+## 
+## Coefficients:
+## (Intercept)    education   experience  
+##     4.66603      0.09317      0.04066</code></pre>
 <ul>
 <li>Does the <span class="math inline">\(\beta_1\)</span> change?</li>
 <li>How do you interpret <span
-class="math inline">\(]beta_2\)</span>?</li>
+class="math inline">\(\beta_2\)</span>?</li>
 <li>Why might including an additional variable improve our estimate of
 the return to education?</li>
 </ul>
