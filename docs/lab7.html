@@ -9,9 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Andrew Yuanzhou Wang" />
 
-<meta name="date" content="2025-11-06" />
 
 <title>Lab 7 - Midterm Review</title>
 
@@ -327,8 +325,6 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Lab 7 - Midterm Review</h1>
-<h4 class="author">Andrew Yuanzhou Wang</h4>
-<h4 class="date">2025-11-06</h4>
 
 </div>
 
@@ -418,19 +414,60 @@ summary(m1)</code></pre>
 ## Multiple R-squared:  0.1079, Adjusted R-squared:  0.1032 
 ## F-statistic: 22.98 on 1 and 190 DF,  p-value: 3.288e-06</code></pre>
 <ol style="list-style-type: lower-alpha">
-<li>Write the fitted regression equation.</li>
-<li>Interpret the coefficients clearly in terms of this study.</li>
-<li>Can this coefficient be interpreted as a causal effect? Why or why
-not? Which variable(s) might be a confounder?</li>
+<li><p>Write the fitted regression equation. &gt; <span
+class="math display">\[
+\texttt{DriversKilled}_i = \beta_0 + \beta_1\texttt{law}_i +
+\varepsilon_i
+\]</span></p></li>
+<li><p>Interpret the coefficients clearly in terms of this study. &gt;
+<span class="math inline">\(\beta_0\)</span> is the contant term. The
+value of the constant indicates to us the expected number of drivers
+killed when <code>law</code><span class="math inline">\(=0\)</span>. In
+other words, the number of drivers killed when there is no seatbelt
+law.</p></li>
 </ol>
+<blockquote>
+<p><span class="math inline">\(\beta_1\)</span> is the effect of
+<code>law</code>. That is, when <code>law</code> increases by <span
+class="math inline">\(1\)</span>, the number of drivers killed should
+increase by <span class="math inline">\(\beta_1\)</span>. In this case,
+with a binary predictor <code>law</code>, this means the effect of
+having a seatbelt law is that <span
+class="math inline">\(\beta_1\)</span> more drivers are killed (note
+that <span class="math inline">\(\beta_1\)</span> is likely negative,
+and therefore the effect should be a decrease in the number of drivers
+killed). c) Can this coefficient be interpreted as a causal effect? Why
+or why not? Which variable(s) might be a confounder?</p>
+</blockquote>
+<blockquote>
+<p>The coefficient <span class="math inline">\(\beta_1\)</span> cannot
+be interpreted as a causal effect because this effect may be confounded
+by other variables. For instance, there may have been more cars on the
+road after the passage of the law than before, which would indicate that
+<span class="math inline">\(\beta_1\)</span> could be an underestimate
+of the effect of the seatbelt law.</p>
+</blockquote>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Confounding &amp; Observational Design Name one specific variable
+<li>Confounding &amp; Observational Design Name one specific variable
 that could confound the relationship between law and DriversKilled.
-Explain why it is a confounder.</p></li>
-<li><p>External Validity Would you expect this result to generalize to
-other countries? Would it generalize to the modern-day? Explain why or
-why not using correct causal language.</p></li>
+Explain why it is a confounder.</li>
 </ol>
+<blockquote>
+<p>See Above</p>
+</blockquote>
+<ol start="5" style="list-style-type: decimal">
+<li>External Validity Would you expect this result to generalize to
+other countries? Would it generalize to the modern-day? Explain why or
+why not using correct causal language.</li>
+</ol>
+<blockquote>
+<p>Other determinants of <code>DriversKilled</code> may have changed
+significantly from the period of observation of this study to now. For
+instance, the rate of drunk driving may have fallen dramatically. If
+more drunk driving causes less seatbelt usage and more drivers killed,
+then estimating the causal effect of the seatbelt law would require
+including drunk driving rates as a confounding variable.</p>
+</blockquote>
 </div>
 <div id="part-ii-prediction" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Part II —
