@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lab 8 - Uncertainty and Confidence</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Andrew Wang</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">About</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    CS&amp;SS 321
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="teaching.html">Overview</a>
+    </li>
+    <li>
+      <a href="lab1.html">Week 1</a>
+    </li>
+    <li>
+      <a href="lab2.html">Week 2</a>
+    </li>
+    <li>
+      <a href="lab3.html">Week 3</a>
+    </li>
+    <li>
+      <a href="lab4.html">Week 4</a>
+    </li>
+    <li>
+      <a href="lab5.html">Week 5</a>
+    </li>
+    <li>
+      <a href="lab6.html">Week 6</a>
+    </li>
+    <li>
+      <a href="lab7.html">Week 7</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Research
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="research.html">Papers</a>
+    </li>
+    <li>
+      <a href="CV.html">CV</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Toys
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="simmodel.html">Protest-Repression Model</a>
+    </li>
+    <li>
+      <a href="pdlparking.html">Should I Pay to Park in PDL?</a>
+    </li>
+    <li>
+      <a href="regplot.html">Visualizing Multiple Regression</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lab 8 - Uncertainty and Confidence</h1>
+
+</div>
+
+
+<p>Today we will be gambling.</p>
+<blockquote>
+<p>You have taken $1000 to the casino. There are two games available at
+this casino. Your job is to conduct data analyses to decide how much to
+bet, and on which games. You may play as many rounds as you like.</p>
+</blockquote>
+<p>The two games available are creatively named “Finite-Sample
+Demonstration” and “Asymptotic Demonstration”.</p>
+<div id="finite-sample-demonstration" class="section level2">
+<h2>Finite-sample demonstration</h2>
+<p>The first game works as follows:</p>
+<blockquote>
+<p>There is a pile of 10,000 cards, each with some real number written
+on it. You select one card and win the amount of money written on that
+card (if negative, you pay the casino) The game costs $50 to play.</p>
+</blockquote>
+<p>Run the below code to start up the game. You don’t need to know how
+this code works.</p>
+<pre class="r"><code>set.seed(2025)
+# Generate a simulated population of 10,000 observations
+simdat &lt;- rnorm(6000, mean = 51, sd = 100)</code></pre>
+<p>Before you play, you want to know how the population is distributed.
+Let’s say for now that the casino is run by exemplary and honest
+individuals who provide you the data for all numbers written on the
+cards (<code>simdat</code>). What is the population mean and population
+variance? What is your expected net profit for playing one game? Create
+a new variable <code>money</code>, a vector of net profits for each
+potential card you could pull.</p>
+<pre class="r"><code># [Your Code Here]
+money &lt;- simdat - 50</code></pre>
+<p>Next week, however, the Casino is changing owners, and the new owners
+will not be so kind as to provide you the data on all cards. You recall
+the Law of Large Numbers:</p>
+<blockquote>
+<p>Given independent and identically distributed samples <span
+class="math inline">\(X_1, X_2, \cdots, X_n\)</span>, as <span
+class="math inline">\(n \rightarrow \infty\)</span>, <span
+class="math inline">\(\bar{X} = \frac{\sum_{i=1}^n X_i}{n} \rightarrow
+\mathbb{E}[X]\)</span></p>
+</blockquote>
+<p>You plan on sitting in on other people’s games to get an idea of what
+the population distribution of numbers is. With the caution
+characteristic of gamblers, you decide to try out your strategy this
+week to see if it works. You sit at a table and observe 5 rounds of
+other peoples’ games. You don’t need to know how to do this in code.</p>
+<pre class="r"><code>simslice &lt;- sample(money, size = 5)</code></pre>
+<p>What are the sample mean and sample variance? Is this a good estimate
+of the population mean and variance?</p>
+<pre class="r"><code># [Your Code Here]</code></pre>
+<div id="estimating-the-population-mean" class="section level3">
+<h3>Estimating the population mean</h3>
+<p>You decide to stay and observe for a few more rounds, and records in
+<code>means</code> how the sample mean changes each round. The below
+code simulates doing this up to 100 observations.</p>
+<pre class="r"><code>simslicing &lt;- function(start, end, data) {
+  simslice &lt;- c()
+  means &lt;- NA
+  ses &lt;- NA
+  for (i in start:end) {
+    simslice &lt;- c(simslice, sample(data, size = 1))
+    means &lt;- c(means, mean(simslice))
+    ses &lt;- c(ses, sd(simslice))
+  }
+  return(data.frame(means, ses))
+}
+means &lt;- simslicing(6, 100, money)$means</code></pre>
+<p>Plot the progression of sample means as the number of observations
+goes to 100. Is this strategy a reliable way of estimating the
+population mean?</p>
+<pre class="r"><code># [Your Code Here]</code></pre>
+<p>If you could only spend $50 (you need the other $950 for rent), would
+you play this game? What if you had $100 (you found another 50 on the
+floor)? What if you had all $1000 (you already paid your rent this
+month)? Is estimating the population mean enough for you to make your
+decision? In other words, how confident are you that you will be able to
+pay your rent after today’s gambling?</p>
+</div>
+<div id="confidence" class="section level3">
+<h3>Confidence</h3>
+<p>You notice that the spread of the estimates of mean seem to be
+getting smaller as you sit longer at the table. You also recall the
+Central Limit Theorem:</p>
+<blockquote>
+<p>Given independent and identically distributed samples <span
+class="math inline">\(X_1, X_2, \cdots, X_n\)</span> with variance ^2,
+as <span class="math inline">\(n \rightarrow \infty\)</span>, $ ( X -
+[X] ) N(0, ^2)</p>
+</blockquote>
+<p>To get more information about the spread of your data, you ask 100 of
+your friends to sit at other tables running the same game with the same
+exact cards. You each note down your results in the dataframe
+<code>frienddat</code> with columns:</p>
+<blockquote>
+<p><code>samplesize</code>: 0 to 100 <code>friend</code>: The index of
+your friend noting down the data, 1-100 <code>samplemean</code>: Sample
+mean at the given sample size for the given friend <code>stderr</code>:
+Standard errors at the given sample size for the given friend</p>
+</blockquote>
+<p>Use the below code to generate the dataframe. Again, you do not need
+to know how this code works.</p>
+<pre class="r"><code># [Your Code Here]
+samplesizes &lt;- 1:100
+friends &lt;- 1:100
+samplemean &lt;- c()
+stderr &lt;- c()
+for (i in 1:100) {
+  temp &lt;- simslicing(2, 100, money)
+  samplemean &lt;- c(samplemean, temp$means)
+  stderr &lt;- c(stderr, temp$ses)
+}
+
+samplesize &lt;- c()
+friend &lt;- c()
+for (i in 1:100) {
+  for (j in 1:100) {
+    samplesize &lt;- c(samplesize, samplesizes[j])
+    friend &lt;- c(friend, friends[i])
+  }
+}
+
+frienddat &lt;- data.frame(samplesize, friend, samplemean, stderr)</code></pre>
+<p>What is the distribution of your friends’ sample means at <span
+class="math inline">\(n=5\)</span>? What about at <span
+class="math inline">\(n=10\)</span>? <span
+class="math inline">\(n=20\)</span>? <span
+class="math inline">\(n=100\)</span>?</p>
+<pre class="r"><code># [Your Code Here]</code></pre>
+<p>Pick any friend. Does the standard error seem to converge as <span
+class="math inline">\(n\)</span> gets very large?</p>
+<pre class="r"><code># [Your Code Here]</code></pre>
+<p>If each friend only has their own data, would using this standard
+error for the CLT produce a good estimate of the distribution of the
+sample mean?</p>
+<p>What is the distribution of the sample mean?</p>
+<p>We have a hypothesis <span class="math inline">\(H_0:\)</span> The
+expected return from this game is $0. Using our own (not any of our
+friend’s) estimate of the standard error, what is the null distribution
+in this case? What is the probability that our estimate of sample mean
+could have been generated by this null distribution?</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
