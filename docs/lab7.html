@@ -277,6 +277,9 @@ $(document).ready(function () {
     <li>
       <a href="lab7.html">Week 7</a>
     </li>
+    <li>
+      <a href="lab8.html">Week 8</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -376,20 +379,62 @@ the UK reduce the number of monthly driver fatalities?</p>
 <ol style="list-style-type: lower-alpha">
 <li>What should we set as the outcome variable? What about the treatment
 variable?</li>
+</ol>
+<blockquote>
+<p>The outcome variable is <code>DriversKilled</code>. The treatment
+variable is <code>law</code>.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
 <li>What is the unit of analysis?</li>
+</ol>
+<blockquote>
+<p>The unit of analysis is the number of drivers killed per month.</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
 <li>Why is this considered an observational rather than experimental
 study?</li>
 </ol>
+<blockquote>
+<p>This study is observational since the researchers do not determine
+the treatment assignment.</p>
+</blockquote>
 <ol start="2" style="list-style-type: decimal">
 <li>Average Causal Effect — Difference in Means Write R code to estimate
 the difference in average DriversKilled before and after the law change.
 You may use any method you know but <code>tapply()</code> is
 recommended.</li>
 </ol>
+<blockquote>
+<p>Example R code using <code>tapply()</code> and without:</p>
+</blockquote>
+<pre class="r"><code>means &lt;- tapply(sb_df$DriversKilled, sb_df$law, mean)
+means[1]-means[2]</code></pre>
+<pre><code>##        0 
+## 25.60895</code></pre>
+<pre class="r"><code>(mean(sb_df$DriversKilled[sb_df$law == 1]) - mean(sb_df$DriversKilled[sb_df$law == 0]))</code></pre>
+<pre><code>## [1] -25.60895</code></pre>
 <ol style="list-style-type: lower-alpha">
 <li>What quantity does this code estimate?</li>
+</ol>
+<blockquote>
+<p>This code estimates the effect of the passage of the seatbelt law on
+the number of drivers killed.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
 <li>In 2–3 sentences, explain why this estimate might be biased.</li>
 </ol>
+<blockquote>
+<p>The estimate may be biased because variables are omitted from the
+calculation of the effect. In the case of a binary predictor, difference
+in means estimator is equivalent to the coefficient on the binary
+predictor in a simple linear regression model (see below). Without
+controlling for confounding variables, the effect of these confounders
+would be incorporated into the model via the residuals (<span
+class="math inline">\(\varepsilon_i\)</span>), meaning <span
+class="math inline">\(\mathbb{E}[\varepsilon_i] \neq 0\)</span>, which
+means that the effect <span class="math inline">\(\beta_1\)</span> would
+be biased.</p>
+</blockquote>
 <ol start="3" style="list-style-type: decimal">
 <li>Simple Linear Regression Interpretation Suppose you estimate:</li>
 </ol>
@@ -414,17 +459,28 @@ summary(m1)</code></pre>
 ## Multiple R-squared:  0.1079, Adjusted R-squared:  0.1032 
 ## F-statistic: 22.98 on 1 and 190 DF,  p-value: 3.288e-06</code></pre>
 <ol style="list-style-type: lower-alpha">
-<li><p>Write the fitted regression equation. &gt; <span
-class="math display">\[
+<li>Write the fitted regression equation.</li>
+</ol>
+<blockquote>
+<p>The regression equation is:</p>
+</blockquote>
+<p><span class="math display">\[
 \texttt{DriversKilled}_i = \beta_0 + \beta_1\texttt{law}_i +
 \varepsilon_i
-\]</span></p></li>
-<li><p>Interpret the coefficients clearly in terms of this study. &gt;
+\]</span></p>
+<blockquote>
+<p>The fitted regression equation is:</p>
+</blockquote>
+<p><span class="math display">\[
+\texttt{DriversKilled}_i = 126 - 25.6\texttt{law}_i + \varepsilon_i
+\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Interpret the coefficients clearly in terms of this study. &gt;
 <span class="math inline">\(\beta_0\)</span> is the contant term. The
 value of the constant indicates to us the expected number of drivers
 killed when <code>law</code><span class="math inline">\(=0\)</span>. In
 other words, the number of drivers killed when there is no seatbelt
-law.</p></li>
+law.</li>
 </ol>
 <blockquote>
 <p><span class="math inline">\(\beta_1\)</span> is the effect of
@@ -491,19 +547,41 @@ of Fertility vs Education.</li>
 </ol>
 <pre class="r"><code>plot(Fertility ~ Education, data = sw,
 xlab = &quot;Education (%) beyond primary (men)&quot;,
-ylab = &quot;Standardized Fertility&quot;)</code></pre>
-<p><img src="lab7_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+ylab = &quot;Standardized Fertility&quot;); abline(lm(Fertility ~ Education, data = sw))</code></pre>
+<p><img src="lab7_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <ol style="list-style-type: lower-alpha">
 <li>Draw a line of best fit by hand. Is the relationship positive or
 negative?</li>
+</ol>
+<blockquote>
+<p>Line of best fit shown in plot. The relationship is negative.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
 <li>Does it look strong or weak?</li>
+</ol>
+<blockquote>
+<p>There seems to be a significant (good line fit) relationship, and the
+magnitude of the relationship looks strong (steep slope).</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
 <li>Does this plot alone tell us if education causes lower fertility?
 Explain.</li>
 </ol>
+<blockquote>
+<p>This plot alone does not tell us if education causes lower fertility
+as there are potential confounding variables not controlled for in the
+model. For instance, higher poverty in a region may cause higher
+fertility and lower education.</p>
+</blockquote>
 <ol start="7" style="list-style-type: decimal">
 <li>Simple Regression with lm() Using <code>lm()</code>, write a script
 to model the effect of education quality on fertility.</li>
 </ol>
+<blockquote>
+<p>The code is shown below</p>
+</blockquote>
+<pre class="r"><code>g1 &lt;- lm(Fertility ~ Education, data = sw)
+summary(g1)</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = Fertility ~ Education, data = sw)
@@ -527,13 +605,32 @@ to model the effect of education quality on fertility.</li>
 -0.86\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Write the fitted line.</li>
+</ol>
+<blockquote>
+<p>The fitted line is:</p>
+</blockquote>
+<p><span class="math display">\[
+\texttt{Fertility}_i = 79.6 - 0.86 \texttt{Education}_i + \varepsilon_i
+\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
 <li>Interpret <span class="math inline">\(\hat{\beta}\)</span>: If
 <code>Education</code> increases by 1 unit (1 percentage point of men
 with post-primary education), how does predicted <code>fertility</code>
 change?</li>
+</ol>
+<blockquote>
+<p>Each 1 unit increase in <code>Education</code> corresponds to a 0.86
+unit decrease in <code>fertility</code>.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
 <li>Predict <code>fertility</code> when <code>Education</code> =
 15.</li>
 </ol>
+<blockquote>
+<p>We can simply plug in <code>Education</code> = 15 into the model
+above. In this case <code>Fertility</code> <span
+class="math inline">\(79.6 - 0.86 \times 15 = 66.7\)</span>.</p>
+</blockquote>
 <ol start="8" style="list-style-type: decimal">
 <li>Multiple Regression: Adding Control Variables Now predict
 <code>fertility</code> using <code>Education</code>,
@@ -542,35 +639,105 @@ to evaluate the model, then write out the fitted equation using:</li>
 </ol>
 <pre><code>## 
 ## Call:
-## lm(formula = Fertility ~ Education + Catholic, data = sw, subset = Infant.Mortality)
+## lm(formula = Fertility ~ Education + Catholic + Infant.Mortality, 
+##     data = sw)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -6.8511 -2.4434  0.4041  2.8316 10.9581 
+##      Min       1Q   Median       3Q      Max 
+## -14.4781  -5.4403  -0.5143   4.1568  15.1187 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 65.89808    1.03559  63.633  &lt; 2e-16 ***
-## Education   -0.46979    0.06553  -7.169 6.46e-09 ***
-## Catholic     0.21073    0.04126   5.107 6.76e-06 ***
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      48.67707    7.91908   6.147 2.24e-07 ***
+## Education        -0.75925    0.11680  -6.501 6.83e-08 ***
+## Catholic          0.09607    0.02722   3.530  0.00101 ** 
+## Infant.Mortality  1.29615    0.38699   3.349  0.00169 ** 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 3.886 on 44 degrees of freedom
-## Multiple R-squared:  0.6288, Adjusted R-squared:  0.6119 
-## F-statistic: 37.27 on 2 and 44 DF,  p-value: 3.397e-10</code></pre>
+## Residual standard error: 7.505 on 43 degrees of freedom
+## Multiple R-squared:  0.6625, Adjusted R-squared:  0.639 
+## F-statistic: 28.14 on 3 and 43 DF,  p-value: 3.15e-10</code></pre>
+<blockquote>
+<p>The model can be evaluated with</p>
+</blockquote>
+<pre class="r"><code>g2 &lt;- lm(Fertility ~ Education + Catholic + Infant.Mortality, data = sw)
+summary(g2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Fertility ~ Education + Catholic + Infant.Mortality, 
+##     data = sw)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -14.4781  -5.4403  -0.5143   4.1568  15.1187 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      48.67707    7.91908   6.147 2.24e-07 ***
+## Education        -0.75925    0.11680  -6.501 6.83e-08 ***
+## Catholic          0.09607    0.02722   3.530  0.00101 ** 
+## Infant.Mortality  1.29615    0.38699   3.349  0.00169 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 7.505 on 43 degrees of freedom
+## Multiple R-squared:  0.6625, Adjusted R-squared:  0.639 
+## F-statistic: 28.14 on 3 and 43 DF,  p-value: 3.15e-10</code></pre>
+<blockquote>
+<p>The fitted equation is</p>
+</blockquote>
+<p><span class="math display">\[
+\texttt{Fertility}_i = 48.7 - 0.759 \texttt{Education}_i +
+0.0961\texttt{Catholic}_i + 1.30\texttt{Infant.Mortality}_i +
+\varepsilon_i
+\]</span></p>
 <ol style="list-style-type: lower-alpha">
 <li>Why might we add more predictors in a prediction-focused model? Why
 might we not want to add too many?</li>
+</ol>
+<blockquote>
+<p>Adding more predictors always improves model fit. Thus the model with
+more predictors will be better at predicting outcomes within our sample.
+However, adding more predictors risks over-fitting the model. This means
+that a model with too many predictors may be worse at predicting
+outcomes outside of our sample.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
 <li>If the magnitude of <span class="math inline">\(\hat{\beta}\)</span>
 for Education changes after adding variables, what does that suggest (in
 terms of confounding or omitted variable bias)?</li>
+</ol>
+<blockquote>
+<p>This would suggest that the effect of education was partially
+explained by the newly added variables. This means that the newly added
+variables were likely confounders of the effect of education. Regardless
+of the change in magnitude of <span
+class="math inline">\(\hat{\beta}\)</span>, any significantly non-zero
+coefficient on the newly added variables indicates that the former model
+had omitted variable bias.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
 <li>Why is this not a causal study?</li>
+</ol>
+<blockquote>
+<p>This is not a causal study because there is no theoretical
+justification for including the new predictors. Their inclusion is
+solely intended to improve model fit, not to remove the effect of
+confounders that we have justified through theory. If this model were
+justified theoretically first, this could be a causal study.</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
 <li>Explain the difference between predicting fertility and estimating
 causal effects of education on fertility. Why would it be inappropriate
 to say “increasing education will cause fertility to fall” based only on
 this regression?</li>
 </ol>
+<blockquote>
+<p>Again, without adequate justification that this model includes all
+potential confounders and only potential confounders, this regression
+cannot help us make causal claims about the effect of education.</p>
+</blockquote>
 </div>
 
 

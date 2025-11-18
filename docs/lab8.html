@@ -277,6 +277,9 @@ $(document).ready(function () {
     <li>
       <a href="lab7.html">Week 7</a>
     </li>
+    <li>
+      <a href="lab8.html">Week 8</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -357,8 +360,7 @@ cards (<code>simdat</code>). What is the population mean and population
 variance? What is your expected net profit for playing one game? Create
 a new variable <code>money</code>, a vector of net profits for each
 potential card you could pull.</p>
-<pre class="r"><code># [Your Code Here]
-money &lt;- simdat - 50</code></pre>
+<pre class="r"><code># [Your Code Here]</code></pre>
 <p>Next week, however, the Casino is changing owners, and the new owners
 will not be so kind as to provide you the data on all cards. You recall
 the Law of Large Numbers:</p>
@@ -374,7 +376,7 @@ the population distribution of numbers is. With the caution
 characteristic of gamblers, you decide to try out your strategy this
 week to see if it works. You sit at a table and observe 5 rounds of
 other peoples’ games. You don’t need to know how to do this in code.</p>
-<pre class="r"><code>simslice &lt;- sample(money, size = 5)</code></pre>
+<pre class="r"><code># simslice &lt;- sample(money, size = 5)</code></pre>
 <p>What are the sample mean and sample variance? Is this a good estimate
 of the population mean and variance?</p>
 <pre class="r"><code># [Your Code Here]</code></pre>
@@ -383,18 +385,18 @@ of the population mean and variance?</p>
 <p>You decide to stay and observe for a few more rounds, and records in
 <code>means</code> how the sample mean changes each round. The below
 code simulates doing this up to 100 observations.</p>
-<pre class="r"><code>simslicing &lt;- function(start, end, data) {
-  simslice &lt;- c()
-  means &lt;- NA
-  ses &lt;- NA
-  for (i in start:end) {
-    simslice &lt;- c(simslice, sample(data, size = 1))
-    means &lt;- c(means, mean(simslice))
-    ses &lt;- c(ses, sd(simslice))
-  }
-  return(data.frame(means, ses))
-}
-means &lt;- simslicing(6, 100, money)$means</code></pre>
+<pre class="r"><code># simslicing &lt;- function(start, end, data) {
+#   simslice &lt;- c()
+#   means &lt;- NA
+#   ses &lt;- NA
+#   for (i in start:end) {
+#     simslice &lt;- c(simslice, sample(data, size = 1))
+#     means &lt;- c(means, mean(simslice))
+#     ses &lt;- c(ses, sd(simslice))
+#   }
+#   return(data.frame(means, ses))
+# }
+# means &lt;- simslicing(6, 100, money)$means</code></pre>
 <p>Plot the progression of sample means as the number of observations
 goes to 100. Is this strategy a reliable way of estimating the
 population mean?</p>
@@ -417,9 +419,10 @@ class="math inline">\(X_1, X_2, \cdots, X_n\)</span> with variance ^2,
 as <span class="math inline">\(n \rightarrow \infty\)</span>, $ ( X -
 [X] ) N(0, ^2)</p>
 </blockquote>
-<p>To get more information about the spread of your data, you ask 100 of
-your friends to sit at other tables running the same game with the same
-exact cards. You each note down your results in the dataframe
+<p>To get more information about the spread of your data, you know you
+have to get an estimate of the standard deviation. You ask 100 of your
+friends to sit at other tables running the same game with the same exact
+cards. You each note down your results in the dataframe
 <code>frienddat</code> with columns:</p>
 <blockquote>
 <p><code>samplesize</code>: 0 to 100 <code>friend</code>: The index of
@@ -429,27 +432,26 @@ Standard errors at the given sample size for the given friend</p>
 </blockquote>
 <p>Use the below code to generate the dataframe. Again, you do not need
 to know how this code works.</p>
-<pre class="r"><code># [Your Code Here]
-samplesizes &lt;- 1:100
-friends &lt;- 1:100
-samplemean &lt;- c()
-stderr &lt;- c()
-for (i in 1:100) {
-  temp &lt;- simslicing(2, 100, money)
-  samplemean &lt;- c(samplemean, temp$means)
-  stderr &lt;- c(stderr, temp$ses)
-}
-
-samplesize &lt;- c()
-friend &lt;- c()
-for (i in 1:100) {
-  for (j in 1:100) {
-    samplesize &lt;- c(samplesize, samplesizes[j])
-    friend &lt;- c(friend, friends[i])
-  }
-}
-
-frienddat &lt;- data.frame(samplesize, friend, samplemean, stderr)</code></pre>
+<pre class="r"><code># samplesizes &lt;- 1:100
+# friends &lt;- 1:100
+# samplemean &lt;- c()
+# stderr &lt;- c()
+# for (i in 1:100) {
+#   temp &lt;- simslicing(2, 100, money)
+#   samplemean &lt;- c(samplemean, temp$means)
+#   stderr &lt;- c(stderr, temp$ses)
+# }
+# 
+# samplesize &lt;- c()
+# friend &lt;- c()
+# for (i in 1:100) {
+#   for (j in 1:100) {
+#     samplesize &lt;- c(samplesize, samplesizes[j])
+#     friend &lt;- c(friend, friends[i])
+#   }
+# }
+# 
+# frienddat &lt;- data.frame(samplesize, friend, samplemean, stderr)</code></pre>
 <p>What is the distribution of your friends’ sample means at <span
 class="math inline">\(n=5\)</span>? What about at <span
 class="math inline">\(n=10\)</span>? <span

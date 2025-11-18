@@ -45,7 +45,7 @@ Next week, however, the Casino is changing owners, and the new owners will not b
 You plan on sitting in on other people's games to get an idea of what the population distribution of numbers is. With the caution characteristic of gamblers, you decide to try out your strategy this week to see if it works. You sit at a table and observe 5 rounds of other peoples' games. You don't need to know how to do this in code.
 
 ```{r}
-simslice <- sample(money, size = 5)
+# simslice <- sample(money, size = 5)
 ```
 
 What are the sample mean and sample variance? Is this a good estimate of the population mean and variance?
@@ -58,18 +58,18 @@ What are the sample mean and sample variance? Is this a good estimate of the pop
 You decide to stay and observe for a few more rounds, and records in ``means`` how the sample mean changes each round. The below code simulates doing this up to 100 observations.
 
 ```{r}
-simslicing <- function(start, end, data) {
-  simslice <- c()
-  means <- NA
-  ses <- NA
-  for (i in start:end) {
-    simslice <- c(simslice, sample(data, size = 1))
-    means <- c(means, mean(simslice))
-    ses <- c(ses, sd(simslice))
-  }
-  return(data.frame(means, ses))
-}
-means <- simslicing(6, 100, money)$means
+# simslicing <- function(start, end, data) {
+#   simslice <- c()
+#   means <- NA
+#   ses <- NA
+#   for (i in start:end) {
+#     simslice <- c(simslice, sample(data, size = 1))
+#     means <- c(means, mean(simslice))
+#     ses <- c(ses, sd(simslice))
+#   }
+#   return(data.frame(means, ses))
+# }
+# means <- simslicing(6, 100, money)$means
 ```
 
 Plot the progression of sample means as the number of observations goes to 100. Is this strategy a reliable way of estimating the population mean?
@@ -98,27 +98,26 @@ To get more information about the spread of your data, you know you have to get 
 Use the below code to generate the dataframe. Again, you do not need to know how this code works.
 
 ```{r}
-# [Your Code Here]
-samplesizes <- 1:100
-friends <- 1:100
-samplemean <- c()
-stderr <- c()
-for (i in 1:100) {
-  temp <- simslicing(2, 100, money)
-  samplemean <- c(samplemean, temp$means)
-  stderr <- c(stderr, temp$ses)
-}
-
-samplesize <- c()
-friend <- c()
-for (i in 1:100) {
-  for (j in 1:100) {
-    samplesize <- c(samplesize, samplesizes[j])
-    friend <- c(friend, friends[i])
-  }
-}
-
-frienddat <- data.frame(samplesize, friend, samplemean, stderr)
+# samplesizes <- 1:100
+# friends <- 1:100
+# samplemean <- c()
+# stderr <- c()
+# for (i in 1:100) {
+#   temp <- simslicing(2, 100, money)
+#   samplemean <- c(samplemean, temp$means)
+#   stderr <- c(stderr, temp$ses)
+# }
+# 
+# samplesize <- c()
+# friend <- c()
+# for (i in 1:100) {
+#   for (j in 1:100) {
+#     samplesize <- c(samplesize, samplesizes[j])
+#     friend <- c(friend, friends[i])
+#   }
+# }
+# 
+# frienddat <- data.frame(samplesize, friend, samplemean, stderr)
 ```
 
 What is the distribution of your friends' sample means at $n=5$? What about at $n=10$? $n=20$? $n=100$?
