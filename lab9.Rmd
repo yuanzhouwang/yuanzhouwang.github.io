@@ -1,5 +1,5 @@
 ---
-title: "lab9"
+title: "Lab 9 - The t-test for Difference in Means"
 output: html_document
 ---
 

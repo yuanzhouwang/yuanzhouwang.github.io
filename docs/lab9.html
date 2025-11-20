@@ -280,6 +280,9 @@ $(document).ready(function () {
     <li>
       <a href="lab8.html">Week 8</a>
     </li>
+    <li>
+      <a href="lab9.html">Week 9</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -351,13 +354,13 @@ events in the given month and year, per ACLED’s estimate.</li>
 <div id="importing-and-cleaning" class="section level2">
 <h2>Importing and Cleaning</h2>
 <p>Download the data (filename <code>acledpalestine.csv</code>) <a
-href="">here</a>. Import the data and filter out only the rows of data
-from the West Bank. We will only be looking at armed conflict events in
-the West Bank. Create a new numeric binary variable called
-<code>prepost</code> that takes on value <span
-class="math inline">\(1\)</span> for time periods post-October 2023
-(including October 2023) and <span class="math inline">\(0\)</span> for
-time periods pre-October 2023.</p>
+href="https://github.com/yuanzhouwang/yuanzhouwang.github.io/blob/main/acledpalestine.csv">here</a>.
+Import the data and filter out only the rows of data from the West Bank.
+We will only be looking at armed conflict events in the West Bank.
+Create a new numeric binary variable called <code>prepost</code> that
+takes on value <span class="math inline">\(1\)</span> for time periods
+post-October 2023 (including October 2023) and <span
+class="math inline">\(0\)</span> for time periods pre-October 2023.</p>
 <pre class="r"><code># [Your Code Here]
 df &lt;- read.csv(&quot;acledpalestine.csv&quot;)
 df &lt;- df %&gt;%
