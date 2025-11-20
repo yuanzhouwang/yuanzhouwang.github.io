@@ -280,6 +280,9 @@ $(document).ready(function () {
     <li>
       <a href="lab8.html">Week 8</a>
     </li>
+    <li>
+      <a href="lab9.html">Week 9</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -352,7 +355,7 @@ card (if negative, you pay the casino) The game costs $50 to play.</p>
 this code works.</p>
 <pre class="r"><code>set.seed(2025)
 # Generate a simulated population of 10,000 observations
-simdat &lt;- rnorm(6000, mean = 51, sd = 100)</code></pre>
+simdat &lt;- rnorm(10000, mean = 51, sd = 100)</code></pre>
 <p>Before you play, you want to know how the population is distributed.
 Let’s say for now that the casino is run by exemplary and honest
 individuals who provide you the data for all numbers written on the
@@ -360,7 +363,13 @@ cards (<code>simdat</code>). What is the population mean and population
 variance? What is your expected net profit for playing one game? Create
 a new variable <code>money</code>, a vector of net profits for each
 potential card you could pull.</p>
-<pre class="r"><code># [Your Code Here]</code></pre>
+<pre class="r"><code>mean(simdat)</code></pre>
+<pre><code>## [1] 51.52973</code></pre>
+<pre class="r"><code>sd(simdat)^2</code></pre>
+<pre><code>## [1] 10039.05</code></pre>
+<pre class="r"><code>money &lt;- simdat - 50
+hist(money)</code></pre>
+<p><img src="lab8_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Next week, however, the Casino is changing owners, and the new owners
 will not be so kind as to provide you the data on all cards. You recall
 the Law of Large Numbers:</p>
@@ -376,7 +385,7 @@ the population distribution of numbers is. With the caution
 characteristic of gamblers, you decide to try out your strategy this
 week to see if it works. You sit at a table and observe 5 rounds of
 other peoples’ games. You don’t need to know how to do this in code.</p>
-<pre class="r"><code># simslice &lt;- sample(money, size = 5)</code></pre>
+<pre class="r"><code>simslice &lt;- sample(money, size = 5)</code></pre>
 <p>What are the sample mean and sample variance? Is this a good estimate
 of the population mean and variance?</p>
 <pre class="r"><code># [Your Code Here]</code></pre>
@@ -385,22 +394,24 @@ of the population mean and variance?</p>
 <p>You decide to stay and observe for a few more rounds, and records in
 <code>means</code> how the sample mean changes each round. The below
 code simulates doing this up to 100 observations.</p>
-<pre class="r"><code># simslicing &lt;- function(start, end, data) {
-#   simslice &lt;- c()
-#   means &lt;- NA
-#   ses &lt;- NA
-#   for (i in start:end) {
-#     simslice &lt;- c(simslice, sample(data, size = 1))
-#     means &lt;- c(means, mean(simslice))
-#     ses &lt;- c(ses, sd(simslice))
-#   }
-#   return(data.frame(means, ses))
-# }
-# means &lt;- simslicing(6, 100, money)$means</code></pre>
+<pre class="r"><code>simslicing &lt;- function(start, end, data) {
+  simslice &lt;- c()
+  means &lt;- NA
+  ses &lt;- NA
+  for (i in start:end) {
+    simslice &lt;- c(simslice, sample(data, size = 1))
+    means &lt;- c(means, mean(simslice))
+    ses &lt;- c(ses, sd(simslice))
+  }
+  return(data.frame(means, ses))
+}
+means &lt;- simslicing(6, 100, money)$means</code></pre>
 <p>Plot the progression of sample means as the number of observations
 goes to 100. Is this strategy a reliable way of estimating the
 population mean?</p>
-<pre class="r"><code># [Your Code Here]</code></pre>
+<pre class="r"><code># [Your Code Here]
+plot(means)</code></pre>
+<p><img src="lab8_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>If you could only spend $50 (you need the other $950 for rent), would
 you play this game? What if you had $100 (you found another 50 on the
 floor)? What if you had all $1000 (you already paid your rent this
@@ -415,10 +426,14 @@ getting smaller as you sit longer at the table. You also recall the
 Central Limit Theorem:</p>
 <blockquote>
 <p>Given independent and identically distributed samples <span
-class="math inline">\(X_1, X_2, \cdots, X_n\)</span> with variance ^2,
-as <span class="math inline">\(n \rightarrow \infty\)</span>, $ ( X -
-[X] ) N(0, ^2)</p>
+class="math inline">\(X_1, X_2, \cdots, X_n\)</span> with variance <span
+class="math inline">\(\sigma^2\)</span>, as <span
+class="math inline">\(n \rightarrow \infty\)</span>, <span
+class="math inline">\(\sqrt{n} ( \bar X - \mathbb{E}[X] ) \rightarrow
+N(0, \sigma^2)\)</span></p>
 </blockquote>
+<p><span class="math inline">\(\sqrt{n} ( \bar X - \mathbb{E}[X] )
+\rightarrow N(0, \sigma^2)\)</span></p>
 <p>To get more information about the spread of your data, you know you
 have to get an estimate of the standard deviation. You ask 100 of your
 friends to sit at other tables running the same game with the same exact
@@ -432,35 +447,42 @@ Standard errors at the given sample size for the given friend</p>
 </blockquote>
 <p>Use the below code to generate the dataframe. Again, you do not need
 to know how this code works.</p>
-<pre class="r"><code># samplesizes &lt;- 1:100
-# friends &lt;- 1:100
-# samplemean &lt;- c()
-# stderr &lt;- c()
-# for (i in 1:100) {
-#   temp &lt;- simslicing(2, 100, money)
-#   samplemean &lt;- c(samplemean, temp$means)
-#   stderr &lt;- c(stderr, temp$ses)
-# }
-# 
-# samplesize &lt;- c()
-# friend &lt;- c()
-# for (i in 1:100) {
-#   for (j in 1:100) {
-#     samplesize &lt;- c(samplesize, samplesizes[j])
-#     friend &lt;- c(friend, friends[i])
-#   }
-# }
-# 
-# frienddat &lt;- data.frame(samplesize, friend, samplemean, stderr)</code></pre>
+<pre class="r"><code>samplesizes &lt;- 1:100
+friends &lt;- 1:100
+samplemean &lt;- c()
+stderr &lt;- c()
+for (i in 1:100) {
+  temp &lt;- simslicing(2, 100, money)
+  samplemean &lt;- c(samplemean, temp$means)
+  stderr &lt;- c(stderr, temp$ses)
+}
+
+samplesize &lt;- c()
+friend &lt;- c()
+for (i in 1:100) {
+  for (j in 1:100) {
+    samplesize &lt;- c(samplesize, samplesizes[j])
+    friend &lt;- c(friend, friends[i])
+  }
+}
+
+frienddat &lt;- data.frame(samplesize, friend, samplemean, stderr)</code></pre>
 <p>What is the distribution of your friends’ sample means at <span
 class="math inline">\(n=5\)</span>? What about at <span
 class="math inline">\(n=10\)</span>? <span
 class="math inline">\(n=20\)</span>? <span
 class="math inline">\(n=100\)</span>?</p>
-<pre class="r"><code># [Your Code Here]</code></pre>
+<pre class="r"><code># [Your Code Here]
+tempmeans &lt;- frienddat %&gt;%
+  filter(samplesize == 100)
+hist(tempmeans$samplemean)</code></pre>
+<p><img src="lab8_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Pick any friend. Does the standard error seem to converge as <span
 class="math inline">\(n\)</span> gets very large?</p>
-<pre class="r"><code># [Your Code Here]</code></pre>
+<pre class="r"><code># [Your Code Here]
+tempses &lt;- frienddat %&gt;% filter(friend == 1)
+plot(tempses$stderr)</code></pre>
+<p><img src="lab8_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>If each friend only has their own data, would using this standard
 error for the CLT produce a good estimate of the distribution of the
 sample mean?</p>

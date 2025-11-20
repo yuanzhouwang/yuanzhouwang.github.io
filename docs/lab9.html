@@ -11,7 +11,7 @@
 
 
 
-<title>lab9</title>
+<title>Lab 9 - The t-test for Difference in Means</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -330,7 +330,8 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">lab9</h1>
+<h1 class="title toc-ignore">Lab 9 - The t-test for Difference in
+Means</h1>
 
 </div>
 
@@ -395,7 +396,9 @@ and identically distributed (IID) random variables <span
 class="math inline">\(X_1, \cdots, X_{n_X}\)</span> and another sample
 of <span class="math inline">\(n_Y\)</span> IID random variables <span
 class="math inline">\(Y_1, \cdots, Y_{n_Y}\)</span>, the standard error
-for the difference-in-means estimator is given by:</p>
+for the difference-in-means estimator when variances are unequal<a
+href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> is given
+by:</p>
 <p><span class="math display">\[
 SE = \sqrt{\frac{s^2_X}{n_X}+\frac{s^2_Y}{n_Y}}
 \]</span></p>
@@ -437,7 +440,7 @@ class="math inline">\(\hat{\delta} = 0\)</span>), the t-statistic should
 follow a t-distribution. The t-distribution has degrees of freedom <span
 class="math inline">\(\texttt{df} = n_X + n_Y - 2\)</span> if variances
 are equal or uses Welch’s approximation of the degrees of freedom<a
-href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> The
+href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> The
 t-distribution is very similar to the normal distribution but has fatter
 tails to capture the greater variability from using an estimate of the
 standard deviation rather than the population sample deviation (which is
@@ -466,12 +469,17 @@ class="math inline">\(t_{\texttt{df}}\)</span> distribution.</p>
 <div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p>You don’t need to know the formula for this. R can
+<li id="fn1"><p>When variances are equal, it is better to use the pooled
+standard error, <span
+class="math inline">\(\sqrt{\frac{s_{\text{total}}^2}{\frac{1}{n_X} +
+\frac{1}{n_Y}}}\)</span><a href="#fnref1"
+class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>You don’t need to know the formula for this. R can
 calculate it for you. If you’re interested, it’s <span
 class="math inline">\(df= \frac{
 \left(\dfrac{s_{1}^{2}}{n_1}+\dfrac{s_{2}^{2}}{n_2}\right)^{\!2} }{
 \dfrac{(s_{1}^{2}/n^{}_1)^2}{n_1-1}+ \dfrac{(s_{2}^{2}/n^{}_2)^2}{n_2-1}
-}\)</span>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+}\)</span>.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
