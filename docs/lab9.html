@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>lab9</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Andrew Wang</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">About</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    CS&amp;SS 321
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="teaching.html">Overview</a>
+    </li>
+    <li>
+      <a href="lab1.html">Week 1</a>
+    </li>
+    <li>
+      <a href="lab2.html">Week 2</a>
+    </li>
+    <li>
+      <a href="lab3.html">Week 3</a>
+    </li>
+    <li>
+      <a href="lab4.html">Week 4</a>
+    </li>
+    <li>
+      <a href="lab5.html">Week 5</a>
+    </li>
+    <li>
+      <a href="lab6.html">Week 6</a>
+    </li>
+    <li>
+      <a href="lab7.html">Week 7</a>
+    </li>
+    <li>
+      <a href="lab8.html">Week 8</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Research
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="research.html">Papers</a>
+    </li>
+    <li>
+      <a href="CV.html">CV</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Toys
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="simmodel.html">Protest-Repression Model</a>
+    </li>
+    <li>
+      <a href="pdlparking.html">Should I Pay to Park in PDL?</a>
+    </li>
+    <li>
+      <a href="regplot.html">Visualizing Multiple Regression</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">lab9</h1>
+
+</div>
+
+
+<p>Today we’ll be applying the methods we’ve learned so far.</p>
+<p>The dataset we’ll be using comes from the <a
+href="https://acleddata.com">Armed Conflict Location and Event Data</a>
+database. It contains data on armed conflict events and fatalities in
+Palestine between January 2020 to January 2025. I’ve cleaned the data
+somewhat so that it contains the following variables:</p>
+<ul>
+<li><code>Admin1</code>: “West Bank” or “Gaza Strip”</li>
+<li><code>Admin2</code>: The city or town</li>
+<li><code>Month</code>: 1 to 12</li>
+<li><code>Year</code></li>
+<li><code>Events</code>: The number of armed conflict events in the
+given month and year, per ACLED’s definition.</li>
+<li><code>Fatalities</code>: The total number of fatalities across all
+events in the given month and year, per ACLED’s estimate.</li>
+</ul>
+<div id="importing-and-cleaning" class="section level2">
+<h2>Importing and Cleaning</h2>
+<p>Download the data (filename <code>acledpalestine.csv</code>) <a
+href="">here</a>. Import the data and filter out only the rows of data
+from the West Bank. We will only be looking at armed conflict events in
+the West Bank. Create a new numeric binary variable called
+<code>prepost</code> that takes on value <span
+class="math inline">\(1\)</span> for time periods post-October 2023
+(including October 2023) and <span class="math inline">\(0\)</span> for
+time periods pre-October 2023.</p>
+<pre class="r"><code># [Your Code Here]
+df &lt;- read.csv(&quot;acledpalestine.csv&quot;)
+df &lt;- df %&gt;%
+  filter(Admin1 == &quot;West Bank&quot;) %&gt;%
+  mutate(prepost = ifelse((Month &gt;= 10 &amp; Year == 2023) | (Year &gt; 2023), 1, 0))</code></pre>
+</div>
+<div id="the-differenceinmeans-estimator" class="section level2">
+<h2>The Difference−in−means Estimator</h2>
+<p>What is the average number of monthly fatalities in the West Bank
+prior to October 2023? What is the average number after (and including)
+October 2023? Then compute the difference-in-means estimator.</p>
+<pre class="r"><code># [Your Code Here]
+mean(df[df$prepost == 1, ]$Fatalities)</code></pre>
+<pre><code>## [1] 5.585227</code></pre>
+<pre class="r"><code>mean(df[df$prepost == 0, ]$Fatalities)</code></pre>
+<pre><code>## [1] 1.052525</code></pre>
+<pre class="r"><code>diff_prepost &lt;- mean(df[df$prepost == 1, ]$Fatalities) - mean(df[df$prepost == 0, ]$Fatalities)
+
+df %&gt;%
+  group_by(prepost) %&gt;%
+  summarize(mean_fatalities = mean(Fatalities))</code></pre>
+<pre><code>## # A tibble: 2 × 2
+##   prepost mean_fatalities
+##     &lt;dbl&gt;           &lt;dbl&gt;
+## 1       0            1.05
+## 2       1            5.59</code></pre>
+</div>
+<div id="calculating-standard-error" class="section level2">
+<h2>Calculating Standard Error</h2>
+<p>For a sample of <span class="math inline">\(n_X\)</span> independent
+and identically distributed (IID) random variables <span
+class="math inline">\(X_1, \cdots, X_{n_X}\)</span> and another sample
+of <span class="math inline">\(n_Y\)</span> IID random variables <span
+class="math inline">\(Y_1, \cdots, Y_{n_Y}\)</span>, the standard error
+for the difference-in-means estimator is given by:</p>
+<p><span class="math display">\[
+SE = \sqrt{\frac{s^2_X}{n_X}+\frac{s^2_Y}{n_Y}}
+\]</span></p>
+<p>where <span class="math inline">\(s_X^2\)</span> and <span
+class="math inline">\(s_Y^2\)</span> are the sample variances</p>
+<p>Compute the standard error of the difference-in-means estimator.</p>
+<pre class="r"><code>sd_post &lt;- sd(df[df$prepost == 1, ]$Fatalities)
+sd_pre &lt;- sd(df[df$prepost == 0, ]$Fatalities)
+
+n_post &lt;- sum(df$prepost == 1)
+n_pre &lt;- sum(df$prepost == 0)
+
+se_df &lt;- sqrt((sd_post^2 / n_post) + (sd_pre^2 / n_pre))
+se_df</code></pre>
+<pre><code>## [1] 0.6093912</code></pre>
+</div>
+<div id="creating-the-confidence-interval" class="section level2">
+<h2>Creating the Confidence Interval</h2>
+<p>The <strong>95% confidence interval (CI)</strong> for the difference
+in means estimator <span class="math inline">\(\hat{\delta}\)</span>
+(where the variance of the two groups is not equal) is given by:</p>
+<p><span class="math display">\[
+CI \approx \left( \hat{\delta} - 1.96 \times SE \; , \; \hat{\delta} +
+1.96 \times SE \right)
+\]</span> 1.96 is the (approximate) critical value for a 95% confidence
+level under the standard normal distribution, but you can use 2.576 for
+99% CI and 1.645 for 90% CI.</p>
+<p>Calculate the 95% confidence intervals for the difference-in-means
+estimate.</p>
+<pre class="r"><code>ci_df &lt;- c(diff_prepost - se_df*1.96, diff_prepost + se_df*1.96)
+ci_df</code></pre>
+<pre><code>## [1] 3.338295 5.727109</code></pre>
+<p>We want to know if the difference in means is statistically
+significant. To do so, we first compute the t-statistic, which for the
+two-sample t-test is <span class="math display">\[
+t = \frac{\hat{\delta}}{SE}
+\]</span> Under the null hypothesis (<span
+class="math inline">\(\hat{\delta} = 0\)</span>), the t-statistic should
+follow a t-distribution. The t-distribution has degrees of freedom <span
+class="math inline">\(\texttt{df} = n_X + n_Y - 2\)</span> if variances
+are equal or uses Welch’s approximation of the degrees of freedom<a
+href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> The
+t-distribution is very similar to the normal distribution but has fatter
+tails to capture the greater variability from using an estimate of the
+standard deviation rather than the population sample deviation (which is
+unknown).</p>
+<p>Thus, given some t-statistic we can calculate the p-value: the
+probability that we get this t-statistic when the null is true (i.e.,
+when there is no difference in means). We do so by using
+<code>pt(q, df)</code>, which calculates the area under the curve up to
+<code>q</code> for the <span
+class="math inline">\(t_{\texttt{df}}\)</span> distribution.</p>
+<p>You can conduct a t-test in R by using
+<code>t.test(x_values, y_values, "two.sided", mu=0, var.equal = TRUE)</code></p>
+<pre class="r"><code>t.test(df[df$prepost == 1, ]$Fatalities, df[df$prepost == 0, ]$Fatalities, alternative = &quot;two.sided&quot;, mu=0, var.equal = FALSE)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  df[df$prepost == 1, ]$Fatalities and df[df$prepost == 0, ]$Fatalities
+## t = 7.4381, df = 185.53, p-value = 3.673e-12
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  3.330475 5.734929
+## sample estimates:
+## mean of x mean of y 
+##  5.585227  1.052525</code></pre>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>You don’t need to know the formula for this. R can
+calculate it for you. If you’re interested, it’s <span
+class="math inline">\(df= \frac{
+\left(\dfrac{s_{1}^{2}}{n_1}+\dfrac{s_{2}^{2}}{n_2}\right)^{\!2} }{
+\dfrac{(s_{1}^{2}/n^{}_1)^2}{n_1-1}+ \dfrac{(s_{2}^{2}/n^{}_2)^2}{n_2-1}
+}\)</span>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
