@@ -49,7 +49,7 @@ df %>%
 
 ## Calculating Standard Error
 
-For a sample of $n_X$ independent and identically distributed (IID) random variables $X_1, \cdots, X_{n_X}$ and another sample of $n_Y$ IID random variables $Y_1, \cdots, Y_{n_Y}$, the standard error for the difference-in-means estimator is given by:
+For a sample of $n_X$ independent and identically distributed (IID) random variables $X_1, \cdots, X_{n_X}$ and another sample of $n_Y$ IID random variables $Y_1, \cdots, Y_{n_Y}$, the standard error for the difference-in-means estimator when variances are unequal^[When variances are equal, it is better to use the pooled standard error, $\sqrt{\frac{s_{\text{total}}^2}{\frac{1}{n_X} + \frac{1}{n_Y}}}$] is given by:
 
 $$
 SE = \sqrt{\frac{s^2_X}{n_X}+\frac{s^2_Y}{n_Y}}
