@@ -1,0 +1,977 @@
+,Country,Admin1,Admin2,Month,Year,Events,Fatalities
+1,Palestine,Gaza Strip,Gaza City,1,2020,4,0
+2,Palestine,Gaza Strip,North Gaza,1,2020,9,0
+3,Palestine,West Bank,Tubas,1,2020,3,0
+4,Palestine,West Bank,Tulkarm,1,2020,0,0
+5,Palestine,Gaza Strip,Khan Yunis,1,2020,11,0
+6,Palestine,West Bank,Hebron,1,2020,33,0
+7,Palestine,Gaza Strip,Rafah,1,2020,4,0
+8,Palestine,West Bank,Bethlehem,1,2020,10,0
+9,Palestine,West Bank,Salfit,1,2020,3,0
+10,Palestine,Gaza Strip,Deir El Balah,1,2020,8,3
+11,Palestine,West Bank,Nablus,1,2020,18,0
+12,Palestine,West Bank,Ramallah and Al Bireh,1,2020,24,0
+13,Palestine,West Bank,Jenin,1,2020,4,0
+14,Palestine,West Bank,Qalqilya,1,2020,20,0
+15,Palestine,West Bank,Al Quds,1,2020,29,0
+16,Palestine,West Bank,Jericho,1,2020,2,0
+17,Palestine,Gaza Strip,Gaza City,2,2020,9,0
+18,Palestine,Gaza Strip,North Gaza,2,2020,10,0
+19,Palestine,West Bank,Tubas,2,2020,5,0
+20,Palestine,West Bank,Tulkarm,2,2020,5,1
+21,Palestine,Gaza Strip,Khan Yunis,2,2020,15,2
+22,Palestine,West Bank,Hebron,2,2020,29,0
+23,Palestine,Gaza Strip,Rafah,2,2020,5,0
+24,Palestine,West Bank,Bethlehem,2,2020,21,0
+25,Palestine,West Bank,Salfit,2,2020,3,0
+26,Palestine,Gaza Strip,Deir El Balah,2,2020,11,0
+27,Palestine,West Bank,Nablus,2,2020,10,0
+28,Palestine,West Bank,Ramallah and Al Bireh,2,2020,39,0
+29,Palestine,West Bank,Jenin,2,2020,13,4
+30,Palestine,West Bank,Qalqilya,2,2020,21,0
+31,Palestine,West Bank,Al Quds,2,2020,29,2
+32,Palestine,West Bank,Jericho,2,2020,5,0
+33,Palestine,Gaza Strip,Gaza City,3,2020,0,0
+34,Palestine,Gaza Strip,North Gaza,3,2020,8,0
+35,Palestine,West Bank,Tubas,3,2020,2,0
+36,Palestine,West Bank,Tulkarm,3,2020,18,0
+37,Palestine,Gaza Strip,Khan Yunis,3,2020,0,0
+38,Palestine,West Bank,Hebron,3,2020,30,0
+39,Palestine,Gaza Strip,Rafah,3,2020,0,0
+40,Palestine,West Bank,Bethlehem,3,2020,10,0
+41,Palestine,West Bank,Salfit,3,2020,6,0
+42,Palestine,Gaza Strip,Deir El Balah,3,2020,1,0
+43,Palestine,West Bank,Nablus,3,2020,30,1
+44,Palestine,West Bank,Ramallah and Al Bireh,3,2020,34,1
+45,Palestine,West Bank,Jenin,3,2020,8,0
+46,Palestine,West Bank,Qalqilya,3,2020,20,0
+47,Palestine,West Bank,Al Quds,3,2020,46,0
+48,Palestine,West Bank,Jericho,3,2020,0,0
+49,Palestine,Gaza Strip,Gaza City,4,2020,2,0
+50,Palestine,Gaza Strip,North Gaza,4,2020,4,0
+51,Palestine,West Bank,Tubas,4,2020,2,0
+52,Palestine,West Bank,Tulkarm,4,2020,10,0
+53,Palestine,Gaza Strip,Khan Yunis,4,2020,3,0
+54,Palestine,West Bank,Hebron,4,2020,21,0
+55,Palestine,Gaza Strip,Rafah,4,2020,0,0
+56,Palestine,West Bank,Bethlehem,4,2020,8,1
+57,Palestine,West Bank,Salfit,4,2020,4,0
+58,Palestine,Gaza Strip,Deir El Balah,4,2020,6,0
+59,Palestine,West Bank,Nablus,4,2020,14,0
+60,Palestine,West Bank,Ramallah and Al Bireh,4,2020,21,0
+61,Palestine,West Bank,Jenin,4,2020,4,0
+62,Palestine,West Bank,Qalqilya,4,2020,9,0
+63,Palestine,West Bank,Al Quds,4,2020,47,1
+64,Palestine,West Bank,Jericho,4,2020,2,0
+65,Palestine,Gaza Strip,Gaza City,5,2020,2,0
+66,Palestine,Gaza Strip,North Gaza,5,2020,6,2
+67,Palestine,West Bank,Tubas,5,2020,1,0
+68,Palestine,West Bank,Tulkarm,5,2020,13,0
+69,Palestine,Gaza Strip,Khan Yunis,5,2020,0,0
+70,Palestine,West Bank,Hebron,5,2020,18,2
+71,Palestine,Gaza Strip,Rafah,5,2020,0,0
+72,Palestine,West Bank,Bethlehem,5,2020,7,0
+73,Palestine,West Bank,Salfit,5,2020,1,0
+74,Palestine,Gaza Strip,Deir El Balah,5,2020,1,0
+75,Palestine,West Bank,Nablus,5,2020,23,0
+76,Palestine,West Bank,Ramallah and Al Bireh,5,2020,28,1
+77,Palestine,West Bank,Jenin,5,2020,13,1
+78,Palestine,West Bank,Qalqilya,5,2020,16,0
+79,Palestine,West Bank,Al Quds,5,2020,25,1
+80,Palestine,West Bank,Jericho,5,2020,6,0
+81,Palestine,Gaza Strip,Gaza City,6,2020,3,0
+82,Palestine,Gaza Strip,North Gaza,6,2020,1,0
+83,Palestine,West Bank,Tubas,6,2020,1,0
+84,Palestine,West Bank,Tulkarm,6,2020,6,0
+85,Palestine,Gaza Strip,Khan Yunis,6,2020,3,0
+86,Palestine,West Bank,Hebron,6,2020,15,0
+87,Palestine,Gaza Strip,Rafah,6,2020,3,0
+88,Palestine,West Bank,Bethlehem,6,2020,8,1
+89,Palestine,West Bank,Salfit,6,2020,5,0
+90,Palestine,Gaza Strip,Deir El Balah,6,2020,7,0
+91,Palestine,West Bank,Nablus,6,2020,27,0
+92,Palestine,West Bank,Ramallah and Al Bireh,6,2020,26,0
+93,Palestine,West Bank,Jenin,6,2020,6,0
+94,Palestine,West Bank,Qalqilya,6,2020,16,0
+95,Palestine,West Bank,Al Quds,6,2020,31,1
+96,Palestine,West Bank,Jericho,6,2020,4,0
+97,Palestine,Gaza Strip,Gaza City,7,2020,5,0
+98,Palestine,Gaza Strip,North Gaza,7,2020,0,0
+99,Palestine,West Bank,Tubas,7,2020,0,0
+100,Palestine,West Bank,Tulkarm,7,2020,4,0
+101,Palestine,Gaza Strip,Khan Yunis,7,2020,4,0
+102,Palestine,West Bank,Hebron,7,2020,28,0
+103,Palestine,Gaza Strip,Rafah,7,2020,0,0
+104,Palestine,West Bank,Bethlehem,7,2020,6,0
+105,Palestine,West Bank,Salfit,7,2020,8,1
+106,Palestine,Gaza Strip,Deir El Balah,7,2020,0,0
+107,Palestine,West Bank,Nablus,7,2020,18,1
+108,Palestine,West Bank,Ramallah and Al Bireh,7,2020,23,0
+109,Palestine,West Bank,Jenin,7,2020,10,0
+110,Palestine,West Bank,Qalqilya,7,2020,13,0
+111,Palestine,West Bank,Al Quds,7,2020,17,0
+112,Palestine,West Bank,Jericho,7,2020,5,0
+113,Palestine,Gaza Strip,Gaza City,8,2020,13,0
+114,Palestine,Gaza Strip,North Gaza,8,2020,23,0
+115,Palestine,West Bank,Tubas,8,2020,2,0
+116,Palestine,West Bank,Tulkarm,8,2020,12,0
+117,Palestine,Gaza Strip,Khan Yunis,8,2020,23,0
+118,Palestine,West Bank,Hebron,8,2020,17,0
+119,Palestine,Gaza Strip,Rafah,8,2020,18,0
+120,Palestine,West Bank,Bethlehem,8,2020,9,0
+121,Palestine,West Bank,Salfit,8,2020,3,0
+122,Palestine,Gaza Strip,Deir El Balah,8,2020,9,0
+123,Palestine,West Bank,Nablus,8,2020,20,0
+124,Palestine,West Bank,Ramallah and Al Bireh,8,2020,18,2
+125,Palestine,West Bank,Jenin,8,2020,9,1
+126,Palestine,West Bank,Qalqilya,8,2020,7,0
+127,Palestine,West Bank,Al Quds,8,2020,28,2
+128,Palestine,West Bank,Jericho,8,2020,3,0
+129,Palestine,Gaza Strip,Gaza City,9,2020,1,0
+130,Palestine,Gaza Strip,North Gaza,9,2020,3,0
+131,Palestine,West Bank,Tubas,9,2020,1,0
+132,Palestine,West Bank,Tulkarm,9,2020,4,0
+133,Palestine,Gaza Strip,Khan Yunis,9,2020,2,0
+134,Palestine,West Bank,Hebron,9,2020,23,0
+135,Palestine,Gaza Strip,Rafah,9,2020,0,0
+136,Palestine,West Bank,Bethlehem,9,2020,6,0
+137,Palestine,West Bank,Salfit,9,2020,6,0
+138,Palestine,Gaza Strip,Deir El Balah,9,2020,1,0
+139,Palestine,West Bank,Nablus,9,2020,18,0
+140,Palestine,West Bank,Ramallah and Al Bireh,9,2020,22,0
+141,Palestine,West Bank,Jenin,9,2020,8,1
+142,Palestine,West Bank,Qalqilya,9,2020,11,0
+143,Palestine,West Bank,Al Quds,9,2020,25,0
+144,Palestine,West Bank,Jericho,9,2020,2,0
+145,Palestine,Gaza Strip,Gaza City,10,2020,2,0
+146,Palestine,Gaza Strip,North Gaza,10,2020,0,0
+147,Palestine,West Bank,Tubas,10,2020,3,0
+148,Palestine,West Bank,Tulkarm,10,2020,13,2
+149,Palestine,Gaza Strip,Khan Yunis,10,2020,4,0
+150,Palestine,West Bank,Hebron,10,2020,27,0
+151,Palestine,Gaza Strip,Rafah,10,2020,2,0
+152,Palestine,West Bank,Bethlehem,10,2020,10,0
+153,Palestine,West Bank,Salfit,10,2020,5,0
+154,Palestine,Gaza Strip,Deir El Balah,10,2020,3,0
+155,Palestine,West Bank,Nablus,10,2020,47,0
+156,Palestine,West Bank,Ramallah and Al Bireh,10,2020,36,2
+157,Palestine,West Bank,Jenin,10,2020,15,0
+158,Palestine,West Bank,Qalqilya,10,2020,17,0
+159,Palestine,West Bank,Al Quds,10,2020,52,0
+160,Palestine,West Bank,Jericho,10,2020,3,0
+161,Palestine,Gaza Strip,Gaza City,11,2020,5,0
+162,Palestine,Gaza Strip,North Gaza,11,2020,4,0
+163,Palestine,West Bank,Tubas,11,2020,1,0
+164,Palestine,West Bank,Tulkarm,11,2020,3,0
+165,Palestine,Gaza Strip,Khan Yunis,11,2020,2,0
+166,Palestine,West Bank,Hebron,11,2020,35,0
+167,Palestine,Gaza Strip,Rafah,11,2020,3,0
+168,Palestine,West Bank,Bethlehem,11,2020,12,0
+169,Palestine,West Bank,Salfit,11,2020,5,0
+170,Palestine,Gaza Strip,Deir El Balah,11,2020,1,0
+171,Palestine,West Bank,Nablus,11,2020,21,1
+172,Palestine,West Bank,Ramallah and Al Bireh,11,2020,39,0
+173,Palestine,West Bank,Jenin,11,2020,8,0
+174,Palestine,West Bank,Qalqilya,11,2020,23,0
+175,Palestine,West Bank,Al Quds,11,2020,31,1
+176,Palestine,West Bank,Jericho,11,2020,3,0
+177,Palestine,Gaza Strip,Gaza City,12,2020,4,0
+178,Palestine,Gaza Strip,North Gaza,12,2020,0,0
+179,Palestine,West Bank,Tubas,12,2020,1,0
+180,Palestine,West Bank,Tulkarm,12,2020,2,0
+181,Palestine,Gaza Strip,Khan Yunis,12,2020,1,0
+182,Palestine,West Bank,Hebron,12,2020,28,0
+183,Palestine,Gaza Strip,Rafah,12,2020,0,0
+184,Palestine,West Bank,Bethlehem,12,2020,10,0
+185,Palestine,West Bank,Salfit,12,2020,9,0
+186,Palestine,Gaza Strip,Deir El Balah,12,2020,1,0
+187,Palestine,West Bank,Nablus,12,2020,39,0
+188,Palestine,West Bank,Ramallah and Al Bireh,12,2020,36,1
+189,Palestine,West Bank,Jenin,12,2020,22,1
+190,Palestine,West Bank,Qalqilya,12,2020,6,0
+191,Palestine,West Bank,Al Quds,12,2020,39,2
+192,Palestine,West Bank,Jericho,12,2020,6,0
+193,Palestine,Gaza Strip,Gaza City,1,2021,1,0
+194,Palestine,Gaza Strip,North Gaza,1,2021,3,0
+195,Palestine,West Bank,Tubas,1,2021,4,0
+196,Palestine,West Bank,Tulkarm,1,2021,8,1
+197,Palestine,Gaza Strip,Khan Yunis,1,2021,4,0
+198,Palestine,West Bank,Hebron,1,2021,25,1
+199,Palestine,Gaza Strip,Rafah,1,2021,1,0
+200,Palestine,West Bank,Bethlehem,1,2021,24,2
+201,Palestine,West Bank,Salfit,1,2021,13,1
+202,Palestine,Gaza Strip,Deir El Balah,1,2021,2,0
+203,Palestine,West Bank,Nablus,1,2021,27,0
+204,Palestine,West Bank,Ramallah and Al Bireh,1,2021,32,0
+205,Palestine,West Bank,Jenin,1,2021,15,0
+206,Palestine,West Bank,Qalqilya,1,2021,12,0
+207,Palestine,West Bank,Al Quds,1,2021,36,0
+208,Palestine,West Bank,Jericho,1,2021,8,0
+209,Palestine,Gaza Strip,Gaza City,2,2021,0,0
+210,Palestine,Gaza Strip,North Gaza,2,2021,0,0
+211,Palestine,West Bank,Tubas,2,2021,3,1
+212,Palestine,West Bank,Tulkarm,2,2021,3,0
+213,Palestine,Gaza Strip,Khan Yunis,2,2021,0,0
+214,Palestine,West Bank,Hebron,2,2021,16,0
+215,Palestine,Gaza Strip,Rafah,2,2021,1,0
+216,Palestine,West Bank,Bethlehem,2,2021,16,0
+217,Palestine,West Bank,Salfit,2,2021,4,1
+218,Palestine,Gaza Strip,Deir El Balah,2,2021,0,0
+219,Palestine,West Bank,Nablus,2,2021,29,0
+220,Palestine,West Bank,Ramallah and Al Bireh,2,2021,28,2
+221,Palestine,West Bank,Jenin,2,2021,16,0
+222,Palestine,West Bank,Qalqilya,2,2021,17,0
+223,Palestine,West Bank,Al Quds,2,2021,43,0
+224,Palestine,West Bank,Jericho,2,2021,2,0
+225,Palestine,Gaza Strip,Gaza City,3,2021,1,0
+226,Palestine,Gaza Strip,North Gaza,3,2021,1,0
+227,Palestine,West Bank,Tubas,3,2021,5,0
+228,Palestine,West Bank,Tulkarm,3,2021,4,0
+229,Palestine,Gaza Strip,Khan Yunis,3,2021,1,3
+230,Palestine,West Bank,Hebron,3,2021,17,0
+231,Palestine,Gaza Strip,Rafah,3,2021,0,0
+232,Palestine,West Bank,Bethlehem,3,2021,17,0
+233,Palestine,West Bank,Salfit,3,2021,9,0
+234,Palestine,Gaza Strip,Deir El Balah,3,2021,2,0
+235,Palestine,West Bank,Nablus,3,2021,25,0
+236,Palestine,West Bank,Ramallah and Al Bireh,3,2021,23,0
+237,Palestine,West Bank,Jenin,3,2021,12,0
+238,Palestine,West Bank,Qalqilya,3,2021,8,0
+239,Palestine,West Bank,Al Quds,3,2021,42,0
+240,Palestine,West Bank,Jericho,3,2021,5,0
+241,Palestine,Gaza Strip,Gaza City,4,2021,12,0
+242,Palestine,Gaza Strip,North Gaza,4,2021,3,0
+243,Palestine,West Bank,Tubas,4,2021,2,0
+244,Palestine,West Bank,Tulkarm,4,2021,2,0
+245,Palestine,Gaza Strip,Khan Yunis,4,2021,8,0
+246,Palestine,West Bank,Hebron,4,2021,22,1
+247,Palestine,Gaza Strip,Rafah,4,2021,7,0
+248,Palestine,West Bank,Bethlehem,4,2021,10,0
+249,Palestine,West Bank,Salfit,4,2021,5,0
+250,Palestine,Gaza Strip,Deir El Balah,4,2021,7,0
+251,Palestine,West Bank,Nablus,4,2021,27,0
+252,Palestine,West Bank,Ramallah and Al Bireh,4,2021,18,0
+253,Palestine,West Bank,Jenin,4,2021,7,0
+254,Palestine,West Bank,Qalqilya,4,2021,4,0
+255,Palestine,West Bank,Al Quds,4,2021,78,1
+256,Palestine,West Bank,Jericho,4,2021,5,0
+257,Palestine,Gaza Strip,Gaza City,5,2021,55,120
+258,Palestine,Gaza Strip,North Gaza,5,2021,38,51
+259,Palestine,West Bank,Tubas,5,2021,7,1
+260,Palestine,West Bank,Tulkarm,5,2021,30,2
+261,Palestine,Gaza Strip,Khan Yunis,5,2021,19,14
+262,Palestine,West Bank,Hebron,5,2021,107,8
+263,Palestine,Gaza Strip,Rafah,5,2021,7,11
+264,Palestine,West Bank,Bethlehem,5,2021,49,1
+265,Palestine,West Bank,Salfit,5,2021,28,1
+266,Palestine,Gaza Strip,Deir El Balah,5,2021,11,12
+267,Palestine,West Bank,Nablus,5,2021,97,12
+268,Palestine,West Bank,Ramallah and Al Bireh,5,2021,79,4
+269,Palestine,West Bank,Jenin,5,2021,34,5
+270,Palestine,West Bank,Qalqilya,5,2021,36,0
+271,Palestine,West Bank,Al Quds,5,2021,139,2
+272,Palestine,West Bank,Jericho,5,2021,11,1
+273,Palestine,Gaza Strip,Gaza City,6,2021,3,3
+274,Palestine,Gaza Strip,North Gaza,6,2021,4,0
+275,Palestine,West Bank,Tubas,6,2021,5,0
+276,Palestine,West Bank,Tulkarm,6,2021,3,0
+277,Palestine,Gaza Strip,Khan Yunis,6,2021,1,0
+278,Palestine,West Bank,Hebron,6,2021,16,1
+279,Palestine,Gaza Strip,Rafah,6,2021,1,0
+280,Palestine,West Bank,Bethlehem,6,2021,4,0
+281,Palestine,West Bank,Salfit,6,2021,3,0
+282,Palestine,Gaza Strip,Deir El Balah,6,2021,1,0
+283,Palestine,West Bank,Nablus,6,2021,36,3
+284,Palestine,West Bank,Ramallah and Al Bireh,6,2021,22,0
+285,Palestine,West Bank,Jenin,6,2021,13,4
+286,Palestine,West Bank,Qalqilya,6,2021,9,0
+287,Palestine,West Bank,Al Quds,6,2021,40,2
+288,Palestine,West Bank,Jericho,6,2021,2,0
+289,Palestine,Gaza Strip,Gaza City,7,2021,5,1
+290,Palestine,Gaza Strip,North Gaza,7,2021,1,0
+291,Palestine,West Bank,Tubas,7,2021,4,0
+292,Palestine,West Bank,Tulkarm,7,2021,2,0
+293,Palestine,Gaza Strip,Khan Yunis,7,2021,2,0
+294,Palestine,West Bank,Hebron,7,2021,25,5
+295,Palestine,Gaza Strip,Rafah,7,2021,2,0
+296,Palestine,West Bank,Bethlehem,7,2021,6,0
+297,Palestine,West Bank,Salfit,7,2021,3,0
+298,Palestine,Gaza Strip,Deir El Balah,7,2021,1,0
+299,Palestine,West Bank,Nablus,7,2021,35,2
+300,Palestine,West Bank,Ramallah and Al Bireh,7,2021,12,1
+301,Palestine,West Bank,Jenin,7,2021,14,0
+302,Palestine,West Bank,Qalqilya,7,2021,3,0
+303,Palestine,West Bank,Al Quds,7,2021,27,0
+304,Palestine,West Bank,Jericho,7,2021,2,0
+305,Palestine,Gaza Strip,Gaza City,8,2021,6,0
+306,Palestine,Gaza Strip,North Gaza,8,2021,5,0
+307,Palestine,West Bank,Tubas,8,2021,12,0
+308,Palestine,West Bank,Tulkarm,8,2021,4,0
+309,Palestine,Gaza Strip,Khan Yunis,8,2021,4,0
+310,Palestine,West Bank,Hebron,8,2021,18,0
+311,Palestine,Gaza Strip,Rafah,8,2021,0,0
+312,Palestine,West Bank,Bethlehem,8,2021,9,0
+313,Palestine,West Bank,Salfit,8,2021,1,0
+314,Palestine,Gaza Strip,Deir El Balah,8,2021,2,0
+315,Palestine,West Bank,Nablus,8,2021,17,1
+316,Palestine,West Bank,Ramallah and Al Bireh,8,2021,11,0
+317,Palestine,West Bank,Jenin,8,2021,18,5
+318,Palestine,West Bank,Qalqilya,8,2021,6,0
+319,Palestine,West Bank,Al Quds,8,2021,13,0
+320,Palestine,West Bank,Jericho,8,2021,6,0
+321,Palestine,Gaza Strip,Gaza City,9,2021,3,0
+322,Palestine,Gaza Strip,North Gaza,9,2021,4,0
+323,Palestine,West Bank,Tubas,9,2021,2,0
+324,Palestine,West Bank,Tulkarm,9,2021,3,0
+325,Palestine,Gaza Strip,Khan Yunis,9,2021,5,0
+326,Palestine,West Bank,Hebron,9,2021,55,0
+327,Palestine,Gaza Strip,Rafah,9,2021,3,3
+328,Palestine,West Bank,Bethlehem,9,2021,22,0
+329,Palestine,West Bank,Salfit,9,2021,4,0
+330,Palestine,Gaza Strip,Deir El Balah,9,2021,4,1
+331,Palestine,West Bank,Nablus,9,2021,32,0
+332,Palestine,West Bank,Ramallah and Al Bireh,9,2021,40,1
+333,Palestine,West Bank,Jenin,9,2021,37,3
+334,Palestine,West Bank,Qalqilya,9,2021,28,0
+335,Palestine,West Bank,Al Quds,9,2021,52,5
+336,Palestine,West Bank,Jericho,9,2021,10,0
+337,Palestine,Gaza Strip,Gaza City,10,2021,1,0
+338,Palestine,Gaza Strip,North Gaza,10,2021,1,0
+339,Palestine,West Bank,Tubas,10,2021,10,0
+340,Palestine,West Bank,Tulkarm,10,2021,3,0
+341,Palestine,Gaza Strip,Khan Yunis,10,2021,1,0
+342,Palestine,West Bank,Hebron,10,2021,39,0
+343,Palestine,Gaza Strip,Rafah,10,2021,0,0
+344,Palestine,West Bank,Bethlehem,10,2021,12,1
+345,Palestine,West Bank,Salfit,10,2021,7,0
+346,Palestine,Gaza Strip,Deir El Balah,10,2021,0,0
+347,Palestine,West Bank,Nablus,10,2021,40,0
+348,Palestine,West Bank,Ramallah and Al Bireh,10,2021,18,0
+349,Palestine,West Bank,Jenin,10,2021,20,0
+350,Palestine,West Bank,Qalqilya,10,2021,18,0
+351,Palestine,West Bank,Al Quds,10,2021,48,0
+352,Palestine,West Bank,Jericho,10,2021,3,0
+353,Palestine,Gaza Strip,Gaza City,11,2021,0,0
+354,Palestine,Gaza Strip,North Gaza,11,2021,3,0
+355,Palestine,West Bank,Tubas,11,2021,3,1
+356,Palestine,West Bank,Tulkarm,11,2021,4,0
+357,Palestine,Gaza Strip,Khan Yunis,11,2021,1,0
+358,Palestine,West Bank,Hebron,11,2021,40,0
+359,Palestine,Gaza Strip,Rafah,11,2021,0,0
+360,Palestine,West Bank,Bethlehem,11,2021,11,0
+361,Palestine,West Bank,Salfit,11,2021,4,0
+362,Palestine,Gaza Strip,Deir El Balah,11,2021,1,0
+363,Palestine,West Bank,Nablus,11,2021,40,0
+364,Palestine,West Bank,Ramallah and Al Bireh,11,2021,43,0
+365,Palestine,West Bank,Jenin,11,2021,13,0
+366,Palestine,West Bank,Qalqilya,11,2021,11,0
+367,Palestine,West Bank,Al Quds,11,2021,49,3
+368,Palestine,West Bank,Jericho,11,2021,5,0
+369,Palestine,Gaza Strip,Gaza City,12,2021,2,0
+370,Palestine,Gaza Strip,North Gaza,12,2021,3,0
+371,Palestine,West Bank,Tubas,12,2021,6,0
+372,Palestine,West Bank,Tulkarm,12,2021,4,1
+373,Palestine,Gaza Strip,Khan Yunis,12,2021,2,0
+374,Palestine,West Bank,Hebron,12,2021,33,0
+375,Palestine,Gaza Strip,Rafah,12,2021,0,0
+376,Palestine,West Bank,Bethlehem,12,2021,14,0
+377,Palestine,West Bank,Salfit,12,2021,8,1
+378,Palestine,Gaza Strip,Deir El Balah,12,2021,2,0
+379,Palestine,West Bank,Nablus,12,2021,72,2
+380,Palestine,West Bank,Ramallah and Al Bireh,12,2021,41,1
+381,Palestine,West Bank,Jenin,12,2021,20,1
+382,Palestine,West Bank,Qalqilya,12,2021,19,0
+383,Palestine,West Bank,Al Quds,12,2021,47,1
+384,Palestine,West Bank,Jericho,12,2021,4,0
+385,Palestine,Gaza Strip,Gaza City,1,2022,1,0
+386,Palestine,Gaza Strip,North Gaza,1,2022,6,0
+387,Palestine,West Bank,Tubas,1,2022,4,0
+388,Palestine,West Bank,Tulkarm,1,2022,3,0
+389,Palestine,Gaza Strip,Khan Yunis,1,2022,2,0
+390,Palestine,West Bank,Hebron,1,2022,28,1
+391,Palestine,Gaza Strip,Rafah,1,2022,1,0
+392,Palestine,West Bank,Bethlehem,1,2022,10,1
+393,Palestine,West Bank,Salfit,1,2022,8,0
+394,Palestine,Gaza Strip,Deir El Balah,1,2022,0,0
+395,Palestine,West Bank,Nablus,1,2022,51,1
+396,Palestine,West Bank,Ramallah and Al Bireh,1,2022,26,1
+397,Palestine,West Bank,Jenin,1,2022,13,0
+398,Palestine,West Bank,Qalqilya,1,2022,7,0
+399,Palestine,West Bank,Al Quds,1,2022,34,1
+400,Palestine,West Bank,Jericho,1,2022,5,0
+401,Palestine,Gaza Strip,Gaza City,2,2022,0,0
+402,Palestine,Gaza Strip,North Gaza,2,2022,0,0
+403,Palestine,West Bank,Tubas,2,2022,4,0
+404,Palestine,West Bank,Tulkarm,2,2022,8,0
+405,Palestine,Gaza Strip,Khan Yunis,2,2022,0,0
+406,Palestine,West Bank,Hebron,2,2022,43,0
+407,Palestine,Gaza Strip,Rafah,2,2022,0,0
+408,Palestine,West Bank,Bethlehem,2,2022,30,1
+409,Palestine,West Bank,Salfit,2,2022,21,0
+410,Palestine,Gaza Strip,Deir El Balah,2,2022,1,0
+411,Palestine,West Bank,Nablus,2,2022,37,3
+412,Palestine,West Bank,Ramallah and Al Bireh,2,2022,23,1
+413,Palestine,West Bank,Jenin,2,2022,19,1
+414,Palestine,West Bank,Qalqilya,2,2022,8,0
+415,Palestine,West Bank,Al Quds,2,2022,36,0
+416,Palestine,West Bank,Jericho,2,2022,1,0
+417,Palestine,Gaza Strip,Gaza City,3,2022,0,0
+418,Palestine,Gaza Strip,North Gaza,3,2022,1,0
+419,Palestine,West Bank,Tubas,3,2022,5,0
+420,Palestine,West Bank,Tulkarm,3,2022,10,0
+421,Palestine,Gaza Strip,Khan Yunis,3,2022,1,0
+422,Palestine,West Bank,Hebron,3,2022,50,0
+423,Palestine,Gaza Strip,Rafah,3,2022,0,0
+424,Palestine,West Bank,Bethlehem,3,2022,20,2
+425,Palestine,West Bank,Salfit,3,2022,20,0
+426,Palestine,Gaza Strip,Deir El Balah,3,2022,0,0
+427,Palestine,West Bank,Nablus,3,2022,52,1
+428,Palestine,West Bank,Ramallah and Al Bireh,3,2022,69,0
+429,Palestine,West Bank,Jenin,3,2022,20,4
+430,Palestine,West Bank,Qalqilya,3,2022,17,0
+431,Palestine,West Bank,Al Quds,3,2022,41,4
+432,Palestine,West Bank,Jericho,3,2022,6,0
+433,Palestine,Gaza Strip,Gaza City,4,2022,2,0
+434,Palestine,Gaza Strip,North Gaza,4,2022,3,0
+435,Palestine,West Bank,Tubas,4,2022,1,0
+436,Palestine,West Bank,Tulkarm,4,2022,36,0
+437,Palestine,Gaza Strip,Khan Yunis,4,2022,5,0
+438,Palestine,West Bank,Hebron,4,2022,78,2
+439,Palestine,Gaza Strip,Rafah,4,2022,1,0
+440,Palestine,West Bank,Bethlehem,4,2022,29,3
+441,Palestine,West Bank,Salfit,4,2022,32,1
+442,Palestine,Gaza Strip,Deir El Balah,4,2022,4,0
+443,Palestine,West Bank,Nablus,4,2022,54,2
+444,Palestine,West Bank,Ramallah and Al Bireh,4,2022,83,1
+445,Palestine,West Bank,Jenin,4,2022,44,11
+446,Palestine,West Bank,Qalqilya,4,2022,51,1
+447,Palestine,West Bank,Al Quds,4,2022,63,1
+448,Palestine,West Bank,Jericho,4,2022,8,1
+449,Palestine,Gaza Strip,Gaza City,5,2022,0,0
+450,Palestine,Gaza Strip,North Gaza,5,2022,1,0
+451,Palestine,West Bank,Tubas,5,2022,7,0
+452,Palestine,West Bank,Tulkarm,5,2022,24,1
+453,Palestine,Gaza Strip,Khan Yunis,5,2022,0,0
+454,Palestine,West Bank,Hebron,5,2022,57,0
+455,Palestine,Gaza Strip,Rafah,5,2022,0,0
+456,Palestine,West Bank,Bethlehem,5,2022,35,2
+457,Palestine,West Bank,Salfit,5,2022,28,0
+458,Palestine,Gaza Strip,Deir El Balah,5,2022,0,0
+459,Palestine,West Bank,Nablus,5,2022,82,1
+460,Palestine,West Bank,Ramallah and Al Bireh,5,2022,56,1
+461,Palestine,West Bank,Jenin,5,2022,32,4
+462,Palestine,West Bank,Qalqilya,5,2022,46,0
+463,Palestine,West Bank,Al Quds,5,2022,61,0
+464,Palestine,West Bank,Jericho,5,2022,5,0
+465,Palestine,Gaza Strip,Gaza City,6,2022,1,0
+466,Palestine,Gaza Strip,North Gaza,6,2022,7,0
+467,Palestine,West Bank,Tubas,6,2022,6,0
+468,Palestine,West Bank,Tulkarm,6,2022,9,0
+469,Palestine,Gaza Strip,Khan Yunis,6,2022,1,0
+470,Palestine,West Bank,Hebron,6,2022,36,2
+471,Palestine,Gaza Strip,Rafah,6,2022,1,0
+472,Palestine,West Bank,Bethlehem,6,2022,19,1
+473,Palestine,West Bank,Salfit,6,2022,10,1
+474,Palestine,Gaza Strip,Deir El Balah,6,2022,1,0
+475,Palestine,West Bank,Nablus,6,2022,35,0
+476,Palestine,West Bank,Ramallah and Al Bireh,6,2022,45,2
+477,Palestine,West Bank,Jenin,6,2022,26,6
+478,Palestine,West Bank,Qalqilya,6,2022,11,1
+479,Palestine,West Bank,Al Quds,6,2022,36,0
+480,Palestine,West Bank,Jericho,6,2022,11,0
+481,Palestine,Gaza Strip,Gaza City,7,2022,1,0
+482,Palestine,Gaza Strip,North Gaza,7,2022,2,0
+483,Palestine,West Bank,Tubas,7,2022,2,0
+484,Palestine,West Bank,Tulkarm,7,2022,12,1
+485,Palestine,Gaza Strip,Khan Yunis,7,2022,0,0
+486,Palestine,West Bank,Hebron,7,2022,36,0
+487,Palestine,Gaza Strip,Rafah,7,2022,1,0
+488,Palestine,West Bank,Bethlehem,7,2022,19,0
+489,Palestine,West Bank,Salfit,7,2022,9,0
+490,Palestine,Gaza Strip,Deir El Balah,7,2022,1,0
+491,Palestine,West Bank,Nablus,7,2022,26,4
+492,Palestine,West Bank,Ramallah and Al Bireh,7,2022,26,0
+493,Palestine,West Bank,Jenin,7,2022,15,2
+494,Palestine,West Bank,Qalqilya,7,2022,8,0
+495,Palestine,West Bank,Al Quds,7,2022,28,0
+496,Palestine,West Bank,Jericho,7,2022,20,0
+497,Palestine,Gaza Strip,Gaza City,8,2022,20,10
+498,Palestine,Gaza Strip,North Gaza,8,2022,20,18
+499,Palestine,West Bank,Tubas,8,2022,6,1
+500,Palestine,West Bank,Tulkarm,8,2022,7,0
+501,Palestine,Gaza Strip,Khan Yunis,8,2022,16,7
+502,Palestine,West Bank,Hebron,8,2022,31,0
+503,Palestine,Gaza Strip,Rafah,8,2022,8,8
+504,Palestine,West Bank,Bethlehem,8,2022,16,0
+505,Palestine,West Bank,Salfit,8,2022,4,0
+506,Palestine,Gaza Strip,Deir El Balah,8,2022,3,4
+507,Palestine,West Bank,Nablus,8,2022,36,5
+508,Palestine,West Bank,Ramallah and Al Bireh,8,2022,30,0
+509,Palestine,West Bank,Jenin,8,2022,23,1
+510,Palestine,West Bank,Qalqilya,8,2022,17,0
+511,Palestine,West Bank,Al Quds,8,2022,38,1
+512,Palestine,West Bank,Jericho,8,2022,17,0
+513,Palestine,Gaza Strip,Gaza City,9,2022,1,0
+514,Palestine,Gaza Strip,North Gaza,9,2022,0,0
+515,Palestine,West Bank,Tubas,9,2022,6,1
+516,Palestine,West Bank,Tulkarm,9,2022,3,0
+517,Palestine,Gaza Strip,Khan Yunis,9,2022,0,0
+518,Palestine,West Bank,Hebron,9,2022,53,1
+519,Palestine,Gaza Strip,Rafah,9,2022,0,0
+520,Palestine,West Bank,Bethlehem,9,2022,21,0
+521,Palestine,West Bank,Salfit,9,2022,5,0
+522,Palestine,Gaza Strip,Deir El Balah,9,2022,0,0
+523,Palestine,West Bank,Nablus,9,2022,85,3
+524,Palestine,West Bank,Ramallah and Al Bireh,9,2022,49,3
+525,Palestine,West Bank,Jenin,9,2022,22,12
+526,Palestine,West Bank,Qalqilya,9,2022,9,1
+527,Palestine,West Bank,Al Quds,9,2022,59,0
+528,Palestine,West Bank,Jericho,9,2022,6,0
+529,Palestine,Gaza Strip,Gaza City,10,2022,0,0
+530,Palestine,Gaza Strip,North Gaza,10,2022,1,0
+531,Palestine,West Bank,Tubas,10,2022,6,0
+532,Palestine,West Bank,Tulkarm,10,2022,15,0
+533,Palestine,Gaza Strip,Khan Yunis,10,2022,0,0
+534,Palestine,West Bank,Hebron,10,2022,101,4
+535,Palestine,Gaza Strip,Rafah,10,2022,1,0
+536,Palestine,West Bank,Bethlehem,10,2022,30,0
+537,Palestine,West Bank,Salfit,10,2022,30,1
+538,Palestine,Gaza Strip,Deir El Balah,10,2022,0,0
+539,Palestine,West Bank,Nablus,10,2022,148,10
+540,Palestine,West Bank,Ramallah and Al Bireh,10,2022,126,3
+541,Palestine,West Bank,Jenin,10,2022,53,5
+542,Palestine,West Bank,Qalqilya,10,2022,32,3
+543,Palestine,West Bank,Al Quds,10,2022,92,2
+544,Palestine,West Bank,Jericho,10,2022,8,1
+545,Palestine,Gaza Strip,Gaza City,11,2022,0,0
+546,Palestine,Gaza Strip,North Gaza,11,2022,1,0
+547,Palestine,West Bank,Tubas,11,2022,2,0
+548,Palestine,West Bank,Tulkarm,11,2022,19,0
+549,Palestine,Gaza Strip,Khan Yunis,11,2022,0,0
+550,Palestine,West Bank,Hebron,11,2022,81,1
+551,Palestine,Gaza Strip,Rafah,11,2022,1,0
+552,Palestine,West Bank,Bethlehem,11,2022,24,0
+553,Palestine,West Bank,Salfit,11,2022,17,4
+554,Palestine,Gaza Strip,Deir El Balah,11,2022,1,0
+555,Palestine,West Bank,Nablus,11,2022,64,4
+556,Palestine,West Bank,Ramallah and Al Bireh,11,2022,65,6
+557,Palestine,West Bank,Jenin,11,2022,44,5
+558,Palestine,West Bank,Qalqilya,11,2022,22,0
+559,Palestine,West Bank,Al Quds,11,2022,40,3
+560,Palestine,West Bank,Jericho,11,2022,7,0
+561,Palestine,Gaza Strip,Gaza City,12,2022,2,0
+562,Palestine,Gaza Strip,North Gaza,12,2022,0,0
+563,Palestine,West Bank,Tubas,12,2022,1,0
+564,Palestine,West Bank,Tulkarm,12,2022,12,0
+565,Palestine,Gaza Strip,Khan Yunis,12,2022,3,0
+566,Palestine,West Bank,Hebron,12,2022,71,0
+567,Palestine,Gaza Strip,Rafah,12,2022,1,0
+568,Palestine,West Bank,Bethlehem,12,2022,32,1
+569,Palestine,West Bank,Salfit,12,2022,15,2
+570,Palestine,Gaza Strip,Deir El Balah,12,2022,1,0
+571,Palestine,West Bank,Nablus,12,2022,100,2
+572,Palestine,West Bank,Ramallah and Al Bireh,12,2022,63,2
+573,Palestine,West Bank,Jenin,12,2022,61,7
+574,Palestine,West Bank,Qalqilya,12,2022,20,0
+575,Palestine,West Bank,Al Quds,12,2022,39,0
+576,Palestine,West Bank,Jericho,12,2022,6,0
+577,Palestine,Gaza Strip,Gaza City,1,2023,1,0
+578,Palestine,Gaza Strip,North Gaza,1,2023,1,0
+579,Palestine,West Bank,Tubas,1,2023,13,0
+580,Palestine,West Bank,Tulkarm,1,2023,17,0
+581,Palestine,Gaza Strip,Khan Yunis,1,2023,0,0
+582,Palestine,West Bank,Hebron,1,2023,70,3
+583,Palestine,Gaza Strip,Rafah,1,2023,0,0
+584,Palestine,West Bank,Bethlehem,1,2023,46,2
+585,Palestine,West Bank,Salfit,1,2023,20,0
+586,Palestine,Gaza Strip,Deir El Balah,1,2023,1,0
+587,Palestine,West Bank,Nablus,1,2023,102,2
+588,Palestine,West Bank,Ramallah and Al Bireh,1,2023,57,2
+589,Palestine,West Bank,Jenin,1,2023,70,19
+590,Palestine,West Bank,Qalqilya,1,2023,37,3
+591,Palestine,West Bank,Al Quds,1,2023,67,12
+592,Palestine,West Bank,Jericho,1,2023,17,0
+593,Palestine,Gaza Strip,Gaza City,2,2023,6,0
+594,Palestine,Gaza Strip,North Gaza,2,2023,2,0
+595,Palestine,West Bank,Tubas,2,2023,8,1
+596,Palestine,West Bank,Tulkarm,2,2023,20,0
+597,Palestine,Gaza Strip,Khan Yunis,2,2023,3,0
+598,Palestine,West Bank,Hebron,2,2023,60,2
+599,Palestine,Gaza Strip,Rafah,2,2023,0,0
+600,Palestine,West Bank,Bethlehem,2,2023,29,0
+601,Palestine,West Bank,Salfit,2,2023,20,2
+602,Palestine,Gaza Strip,Deir El Balah,2,2023,4,0
+603,Palestine,West Bank,Nablus,2,2023,109,18
+604,Palestine,West Bank,Ramallah and Al Bireh,2,2023,66,0
+605,Palestine,West Bank,Jenin,2,2023,43,2
+606,Palestine,West Bank,Qalqilya,2,2023,15,0
+607,Palestine,West Bank,Al Quds,2,2023,49,5
+608,Palestine,West Bank,Jericho,2,2023,22,5
+609,Palestine,Gaza Strip,Gaza City,3,2023,2,0
+610,Palestine,Gaza Strip,North Gaza,3,2023,0,0
+611,Palestine,West Bank,Tubas,3,2023,4,0
+612,Palestine,West Bank,Tulkarm,3,2023,15,1
+613,Palestine,Gaza Strip,Khan Yunis,3,2023,2,0
+614,Palestine,West Bank,Hebron,3,2023,62,0
+615,Palestine,Gaza Strip,Rafah,3,2023,0,0
+616,Palestine,West Bank,Bethlehem,3,2023,38,0
+617,Palestine,West Bank,Salfit,3,2023,20,0
+618,Palestine,Gaza Strip,Deir El Balah,3,2023,0,0
+619,Palestine,West Bank,Nablus,3,2023,77,3
+620,Palestine,West Bank,Ramallah and Al Bireh,3,2023,64,1
+621,Palestine,West Bank,Jenin,3,2023,58,14
+622,Palestine,West Bank,Qalqilya,3,2023,18,3
+623,Palestine,West Bank,Al Quds,3,2023,39,1
+624,Palestine,West Bank,Jericho,3,2023,17,1
+625,Palestine,Gaza Strip,Gaza City,4,2023,6,0
+626,Palestine,Gaza Strip,North Gaza,4,2023,5,0
+627,Palestine,West Bank,Tubas,4,2023,12,0
+628,Palestine,West Bank,Tulkarm,4,2023,6,0
+629,Palestine,Gaza Strip,Khan Yunis,4,2023,3,0
+630,Palestine,West Bank,Hebron,4,2023,53,1
+631,Palestine,Gaza Strip,Rafah,4,2023,3,1
+632,Palestine,West Bank,Bethlehem,4,2023,41,1
+633,Palestine,West Bank,Salfit,4,2023,11,1
+634,Palestine,Gaza Strip,Deir El Balah,4,2023,4,0
+635,Palestine,West Bank,Nablus,4,2023,65,8
+636,Palestine,West Bank,Ramallah and Al Bireh,4,2023,47,0
+637,Palestine,West Bank,Jenin,4,2023,42,0
+638,Palestine,West Bank,Qalqilya,4,2023,5,1
+639,Palestine,West Bank,Al Quds,4,2023,45,0
+640,Palestine,West Bank,Jericho,4,2023,10,2
+641,Palestine,Gaza Strip,Gaza City,5,2023,24,18
+642,Palestine,Gaza Strip,North Gaza,5,2023,32,4
+643,Palestine,West Bank,Tubas,5,2023,7,0
+644,Palestine,West Bank,Tulkarm,5,2023,20,4
+645,Palestine,Gaza Strip,Khan Yunis,5,2023,32,8
+646,Palestine,West Bank,Hebron,5,2023,47,1
+647,Palestine,Gaza Strip,Rafah,5,2023,20,5
+648,Palestine,West Bank,Bethlehem,5,2023,38,0
+649,Palestine,West Bank,Salfit,5,2023,8,0
+650,Palestine,Gaza Strip,Deir El Balah,5,2023,10,1
+651,Palestine,West Bank,Nablus,5,2023,54,11
+652,Palestine,West Bank,Ramallah and Al Bireh,5,2023,52,0
+653,Palestine,West Bank,Jenin,5,2023,40,6
+654,Palestine,West Bank,Qalqilya,5,2023,15,0
+655,Palestine,West Bank,Al Quds,5,2023,37,0
+656,Palestine,West Bank,Jericho,5,2023,10,1
+657,Palestine,Gaza Strip,Gaza City,6,2023,0,0
+658,Palestine,Gaza Strip,North Gaza,6,2023,1,0
+659,Palestine,West Bank,Tubas,6,2023,10,1
+660,Palestine,West Bank,Tulkarm,6,2023,25,0
+661,Palestine,Gaza Strip,Khan Yunis,6,2023,0,0
+662,Palestine,West Bank,Hebron,6,2023,41,0
+663,Palestine,Gaza Strip,Rafah,6,2023,0,0
+664,Palestine,West Bank,Bethlehem,6,2023,23,1
+665,Palestine,West Bank,Salfit,6,2023,14,0
+666,Palestine,Gaza Strip,Deir El Balah,6,2023,0,0
+667,Palestine,West Bank,Nablus,6,2023,96,8
+668,Palestine,West Bank,Ramallah and Al Bireh,6,2023,83,3
+669,Palestine,West Bank,Jenin,6,2023,59,10
+670,Palestine,West Bank,Qalqilya,6,2023,18,0
+671,Palestine,West Bank,Al Quds,6,2023,25,1
+672,Palestine,West Bank,Jericho,6,2023,12,0
+673,Palestine,Gaza Strip,Gaza City,7,2023,1,0
+674,Palestine,Gaza Strip,North Gaza,7,2023,3,0
+675,Palestine,West Bank,Tubas,7,2023,8,0
+676,Palestine,West Bank,Tulkarm,7,2023,28,0
+677,Palestine,Gaza Strip,Khan Yunis,7,2023,0,0
+678,Palestine,West Bank,Hebron,7,2023,55,1
+679,Palestine,Gaza Strip,Rafah,7,2023,0,0
+680,Palestine,West Bank,Bethlehem,7,2023,31,0
+681,Palestine,West Bank,Salfit,7,2023,27,0
+682,Palestine,Gaza Strip,Deir El Balah,7,2023,0,0
+683,Palestine,West Bank,Nablus,7,2023,91,8
+684,Palestine,West Bank,Ramallah and Al Bireh,7,2023,73,1
+685,Palestine,West Bank,Jenin,7,2023,49,11
+686,Palestine,West Bank,Qalqilya,7,2023,24,3
+687,Palestine,West Bank,Al Quds,7,2023,41,0
+688,Palestine,West Bank,Jericho,7,2023,14,0
+689,Palestine,Gaza Strip,Gaza City,8,2023,1,0
+690,Palestine,Gaza Strip,North Gaza,8,2023,2,0
+691,Palestine,West Bank,Tubas,8,2023,12,0
+692,Palestine,West Bank,Tulkarm,8,2023,23,3
+693,Palestine,Gaza Strip,Khan Yunis,8,2023,0,0
+694,Palestine,West Bank,Hebron,8,2023,53,2
+695,Palestine,Gaza Strip,Rafah,8,2023,0,0
+696,Palestine,West Bank,Bethlehem,8,2023,15,0
+697,Palestine,West Bank,Salfit,8,2023,6,0
+698,Palestine,Gaza Strip,Deir El Balah,8,2023,0,0
+699,Palestine,West Bank,Nablus,8,2023,62,5
+700,Palestine,West Bank,Ramallah and Al Bireh,8,2023,64,4
+701,Palestine,West Bank,Jenin,8,2023,65,5
+702,Palestine,West Bank,Qalqilya,8,2023,22,0
+703,Palestine,West Bank,Al Quds,8,2023,43,2
+704,Palestine,West Bank,Jericho,8,2023,14,2
+705,Palestine,Gaza Strip,Gaza City,9,2023,16,7
+706,Palestine,Gaza Strip,North Gaza,9,2023,4,0
+707,Palestine,West Bank,Tubas,9,2023,10,1
+708,Palestine,West Bank,Tulkarm,9,2023,29,3
+709,Palestine,Gaza Strip,Khan Yunis,9,2023,1,0
+710,Palestine,West Bank,Hebron,9,2023,45,1
+711,Palestine,Gaza Strip,Rafah,9,2023,4,0
+712,Palestine,West Bank,Bethlehem,9,2023,16,0
+713,Palestine,West Bank,Salfit,9,2023,6,0
+714,Palestine,Gaza Strip,Deir El Balah,9,2023,1,0
+715,Palestine,West Bank,Nablus,9,2023,61,0
+716,Palestine,West Bank,Ramallah and Al Bireh,9,2023,59,1
+717,Palestine,West Bank,Jenin,9,2023,55,5
+718,Palestine,West Bank,Qalqilya,9,2023,25,0
+719,Palestine,West Bank,Al Quds,9,2023,39,0
+720,Palestine,West Bank,Jericho,9,2023,24,2
+721,Palestine,Gaza Strip,Gaza City,10,2023,332,3950
+722,Palestine,Gaza Strip,North Gaza,10,2023,191,1417
+723,Palestine,West Bank,Tubas,10,2023,37,4
+724,Palestine,West Bank,Tulkarm,10,2023,57,22
+725,Palestine,Gaza Strip,Khan Yunis,10,2023,169,1220
+726,Palestine,West Bank,Hebron,10,2023,210,11
+727,Palestine,Gaza Strip,Rafah,10,2023,110,966
+728,Palestine,West Bank,Bethlehem,10,2023,74,2
+729,Palestine,West Bank,Salfit,10,2023,50,0
+730,Palestine,Gaza Strip,Deir El Balah,10,2023,136,1387
+731,Palestine,West Bank,Nablus,10,2023,208,24
+732,Palestine,West Bank,Ramallah and Al Bireh,10,2023,158,14
+733,Palestine,West Bank,Jenin,10,2023,94,17
+734,Palestine,West Bank,Qalqilya,10,2023,59,6
+735,Palestine,West Bank,Al Quds,10,2023,113,11
+736,Palestine,West Bank,Jericho,10,2023,42,6
+737,Palestine,Gaza Strip,Gaza City,11,2023,465,2506
+738,Palestine,Gaza Strip,North Gaza,11,2023,267,1950
+739,Palestine,West Bank,Tubas,11,2023,36,5
+740,Palestine,West Bank,Tulkarm,11,2023,75,26
+741,Palestine,Gaza Strip,Khan Yunis,11,2023,188,651
+742,Palestine,West Bank,Hebron,11,2023,122,12
+743,Palestine,Gaza Strip,Rafah,11,2023,95,266
+744,Palestine,West Bank,Bethlehem,11,2023,59,6
+745,Palestine,West Bank,Salfit,11,2023,27,0
+746,Palestine,Gaza Strip,Deir El Balah,11,2023,169,815
+747,Palestine,West Bank,Nablus,11,2023,163,13
+748,Palestine,West Bank,Ramallah and Al Bireh,11,2023,84,10
+749,Palestine,West Bank,Jenin,11,2023,124,58
+750,Palestine,West Bank,Qalqilya,11,2023,57,2
+751,Palestine,West Bank,Al Quds,11,2023,50,8
+752,Palestine,West Bank,Jericho,11,2023,34,2
+753,Palestine,Gaza Strip,Gaza City,12,2023,371,2399
+754,Palestine,Gaza Strip,North Gaza,12,2023,244,1248
+755,Palestine,West Bank,Tubas,12,2023,20,12
+756,Palestine,West Bank,Tulkarm,12,2023,54,13
+757,Palestine,Gaza Strip,Khan Yunis,12,2023,413,1493
+758,Palestine,West Bank,Hebron,12,2023,113,9
+759,Palestine,Gaza Strip,Rafah,12,2023,147,501
+760,Palestine,West Bank,Bethlehem,12,2023,60,3
+761,Palestine,West Bank,Salfit,12,2023,17,1
+762,Palestine,Gaza Strip,Deir El Balah,12,2023,248,1289
+763,Palestine,West Bank,Nablus,12,2023,117,5
+764,Palestine,West Bank,Ramallah and Al Bireh,12,2023,72,2
+765,Palestine,West Bank,Jenin,12,2023,82,14
+766,Palestine,West Bank,Qalqilya,12,2023,67,4
+767,Palestine,West Bank,Al Quds,12,2023,43,5
+768,Palestine,West Bank,Jericho,12,2023,19,0
+769,Palestine,Gaza Strip,Gaza City,1,2024,279,1221
+770,Palestine,Gaza Strip,North Gaza,1,2024,163,417
+771,Palestine,West Bank,Tubas,1,2024,10,1
+772,Palestine,West Bank,Tulkarm,1,2024,44,14
+773,Palestine,Gaza Strip,Khan Yunis,1,2024,417,1764
+774,Palestine,West Bank,Hebron,1,2024,81,11
+775,Palestine,Gaza Strip,Rafah,1,2024,120,222
+776,Palestine,West Bank,Bethlehem,1,2024,35,1
+777,Palestine,West Bank,Salfit,1,2024,18,0
+778,Palestine,Gaza Strip,Deir El Balah,1,2024,325,1385
+779,Palestine,West Bank,Nablus,1,2024,102,6
+780,Palestine,West Bank,Ramallah and Al Bireh,1,2024,60,11
+781,Palestine,West Bank,Jenin,1,2024,88,15
+782,Palestine,West Bank,Qalqilya,1,2024,64,4
+783,Palestine,West Bank,Al Quds,1,2024,39,3
+784,Palestine,West Bank,Jericho,1,2024,7,1
+785,Palestine,Gaza Strip,Gaza City,2,2024,308,952
+786,Palestine,Gaza Strip,North Gaza,2,2024,117,96
+787,Palestine,West Bank,Tubas,2,2024,20,3
+788,Palestine,West Bank,Tulkarm,2,2024,36,5
+789,Palestine,Gaza Strip,Khan Yunis,2,2024,290,855
+790,Palestine,West Bank,Hebron,2,2024,66,3
+791,Palestine,Gaza Strip,Rafah,2,2024,152,451
+792,Palestine,West Bank,Bethlehem,2,2024,44,2
+793,Palestine,West Bank,Salfit,2,2024,15,0
+794,Palestine,Gaza Strip,Deir El Balah,2,2024,203,859
+795,Palestine,West Bank,Nablus,2,2024,110,7
+796,Palestine,West Bank,Ramallah and Al Bireh,2,2024,69,0
+797,Palestine,West Bank,Jenin,2,2024,66,8
+798,Palestine,West Bank,Qalqilya,2,2024,34,2
+799,Palestine,West Bank,Al Quds,2,2024,31,6
+800,Palestine,West Bank,Jericho,2,2024,7,0
+801,Palestine,Gaza Strip,Gaza City,3,2024,327,779
+802,Palestine,Gaza Strip,North Gaza,3,2024,172,146
+803,Palestine,West Bank,Tubas,3,2024,18,0
+804,Palestine,West Bank,Tulkarm,3,2024,46,11
+805,Palestine,Gaza Strip,Khan Yunis,3,2024,264,664
+806,Palestine,West Bank,Hebron,3,2024,72,2
+807,Palestine,Gaza Strip,Rafah,3,2024,133,213
+808,Palestine,West Bank,Bethlehem,3,2024,41,2
+809,Palestine,West Bank,Salfit,3,2024,11,0
+810,Palestine,Gaza Strip,Deir El Balah,3,2024,236,826
+811,Palestine,West Bank,Nablus,3,2024,116,4
+812,Palestine,West Bank,Ramallah and Al Bireh,3,2024,51,7
+813,Palestine,West Bank,Jenin,3,2024,78,13
+814,Palestine,West Bank,Qalqilya,3,2024,39,0
+815,Palestine,West Bank,Al Quds,3,2024,36,3
+816,Palestine,West Bank,Jericho,3,2024,9,3
+817,Palestine,Gaza Strip,Gaza City,4,2024,302,398
+818,Palestine,Gaza Strip,North Gaza,4,2024,132,265
+819,Palestine,West Bank,Tubas,4,2024,21,3
+820,Palestine,West Bank,Tulkarm,4,2024,43,16
+821,Palestine,Gaza Strip,Khan Yunis,4,2024,124,162
+822,Palestine,West Bank,Hebron,4,2024,57,4
+823,Palestine,Gaza Strip,Rafah,4,2024,103,324
+824,Palestine,West Bank,Bethlehem,4,2024,32,0
+825,Palestine,West Bank,Salfit,4,2024,14,0
+826,Palestine,Gaza Strip,Deir El Balah,4,2024,230,570
+827,Palestine,West Bank,Nablus,4,2024,121,7
+828,Palestine,West Bank,Ramallah and Al Bireh,4,2024,61,3
+829,Palestine,West Bank,Jenin,4,2024,60,2
+830,Palestine,West Bank,Qalqilya,4,2024,43,0
+831,Palestine,West Bank,Al Quds,4,2024,22,1
+832,Palestine,West Bank,Jericho,4,2024,10,1
+833,Palestine,Gaza Strip,Gaza City,5,2024,342,569
+834,Palestine,Gaza Strip,North Gaza,5,2024,223,754
+835,Palestine,West Bank,Tubas,5,2024,27,0
+836,Palestine,West Bank,Tulkarm,5,2024,48,13
+837,Palestine,Gaza Strip,Khan Yunis,5,2024,84,45
+838,Palestine,West Bank,Hebron,5,2024,88,1
+839,Palestine,Gaza Strip,Rafah,5,2024,289,788
+840,Palestine,West Bank,Bethlehem,5,2024,49,0
+841,Palestine,West Bank,Salfit,5,2024,22,0
+842,Palestine,Gaza Strip,Deir El Balah,5,2024,192,318
+843,Palestine,West Bank,Nablus,5,2024,157,4
+844,Palestine,West Bank,Ramallah and Al Bireh,5,2024,85,1
+845,Palestine,West Bank,Jenin,5,2024,48,14
+846,Palestine,West Bank,Qalqilya,5,2024,45,0
+847,Palestine,West Bank,Al Quds,5,2024,29,2
+848,Palestine,West Bank,Jericho,5,2024,13,0
+849,Palestine,Gaza Strip,Gaza City,6,2024,297,573
+850,Palestine,Gaza Strip,North Gaza,6,2024,58,41
+851,Palestine,West Bank,Tubas,6,2024,22,1
+852,Palestine,West Bank,Tulkarm,6,2024,35,6
+853,Palestine,Gaza Strip,Khan Yunis,6,2024,90,102
+854,Palestine,West Bank,Hebron,6,2024,73,0
+855,Palestine,Gaza Strip,Rafah,6,2024,277,706
+856,Palestine,West Bank,Bethlehem,6,2024,24,1
+857,Palestine,West Bank,Salfit,6,2024,12,0
+858,Palestine,Gaza Strip,Deir El Balah,6,2024,205,624
+859,Palestine,West Bank,Nablus,6,2024,133,4
+860,Palestine,West Bank,Ramallah and Al Bireh,6,2024,64,5
+861,Palestine,West Bank,Jenin,6,2024,59,16
+862,Palestine,West Bank,Qalqilya,6,2024,19,5
+863,Palestine,West Bank,Al Quds,6,2024,26,0
+864,Palestine,West Bank,Jericho,6,2024,12,2
+865,Palestine,Gaza Strip,Gaza City,7,2024,335,559
+866,Palestine,Gaza Strip,North Gaza,7,2024,56,54
+867,Palestine,West Bank,Tubas,7,2024,15,2
+868,Palestine,West Bank,Tulkarm,7,2024,49,14
+869,Palestine,Gaza Strip,Khan Yunis,7,2024,183,540
+870,Palestine,West Bank,Hebron,7,2024,92,5
+871,Palestine,Gaza Strip,Rafah,7,2024,194,627
+872,Palestine,West Bank,Bethlehem,7,2024,40,0
+873,Palestine,West Bank,Salfit,7,2024,13,0
+874,Palestine,Gaza Strip,Deir El Balah,7,2024,203,534
+875,Palestine,West Bank,Nablus,7,2024,164,5
+876,Palestine,West Bank,Ramallah and Al Bireh,7,2024,96,5
+877,Palestine,West Bank,Jenin,7,2024,59,12
+878,Palestine,West Bank,Qalqilya,7,2024,40,0
+879,Palestine,West Bank,Al Quds,7,2024,37,1
+880,Palestine,West Bank,Jericho,7,2024,13,0
+881,Palestine,Gaza Strip,Gaza City,8,2024,277,494
+882,Palestine,Gaza Strip,North Gaza,8,2024,104,89
+883,Palestine,West Bank,Tubas,8,2024,24,15
+884,Palestine,West Bank,Tulkarm,8,2024,48,34
+885,Palestine,Gaza Strip,Khan Yunis,8,2024,294,580
+886,Palestine,West Bank,Hebron,8,2024,83,3
+887,Palestine,Gaza Strip,Rafah,8,2024,161,676
+888,Palestine,West Bank,Bethlehem,8,2024,42,3
+889,Palestine,West Bank,Salfit,8,2024,35,4
+890,Palestine,Gaza Strip,Deir El Balah,8,2024,245,428
+891,Palestine,West Bank,Nablus,8,2024,144,3
+892,Palestine,West Bank,Ramallah and Al Bireh,8,2024,67,3
+893,Palestine,West Bank,Jenin,8,2024,51,40
+894,Palestine,West Bank,Qalqilya,8,2024,49,4
+895,Palestine,West Bank,Al Quds,8,2024,31,2
+896,Palestine,West Bank,Jericho,8,2024,18,0
+897,Palestine,Gaza Strip,Gaza City,9,2024,211,350
+898,Palestine,Gaza Strip,North Gaza,9,2024,104,140
+899,Palestine,West Bank,Tubas,9,2024,25,14
+900,Palestine,West Bank,Tulkarm,9,2024,35,11
+901,Palestine,Gaza Strip,Khan Yunis,9,2024,121,153
+902,Palestine,West Bank,Hebron,9,2024,88,7
+903,Palestine,Gaza Strip,Rafah,9,2024,135,293
+904,Palestine,West Bank,Bethlehem,9,2024,52,0
+905,Palestine,West Bank,Salfit,9,2024,21,0
+906,Palestine,Gaza Strip,Deir El Balah,9,2024,176,279
+907,Palestine,West Bank,Nablus,9,2024,131,3
+908,Palestine,West Bank,Ramallah and Al Bireh,9,2024,57,2
+909,Palestine,West Bank,Jenin,9,2024,75,13
+910,Palestine,West Bank,Qalqilya,9,2024,33,0
+911,Palestine,West Bank,Al Quds,9,2024,33,3
+912,Palestine,West Bank,Jericho,9,2024,16,4
+913,Palestine,Gaza Strip,Gaza City,10,2024,259,321
+914,Palestine,Gaza Strip,North Gaza,10,2024,262,1809
+915,Palestine,West Bank,Tubas,10,2024,41,2
+916,Palestine,West Bank,Tulkarm,10,2024,47,29
+917,Palestine,Gaza Strip,Khan Yunis,10,2024,113,198
+918,Palestine,West Bank,Hebron,10,2024,70,2
+919,Palestine,Gaza Strip,Rafah,10,2024,134,128
+920,Palestine,West Bank,Bethlehem,10,2024,49,0
+921,Palestine,West Bank,Salfit,10,2024,41,0
+922,Palestine,Gaza Strip,Deir El Balah,10,2024,185,364
+923,Palestine,West Bank,Nablus,10,2024,179,8
+924,Palestine,West Bank,Ramallah and Al Bireh,10,2024,64,1
+925,Palestine,West Bank,Jenin,10,2024,62,5
+926,Palestine,West Bank,Qalqilya,10,2024,28,1
+927,Palestine,West Bank,Al Quds,10,2024,44,2
+928,Palestine,West Bank,Jericho,10,2024,9,1
+929,Palestine,Gaza Strip,Gaza City,11,2024,235,350
+930,Palestine,Gaza Strip,North Gaza,11,2024,261,1239
+931,Palestine,West Bank,Tubas,11,2024,17,3
+932,Palestine,West Bank,Tulkarm,11,2024,41,3
+933,Palestine,Gaza Strip,Khan Yunis,11,2024,88,177
+934,Palestine,West Bank,Hebron,11,2024,60,1
+935,Palestine,Gaza Strip,Rafah,11,2024,128,138
+936,Palestine,West Bank,Bethlehem,11,2024,57,0
+937,Palestine,West Bank,Salfit,11,2024,36,1
+938,Palestine,Gaza Strip,Deir El Balah,11,2024,179,263
+939,Palestine,West Bank,Nablus,11,2024,122,4
+940,Palestine,West Bank,Ramallah and Al Bireh,11,2024,53,0
+941,Palestine,West Bank,Jenin,11,2024,74,23
+942,Palestine,West Bank,Qalqilya,11,2024,20,0
+943,Palestine,West Bank,Al Quds,11,2024,30,2
+944,Palestine,West Bank,Jericho,11,2024,8,0
+945,Palestine,Gaza Strip,Gaza City,12,2024,237,437
+946,Palestine,Gaza Strip,North Gaza,12,2024,187,531
+947,Palestine,West Bank,Tubas,12,2024,27,6
+948,Palestine,West Bank,Tulkarm,12,2024,35,13
+949,Palestine,Gaza Strip,Khan Yunis,12,2024,74,122
+950,Palestine,West Bank,Hebron,12,2024,51,1
+951,Palestine,Gaza Strip,Rafah,12,2024,106,118
+952,Palestine,West Bank,Bethlehem,12,2024,33,2
+953,Palestine,West Bank,Salfit,12,2024,20,0
+954,Palestine,Gaza Strip,Deir El Balah,12,2024,164,295
+955,Palestine,West Bank,Nablus,12,2024,150,8
+956,Palestine,West Bank,Ramallah and Al Bireh,12,2024,44,0
+957,Palestine,West Bank,Jenin,12,2024,67,17
+958,Palestine,West Bank,Qalqilya,12,2024,22,3
+959,Palestine,West Bank,Al Quds,12,2024,25,2
+960,Palestine,West Bank,Jericho,12,2024,11,0
+961,Palestine,Gaza Strip,Gaza City,1,2025,169,684
+962,Palestine,Gaza Strip,North Gaza,1,2025,70,222
+963,Palestine,West Bank,Tubas,1,2025,28,6
+964,Palestine,West Bank,Tulkarm,1,2025,31,0
+965,Palestine,Gaza Strip,Khan Yunis,1,2025,88,138
+966,Palestine,West Bank,Hebron,1,2025,61,0
+967,Palestine,Gaza Strip,Rafah,1,2025,71,67
+968,Palestine,West Bank,Bethlehem,1,2025,36,0
+969,Palestine,West Bank,Salfit,1,2025,34,0
+970,Palestine,Gaza Strip,Deir El Balah,1,2025,129,351
+971,Palestine,West Bank,Nablus,1,2025,124,6
+972,Palestine,West Bank,Ramallah and Al Bireh,1,2025,51,0
+973,Palestine,West Bank,Jenin,1,2025,66,29
+974,Palestine,West Bank,Qalqilya,1,2025,46,3
+975,Palestine,West Bank,Al Quds,1,2025,19,0
+976,Palestine,West Bank,Jericho,1,2025,13,0

@@ -1,0 +1,101 @@
+---
+title: "lab9"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+```
+
+Today we'll be applying the methods we've learned so far.
+
+The dataset we'll be using comes from the [Armed Conflict Location and Event Data](https://acleddata.com) database. It contains data on armed conflict events and fatalities in Palestine between January 2020 to January 2025. I've cleaned the data somewhat so that it contains the following variables:
+
+- ``Admin1``: "West Bank" or "Gaza Strip"
+- ``Admin2``: The city or town
+- ``Month``: 1 to 12
+- ``Year``
+- ``Events``: The number of armed conflict events in the given month and year, per ACLED's definition.
+- ``Fatalities``: The total number of fatalities across all events in the given month and year, per ACLED's estimate.
+
+## Importing and Cleaning
+
+Download the data (filename ``acledpalestine.csv``) [here](https://github.com/yuanzhouwang/yuanzhouwang.github.io/blob/main/acledpalestine.csv). Import the data and filter out only the rows of data from the West Bank. We will only be looking at armed conflict events in the West Bank. Create a new numeric binary variable called ``prepost`` that takes on value $1$ for time periods post-October 2023 (including October 2023) and $0$ for time periods pre-October 2023.
+
+```{r}
+# [Your Code Here]
+df <- read.csv("acledpalestine.csv")
+df <- df %>%
+  filter(Admin1 == "West Bank") %>%
+  mutate(prepost = ifelse((Month >= 10 & Year == 2023) | (Year > 2023), 1, 0))
+```
+
+
+## The Difference−in−means Estimator
+
+What is the average number of monthly fatalities in the West Bank prior to October 2023? What is the average number after (and including) October 2023? Then compute the difference-in-means estimator.
+
+```{r}
+# [Your Code Here]
+mean(df[df$prepost == 1, ]$Fatalities)
+mean(df[df$prepost == 0, ]$Fatalities)
+diff_prepost <- mean(df[df$prepost == 1, ]$Fatalities) - mean(df[df$prepost == 0, ]$Fatalities)
+
+df %>%
+  group_by(prepost) %>%
+  summarize(mean_fatalities = mean(Fatalities))
+```
+
+## Calculating Standard Error
+
+For a sample of $n_X$ independent and identically distributed (IID) random variables $X_1, \cdots, X_{n_X}$ and another sample of $n_Y$ IID random variables $Y_1, \cdots, Y_{n_Y}$, the standard error for the difference-in-means estimator is given by:
+
+$$
+SE = \sqrt{\frac{s^2_X}{n_X}+\frac{s^2_Y}{n_Y}}
+$$
+
+where $s_X^2$ and $s_Y^2$ are the sample variances
+
+Compute the standard error of the difference-in-means estimator.
+
+```{r}
+sd_post <- sd(df[df$prepost == 1, ]$Fatalities)
+sd_pre <- sd(df[df$prepost == 0, ]$Fatalities)
+
+n_post <- sum(df$prepost == 1)
+n_pre <- sum(df$prepost == 0)
+
+se_df <- sqrt((sd_post^2 / n_post) + (sd_pre^2 / n_pre))
+se_df
+```
+
+## Creating the Confidence Interval
+
+The **95% confidence interval (CI)** for the difference in means estimator $\hat{\delta}$ (where the variance of the two groups is not equal) is given by:
+
+$$
+CI \approx \left( \hat{\delta} - 1.96 \times SE \; , \; \hat{\delta} + 1.96 \times SE \right)
+$$
+1.96 is the (approximate) critical value for a 95% confidence level under the standard normal distribution, but you can use 2.576 for 99% CI and 1.645 for 90% CI.
+
+Calculate the 95% confidence intervals for the difference-in-means estimate.
+
+```{r}
+ci_df <- c(diff_prepost - se_df*1.96, diff_prepost + se_df*1.96)
+ci_df
+```
+
+We want to know if the difference in means is statistically significant. To do so, we first compute the t-statistic, which for the two-sample t-test is
+$$
+t = \frac{\hat{\delta}}{SE}
+$$
+Under the null hypothesis ($\hat{\delta} = 0$), the t-statistic should follow a t-distribution. The t-distribution has degrees of freedom $\texttt{df} = n_X + n_Y - 2$ if variances are equal or uses Welch's approximation of the degrees of freedom^[You don't need to know the formula for this. R can calculate it for you. If you're interested, it's $df= \frac{ \left(\dfrac{s_{1}^{2}}{n_1}+\dfrac{s_{2}^{2}}{n_2}\right)^{\!2} }{ \dfrac{(s_{1}^{2}/n^{}_1)^2}{n_1-1}+ \dfrac{(s_{2}^{2}/n^{}_2)^2}{n_2-1} }$.] The t-distribution is very similar to the normal distribution but has fatter tails to capture the greater variability from using an estimate of the standard deviation rather than the population sample deviation (which is unknown).
+
+Thus, given some t-statistic we can calculate the p-value: the probability that we get this t-statistic when the null is true (i.e., when there is no difference in means). We do so by using ``pt(q, df)``, which calculates the area under the curve up to ``q`` for the $t_{\texttt{df}}$ distribution. 
+
+You can conduct a t-test in R by using ``t.test(x_values, y_values, "two.sided", mu=0, var.equal = TRUE)``
+
+```{r}
+t.test(df[df$prepost == 1, ]$Fatalities, df[df$prepost == 0, ]$Fatalities, alternative = "two.sided", mu=0, var.equal = FALSE)
+```
