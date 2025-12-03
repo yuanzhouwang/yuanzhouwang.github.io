@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lab 10 - Presenting Results</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Andrew Wang</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">About</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    CS&amp;SS 321
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="teaching.html">Overview</a>
+    </li>
+    <li>
+      <a href="lab1.html">Week 1</a>
+    </li>
+    <li>
+      <a href="lab2.html">Week 2</a>
+    </li>
+    <li>
+      <a href="lab3.html">Week 3</a>
+    </li>
+    <li>
+      <a href="lab4.html">Week 4</a>
+    </li>
+    <li>
+      <a href="lab5.html">Week 5</a>
+    </li>
+    <li>
+      <a href="lab6.html">Week 6</a>
+    </li>
+    <li>
+      <a href="lab7.html">Week 7</a>
+    </li>
+    <li>
+      <a href="lab8.html">Week 8</a>
+    </li>
+    <li>
+      <a href="lab9.html">Week 9</a>
+    </li>
+    <li>
+      <a href="lab10.html">Week 10</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Research
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="research.html">Papers</a>
+    </li>
+    <li>
+      <a href="CV.html">CV</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Toys
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="simmodel.html">Protest-Repression Model</a>
+    </li>
+    <li>
+      <a href="pdlparking.html">Should I Pay to Park in PDL?</a>
+    </li>
+    <li>
+      <a href="regplot.html">Visualizing Multiple Regression</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lab 10 - Presenting Results</h1>
+
+</div>
+
+
+<div id="objectives" class="section level2">
+<h2>Objectives:</h2>
+<ul>
+<li>Write basic statistical notation in R Markdown using LaTeX.</li>
+<li>Present regression results using the <code>stargazer</code>
+package.</li>
+<li>Present t-test results in a clear, well-formatted table.</li>
+<li>Export your tables in different formats (text, HTML, LaTeX)
+depending on how you will present your work.</li>
+</ul>
+<hr />
+</div>
+<div id="math-notation" class="section level2">
+<h2>Math Notation</h2>
+<p>There are three ways to set up math notation:</p>
+<ul>
+<li>Inline: Use single dollar signs to demarcate the bounds of math
+notation, e.g. <span class="math inline">\(H_0: \mu_1 =
+\mu_2\)</span></li>
+<li>New line: Use two dollar signs to demarcate the bounds of math
+notation, e.g.</li>
+</ul>
+<p><span class="math display">\[
+Y_i = \hat{\alpha} + \hat \beta X_i + \varepsilon_i
+\]</span></p>
+<ul>
+<li>Use <code>\begin{equation}</code>… <code>\end{equation}</code>. Use
+<code>equation*</code> to remove any labeling, and <code>align</code> /
+<code>align*</code> to set up multiple-line formulas.</li>
+</ul>
+<p>For example:</p>
+<pre class="tex"><code>\begin{align*}
+H_0 &amp;: \beta_1 = 0 \\
+H_A &amp;: \beta_1 \neq 0
+\end{align*}</code></pre>
+<p>You can mix regular text and math in R Markdown. This is very useful
+when you are explaining your models and hypotheses.</p>
+<hr />
+</div>
+<div id="presenting-regression-results-with-stargazer"
+class="section level2">
+<h2>Presenting Regression Results with <code>stargazer</code></h2>
+<p>Load the package via:</p>
+<pre class="r"><code>library(stargazer)</code></pre>
+<pre><code>## 
+## Please cite as:</code></pre>
+<pre><code>##  Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.</code></pre>
+<pre><code>##  R package version 5.2.3. https://CRAN.R-project.org/package=stargazer</code></pre>
+<p>We will use the <code>iris</code> dataset for illustration.</p>
+<pre class="r"><code>data(iris)
+iris &lt;- iris %&gt;%
+  filter(Species != &quot;setosa&quot;) %&gt;%
+  mutate(Species = ifelse(Species == &quot;virginica&quot;, 1, 0))
+
+head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          7.0         3.2          4.7         1.4       0
+## 2          6.4         3.2          4.5         1.5       0
+## 3          6.9         3.1          4.9         1.5       0
+## 4          5.5         2.3          4.0         1.3       0
+## 5          6.5         2.8          4.6         1.5       0
+## 6          5.7         2.8          4.5         1.3       0</code></pre>
+<p>We can compute regression results:</p>
+<pre class="r"><code>fit1 &lt;- lm(Sepal.Length ~ Sepal.Width + Species, data = iris)
+fit1</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Sepal.Length ~ Sepal.Width + Species, data = iris)
+## 
+## Coefficients:
+## (Intercept)  Sepal.Width      Species  
+##      3.4879       0.8838       0.4717</code></pre>
+<p>And use <code>stargazer</code> to produce a nicely formatted
+regression table:</p>
+<pre class="r"><code>stargazer(fit1,
+          type = &quot;text&quot;,  # Try: &quot;latex&quot; and &quot;html&quot;
+          title = &quot;Regression Results&quot;,
+          dep.var.labels = c(&quot;Sepal Length&quot;),
+          covariate.labels = c(&quot;Sepal Width&quot;, &quot;Virginica&quot;, &quot;Intercept&quot;),
+          digits = 3,
+          out.header = FALSE
+          )</code></pre>
+<pre><code>## 
+## Regression Results
+## ===============================================
+##                         Dependent variable:    
+##                     ---------------------------
+##                            Sepal Length        
+## -----------------------------------------------
+## Sepal Width                  0.884***          
+##                               (0.162)          
+##                                                
+## Virginica                    0.472***          
+##                               (0.107)          
+##                                                
+## Intercept                    3.488***          
+##                               (0.453)          
+##                                                
+## -----------------------------------------------
+## Observations                    100            
+## R2                             0.423           
+## Adjusted R2                    0.411           
+## Residual Std. Error       0.509 (df = 97)      
+## F Statistic           35.484*** (df = 2; 97)   
+## ===============================================
+## Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<ul>
+<li><code>type = "text"</code> prints a plain-text table in your console
+/ knitted output.</li>
+<li><code>type = "html"</code> produces HTML code (good for HTML
+documents or websites).</li>
+<li><code>type = "latex"</code> produces LaTeX code (good for papers and
+problem sets written in LaTeX).</li>
+</ul>
+<div id="interpreting-the-regression" class="section level3">
+<h3>Interpreting the Regression</h3>
+<p>In LaTeX notation, our model is:</p>
+<p><span class="math display">\[
+\text{SepalLength}_i = \hat\alpha + \hat{\beta}_1 \text{SepalWidth}_i +
+\hat{\beta}_2 \text{Virginica}_i + \hat{\varepsilon}_i
+\]</span></p>
+<hr />
+</div>
+</div>
+<div id="multiple-models-in-one-table" class="section level2">
+<h2>Multiple Models in One Table</h2>
+<p><code>stargazer</code> can show more than one model at a time. This
+is useful when you want to compare specifications.</p>
+<pre class="r"><code>fit2 &lt;- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Species, data = iris)
+fit3 &lt;- lm(Sepal.Length ~ Sepal.Width + Species + Sepal.Width * Species, data = iris)  # interaction
+
+stargazer(fit1, fit2, fit3,
+          type = &quot;text&quot;,
+          title = &quot;Sepal Length: Model Comparison&quot;,
+          dep.var.labels = c(&quot;Sepal Length&quot;),
+          column.labels = c(&quot;Baseline&quot;, &quot;Add Petal Length&quot;, &quot;Interaction&quot;),
+          covariate.labels = c(&quot;Sepal Width&quot;,
+                               &quot;Petal Length&quot;,
+                               &quot;Virginica&quot;,
+                               &quot;Sepal Width : Virginica&quot;,
+                               &quot;Intercept&quot;),
+          digits = 3,
+          align = TRUE,
+          no.space = FALSE
+          )</code></pre>
+<pre><code>## 
+## Sepal Length: Model Comparison
+## =============================================================================================
+##                                                  Dependent variable:                         
+##                         ---------------------------------------------------------------------
+##                                                     Sepal Length                             
+##                                Baseline           Add Petal Length          Interaction      
+##                                  (1)                     (2)                    (3)          
+## ---------------------------------------------------------------------------------------------
+## Sepal Width                    0.884***                0.231*                 0.865***       
+##                                (0.162)                 (0.119)                (0.233)        
+##                                                                                              
+## Petal Length                                          0.858***                               
+##                                                        (0.074)                               
+##                                                                                              
+## Virginica                      0.472***               -0.503***                0.367         
+##                                (0.107)                 (0.109)                (0.938)        
+##                                                                                              
+## Sepal Width : Virginica                                                        0.036         
+##                                                                               (0.325)        
+##                                                                                              
+## Intercept                      3.488***               1.642***                3.540***       
+##                                (0.453)                 (0.333)                (0.649)        
+##                                                                                              
+## ---------------------------------------------------------------------------------------------
+## Observations                     100                     100                    100          
+## R2                              0.423                   0.761                  0.423         
+## Adjusted R2                     0.411                   0.753                  0.405         
+## Residual Std. Error        0.509 (df = 97)         0.329 (df = 96)        0.511 (df = 96)    
+## F Statistic             35.484*** (df = 2; 97) 101.704*** (df = 3; 96) 23.419*** (df = 3; 96)
+## =============================================================================================
+## Note:                                                             *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<p>Note:</p>
+<ul>
+<li><code>column.labels</code> names each column (model).</li>
+<li><code>covariate.labels</code> lets you replace variable names with
+more readable labels.</li>
+<li><code>align = TRUE</code> makes the columns line up nicely in the
+text output.</li>
+<li><code>no.space = TRUE</code> removes extra blank lines below the
+table.</li>
+</ul>
+<hr />
+</div>
+<div id="adding-notes-and-custom-lines" class="section level2">
+<h2>Adding Notes and Custom Lines</h2>
+<p>It is often helpful to add notes below your table:</p>
+<pre class="r"><code>stargazer(fit1, fit2,
+          type = &quot;text&quot;,
+          title = &quot;Sepal Length: Alternative Specifications&quot;,
+          dep.var.labels = &quot;Sepal Length&quot;,
+          column.labels = c(&quot;Baseline&quot;, &quot;Add Petal Length&quot;),
+          covariate.labels = c(&quot;Sepal Width&quot;, 
+                               &quot;Virginica&quot;,
+                               &quot;Petal Length&quot;),
+          digits = 3,
+          add.lines = list(
+            c(&quot;Controls&quot;, &quot;No&quot;, &quot;Yes&quot;)
+          ),
+          notes = &quot;Robust standard errors not used here; this is for illustration only.&quot;,
+          notes.align = &quot;l&quot;
+          )</code></pre>
+<pre><code>## 
+## Sepal Length: Alternative Specifications
+## =========================================================================================
+##                                              Dependent variable:                         
+##                     ---------------------------------------------------------------------
+##                                                 Sepal Length                             
+##                                  Baseline                       Add Petal Length         
+##                                    (1)                                (2)                
+## -----------------------------------------------------------------------------------------
+## Sepal Width                      0.884***                            0.231*              
+##                                  (0.162)                            (0.119)              
+##                                                                                          
+## Virginica                                                           0.858***             
+##                                                                     (0.074)              
+##                                                                                          
+## Petal Length                     0.472***                          -0.503***             
+##                                  (0.107)                            (0.109)              
+##                                                                                          
+## Constant                         3.488***                           1.642***             
+##                                  (0.453)                            (0.333)              
+##                                                                                          
+## -----------------------------------------------------------------------------------------
+## Controls                            No                                Yes                
+## Observations                       100                                100                
+## R2                                0.423                              0.761               
+## Adjusted R2                       0.411                              0.753               
+## Residual Std. Error          0.509 (df = 97)                    0.329 (df = 96)          
+## F Statistic               35.484*** (df = 2; 97)            101.704*** (df = 3; 96)      
+## =========================================================================================
+## Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01                                          
+##                     Robust standard errors not used here; this is for illustration only.</code></pre>
+<ul>
+<li><code>add.lines</code> lets you add extra rows (e.g., “Controls”,
+“Fixed Effects”, etc.).</li>
+<li><code>notes</code> and <code>notes.align</code> let you include
+additional information about the model.</li>
+</ul>
+<hr />
+</div>
+<div id="saving-tables-to-a-file" class="section level2">
+<h2>Saving Tables to a File</h2>
+<p>If you want to use the table in another document (for example, a
+LaTeX paper), you can save the output to a file with the
+<code>out</code> argument:</p>
+<pre class="r"><code>stargazer(fit1,
+          type = &quot;latex&quot;,
+          title = &quot;Regression Results&quot;,
+          dep.var.labels = &quot;Sepal Length&quot;,
+          covariate.labels = c(&quot;Sepal Width&quot;, &quot;Virginica&quot;),
+          digits = 3,
+          out = &quot;regression_table.tex&quot;
+          )</code></pre>
+<pre><code>## 
+## % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+## % Date and time: Wed, Dec 03, 2025 - 10:55:53 AM
+## \begin{table}[!htbp] \centering 
+##   \caption{Regression Results} 
+##   \label{} 
+## \begin{tabular}{@{\extracolsep{5pt}}lc} 
+## \\[-1.8ex]\hline 
+## \hline \\[-1.8ex] 
+##  &amp; \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+## \cline{2-2} 
+## \\[-1.8ex] &amp; Sepal Length \\ 
+## \hline \\[-1.8ex] 
+##  Sepal Width &amp; 0.884$^{***}$ \\ 
+##   &amp; (0.162) \\ 
+##   &amp; \\ 
+##  Virginica &amp; 0.472$^{***}$ \\ 
+##   &amp; (0.107) \\ 
+##   &amp; \\ 
+##  Constant &amp; 3.488$^{***}$ \\ 
+##   &amp; (0.453) \\ 
+##   &amp; \\ 
+## \hline \\[-1.8ex] 
+## Observations &amp; 100 \\ 
+## R$^{2}$ &amp; 0.423 \\ 
+## Adjusted R$^{2}$ &amp; 0.411 \\ 
+## Residual Std. Error &amp; 0.509 (df = 97) \\ 
+## F Statistic &amp; 35.484$^{***}$ (df = 2; 97) \\ 
+## \hline 
+## \hline \\[-1.8ex] 
+## \textit{Note:}  &amp; \multicolumn{1}{r}{$^{*}$p$&lt;$0.1; $^{**}$p$&lt;$0.05; $^{***}$p$&lt;$0.01} \\ 
+## \end{tabular} 
+## \end{table}</code></pre>
+<p>This will create a file named <code>regression_table.tex</code> in
+your working directory.</p>
+<hr />
+</div>
+<div id="presenting-t-test-and-z-test-results" class="section level2">
+<h2>Presenting t-test and z-test Results</h2>
+<p>We can also present t-test and z-test results. Here we will compare
+the mean sepal length of <em>virginica</em> and <em>versicolor</em>.</p>
+<pre class="r"><code>fit2 &lt;- t.test(iris$Sepal.Length[iris$Species == 1],
+               iris$Sepal.Length[iris$Species == 0],
+               alternative = &quot;two.sided&quot;,
+               var.equal = FALSE,
+               conf.level = 0.95)
+
+fit2</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  iris$Sepal.Length[iris$Species == 1] and iris$Sepal.Length[iris$Species == 0]
+## t = 5.6292, df = 94.025, p-value = 1.866e-07
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.4220269 0.8819731
+## sample estimates:
+## mean of x mean of y 
+##     6.588     5.936</code></pre>
+<p>The raw <code>t.test</code> output is not in a table format yet. We
+can extract the pieces and put them into a small table using a
+matrix:</p>
+<pre class="r"><code>tt_df &lt;- matrix(c(&quot;Virginica&quot;, &quot;Versicolor&quot;,
+                  fit2$estimate[2], fit2$estimate[1],
+                  &quot;T Statistic:&quot;, as.numeric(fit2$statistic),
+                  &quot;p-value:&quot;, fit2$p.value),
+                nrow = 4, ncol = 2, byrow = TRUE)
+
+tt_df</code></pre>
+<pre><code>##      [,1]           [,2]                
+## [1,] &quot;Virginica&quot;    &quot;Versicolor&quot;        
+## [2,] &quot;5.936&quot;        &quot;6.588&quot;             
+## [3,] &quot;T Statistic:&quot; &quot;5.62916525971982&quot;  
+## [4,] &quot;p-value:&quot;     &quot;1.866144387377e-07&quot;</code></pre>
+<p>Now use <code>stargazer</code> to present that table:</p>
+<pre class="r"><code>stargazer(tt_df,
+          type = &quot;latex&quot;,
+          summary = FALSE,
+          title = &quot;T-test: Virginica vs. Versicolor Sepal Length&quot;,
+          digits = 3
+          )</code></pre>
+<pre><code>## 
+## % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+## % Date and time: Wed, Dec 03, 2025 - 10:55:53 AM
+## \begin{table}[!htbp] \centering 
+##   \caption{T-test: Virginica vs. Versicolor Sepal Length} 
+##   \label{} 
+## \begin{tabular}{@{\extracolsep{5pt}} cc} 
+## \\[-1.8ex]\hline 
+## \hline \\[-1.8ex] 
+## Virginica &amp; Versicolor \\ 
+## 5.936 &amp; 6.588 \\ 
+## T Statistic: &amp; 5.62916525971982 \\ 
+## p-value: &amp; 1.866144387377e-07 \\ 
+## \hline \\[-1.8ex] 
+## \end{tabular} 
+## \end{table}</code></pre>
+<p>Here:</p>
+<ul>
+<li>Row 1: group names.</li>
+<li>Row 2: group means.</li>
+<li>Row 3: t statistic.</li>
+<li>Row 4: p-value.</li>
+</ul>
+<p>You could also set <code>type = "text"</code> if you prefer a
+text-only table inside your R Markdown document.</p>
+<hr />
+</div>
+<div id="a-cleaner-summary-table-for-t-tests" class="section level2">
+<h2>A Cleaner Summary Table for t-tests</h2>
+<p>Sometimes you might want a cleaner summary table that includes the
+group means, standard deviations, and sample sizes. You can build this
+table as a small data frame and then feed it into
+<code>stargazer</code>.</p>
+<pre class="r"><code>t_summary &lt;- iris %&gt;%
+  mutate(Species = ifelse(Species == 1, &quot;Virginica&quot;, &quot;Versicolor&quot;)) %&gt;%
+  group_by(Species) %&gt;%
+  summarize(
+    mean_sepal_length = mean(Sepal.Length),
+    sd_sepal_length   = sd(Sepal.Length),
+    n                 = n(),
+    .groups = &quot;drop&quot;
+  )
+
+t_summary</code></pre>
+<pre><code>## # A tibble: 2 × 4
+##   Species    mean_sepal_length sd_sepal_length     n
+##   &lt;chr&gt;                  &lt;dbl&gt;           &lt;dbl&gt; &lt;int&gt;
+## 1 Versicolor              5.94           0.516    50
+## 2 Virginica               6.59           0.636    50</code></pre>
+<p>Now present this summary:</p>
+<pre class="r"><code>stargazer(t_summary,
+          type = &quot;html&quot;,
+          results = &quot;asis&quot;,
+          summary = FALSE,
+          title = &quot;Summary Statistics: Sepal Length by Species&quot;,
+          digits = 3,
+          rownames = FALSE
+          )</code></pre>
+<pre><code>## 
+## &lt;table style=&quot;text-align:center&quot;&gt;&lt;caption&gt;&lt;strong&gt;Summary Statistics: Sepal Length by Species&lt;/strong&gt;&lt;/caption&gt;
+## &lt;tr&gt;&lt;td colspan=&quot;4&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Versicolor&lt;/td&gt;&lt;td&gt;5.936&lt;/td&gt;&lt;td&gt;0.516171147063863&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Virginica&lt;/td&gt;&lt;td&gt;6.588&lt;/td&gt;&lt;td&gt;0.635879593274432&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td colspan=&quot;4&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+## 
+## &lt;table style=&quot;text-align:center&quot;&gt;&lt;caption&gt;&lt;strong&gt;Summary Statistics: Sepal Length by Species&lt;/strong&gt;&lt;/caption&gt;
+## &lt;tr&gt;&lt;td colspan=&quot;1&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;asis&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td colspan=&quot;1&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></pre>
+<p>You can then describe your t-test results in the text using math
+notation, for example:</p>
+<p><span class="math display">\[
+H_0: \mu_{\text{Virginica}} = \mu_{\text{Versicolor}}
+\quad\text{vs.}\quad
+H_A: \mu_{\text{Virginica}} \neq \mu_{\text{Versicolor}}.
+\]</span></p>
+<hr />
+</div>
+<div id="practice-regression-table" class="section level2">
+<h2>Practice: Regression Table</h2>
+<p>Create your own regression table using <code>stargazer</code>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Fit the following two models:</p>
+<ul>
+<li>Model A: Regress <code>Sepal.Length</code> on
+<code>Petal.Length</code>.</li>
+<li>Model B: Regress <code>Sepal.Length</code> on
+<code>Petal.Length</code> and <code>Species</code> (using the 0/1
+indicator we created).</li>
+</ul></li>
+<li><p>Use <code>stargazer</code> to display both models in a single
+table.</p></li>
+<li><p>Customize:</p>
+<ul>
+<li>Give the table a title.</li>
+<li>Use a meaningful dependent variable label (e.g., “Sepal Length
+(cm)”).</li>
+<li>Replace variable names with more readable labels.</li>
+</ul></li>
+<li><p>Write 2–3 sentences interpreting the coefficient on
+<code>Petal.Length</code>. Use inline math notation for the hypotheses
+about that coefficient.</p></li>
+</ol>
+<hr />
+</div>
+<div id="practice-t-test-table" class="section level2">
+<h2>Practice: t-test Table</h2>
+<p>Now practice presenting a t-test result.</p>
+<ol style="list-style-type: decimal">
+<li><p>Form two groups based on sepal width:</p>
+<ul>
+<li>Group 1: <code>Sepal.Width</code> above the median.</li>
+<li>Group 2: <code>Sepal.Width</code> at or below the median.</li>
+</ul></li>
+<li><p>Run a two-sample t-test comparing mean <code>Sepal.Length</code>
+across these two groups.</p></li>
+<li><p>Create a small table with:</p>
+<ul>
+<li>Group labels.</li>
+<li>Group means.</li>
+<li>t statistic.</li>
+<li>p-value.</li>
+</ul></li>
+<li><p>Display your table using <code>stargazer</code> and write a short
+paragraph interpreting the result. Be explicit about:</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span> and <span
+class="math inline">\(H_A\)</span>.</li>
+<li>Whether you reject <span class="math inline">\(H_0\)</span> at the
+5% level.</li>
+<li>Substantive interpretation in plain language.</li>
+</ul></li>
+</ol>
+<hr />
+</div>
+<div id="checklist-before-you-knit" class="section level2">
+<h2>Checklist Before You Knit</h2>
+<p>Before you knit your R Markdown document, check that:</p>
+<ul>
+<li>All required packages (<code>tidyverse</code>,
+<code>stargazer</code>) are loaded.</li>
+<li>Your code chunks run without error from top to bottom.</li>
+<li>Tables produced by <code>stargazer</code> look reasonable (variables
+and models are labeled clearly).</li>
+<li>You have at least one regression table and one t-test table.</li>
+<li>You use math notation at least once (for a model or
+hypothesis).</li>
+</ul>
+<p>Once everything looks good, knit your document to HTML and review the
+output as you would present it in a problem set or short paper.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

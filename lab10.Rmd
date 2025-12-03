@@ -1,0 +1,323 @@
+---
+title: "Lab 10 - Presenting Results"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Objectives:
+
+- Write basic statistical notation in R Markdown using LaTeX.
+- Present regression results using the `stargazer` package.
+- Present t-test results in a clear, well-formatted table.
+- Export your tables in different formats (text, HTML, LaTeX) depending on how you will present your work.
+
+---
+
+## Math Notation
+
+There are three ways to set up math notation:
+
+- Inline: Use single dollar signs to demarcate the bounds of math notation, e.g. $H_0: \mu_1 = \mu_2$
+- New line: Use two dollar signs to demarcate the bounds of math notation, e.g.
+
+$$
+Y_i = \hat{\alpha} + \hat \beta X_i + \varepsilon_i
+$$
+
+- Use `\begin{equation}`... `\end{equation}`. Use `equation*` to remove any labeling, and `align` / `align*` to set up multiple-line formulas.
+
+For example:
+
+```tex
+\begin{align*}
+H_0 &: \beta_1 = 0 \\
+H_A &: \beta_1 \neq 0
+\end{align*}
+```
+
+You can mix regular text and math in R Markdown. This is very useful when you are explaining your models and hypotheses.
+
+---
+
+## Presenting Regression Results with `stargazer`
+
+Load the package via:
+
+```{r}
+library(stargazer)
+```
+
+We will use the `iris` dataset for illustration.
+
+```{r}
+data(iris)
+iris <- iris %>%
+  filter(Species != "setosa") %>%
+  mutate(Species = ifelse(Species == "virginica", 1, 0))
+
+head(iris)
+```
+
+We can compute regression results:
+
+```{r}
+fit1 <- lm(Sepal.Length ~ Sepal.Width + Species, data = iris)
+fit1
+```
+
+And use `stargazer` to produce a nicely formatted regression table:
+
+```{r}
+stargazer(fit1,
+          type = "text",  # Try: "latex" and "html"
+          title = "Regression Results",
+          dep.var.labels = c("Sepal Length"),
+          covariate.labels = c("Sepal Width", "Virginica", "Intercept"),
+          digits = 3,
+          out.header = FALSE
+          )
+```
+
+- `type = "text"` prints a plain-text table in your console / knitted output.
+- `type = "html"` produces HTML code (good for HTML documents or websites).
+- `type = "latex"` produces LaTeX code (good for papers and problem sets written in LaTeX).
+
+### Interpreting the Regression
+
+In LaTeX notation, our model is:
+
+$$
+\text{SepalLength}_i = \hat\alpha + \hat{\beta}_1 \text{SepalWidth}_i + \hat{\beta}_2 \text{Virginica}_i + \hat{\varepsilon}_i
+$$
+
+---
+
+## Multiple Models in One Table
+
+`stargazer` can show more than one model at a time. This is useful when you want to compare specifications.
+
+```{r}
+fit2 <- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Species, data = iris)
+fit3 <- lm(Sepal.Length ~ Sepal.Width + Species + Sepal.Width * Species, data = iris)  # interaction
+
+stargazer(fit1, fit2, fit3,
+          type = "text",
+          title = "Sepal Length: Model Comparison",
+          dep.var.labels = c("Sepal Length"),
+          column.labels = c("Baseline", "Add Petal Length", "Interaction"),
+          covariate.labels = c("Sepal Width",
+                               "Petal Length",
+                               "Virginica",
+                               "Sepal Width : Virginica",
+                               "Intercept"),
+          digits = 3,
+          align = TRUE,
+          no.space = FALSE
+          )
+```
+
+Note:
+
+- `column.labels` names each column (model).
+- `covariate.labels` lets you replace variable names with more readable labels.
+- `align = TRUE` makes the columns line up nicely in the text output.
+- `no.space = TRUE` removes extra blank lines below the table.
+
+---
+
+## Adding Notes and Custom Lines
+
+It is often helpful to add notes below your table:
+
+```{r}
+stargazer(fit1, fit2,
+          type = "text",
+          title = "Sepal Length: Alternative Specifications",
+          dep.var.labels = "Sepal Length",
+          column.labels = c("Baseline", "Add Petal Length"),
+          covariate.labels = c("Sepal Width", 
+                               "Virginica",
+                               "Petal Length"),
+          digits = 3,
+          add.lines = list(
+            c("Controls", "No", "Yes")
+          ),
+          notes = "Robust standard errors not used here; this is for illustration only.",
+          notes.align = "l"
+          )
+```
+
+- `add.lines` lets you add extra rows (e.g., “Controls”, “Fixed Effects”, etc.).
+- `notes` and `notes.align` let you include additional information about the model.
+
+---
+
+## Saving Tables to a File
+
+If you want to use the table in another document (for example, a LaTeX paper), you can save the output to a file with the `out` argument:
+
+```{r}
+stargazer(fit1,
+          type = "latex",
+          title = "Regression Results",
+          dep.var.labels = "Sepal Length",
+          covariate.labels = c("Sepal Width", "Virginica"),
+          digits = 3,
+          out = "regression_table.tex"
+          )
+```
+
+This will create a file named `regression_table.tex` in your working directory.
+
+---
+
+## Presenting t-test and z-test Results
+
+We can also present t-test and z-test results. Here we will compare the mean sepal length of *virginica* and *versicolor*.
+
+```{r}
+fit2 <- t.test(iris$Sepal.Length[iris$Species == 1],
+               iris$Sepal.Length[iris$Species == 0],
+               alternative = "two.sided",
+               var.equal = FALSE,
+               conf.level = 0.95)
+
+fit2
+```
+
+The raw `t.test` output is not in a table format yet. We can extract the pieces and put them into a small table using a matrix:
+
+```{r}
+tt_df <- matrix(c("Virginica", "Versicolor",
+                  fit2$estimate[2], fit2$estimate[1],
+                  "T Statistic:", as.numeric(fit2$statistic),
+                  "p-value:", fit2$p.value),
+                nrow = 4, ncol = 2, byrow = TRUE)
+
+tt_df
+```
+
+Now use `stargazer` to present that table:
+
+```{r}
+stargazer(tt_df,
+          type = "latex",
+          summary = FALSE,
+          title = "T-test: Virginica vs. Versicolor Sepal Length",
+          digits = 3
+          )
+```
+
+Here:
+
+- Row 1: group names.
+- Row 2: group means.
+- Row 3: t statistic.
+- Row 4: p-value.
+
+You could also set `type = "text"` if you prefer a text-only table inside your R Markdown document.
+
+---
+
+## A Cleaner Summary Table for t-tests
+
+Sometimes you might want a cleaner summary table that includes the group means, standard deviations, and sample sizes. You can build this table as a small data frame and then feed it into `stargazer`.
+
+```{r}
+t_summary <- iris %>%
+  mutate(Species = ifelse(Species == 1, "Virginica", "Versicolor")) %>%
+  group_by(Species) %>%
+  summarize(
+    mean_sepal_length = mean(Sepal.Length),
+    sd_sepal_length   = sd(Sepal.Length),
+    n                 = n(),
+    .groups = "drop"
+  )
+
+t_summary
+```
+
+Now present this summary:
+
+```{r}
+stargazer(t_summary,
+          type = "html",
+          results = "asis",
+          summary = FALSE,
+          title = "Summary Statistics: Sepal Length by Species",
+          digits = 3,
+          rownames = FALSE
+          )
+```
+
+You can then describe your t-test results in the text using math notation, for example:
+
+$$
+H_0: \mu_{\text{Virginica}} = \mu_{\text{Versicolor}} \quad\text{vs.}\quad
+H_A: \mu_{\text{Virginica}} \neq \mu_{\text{Versicolor}}.
+$$
+
+---
+
+## Practice: Regression Table
+
+Create your own regression table using `stargazer`.
+
+1. Fit the following two models:
+
+   - Model A: Regress `Sepal.Length` on `Petal.Length`.
+   - Model B: Regress `Sepal.Length` on `Petal.Length` and `Species` (using the 0/1 indicator we created).
+
+2. Use `stargazer` to display both models in a single table.
+
+3. Customize:
+
+   - Give the table a title.
+   - Use a meaningful dependent variable label (e.g., "Sepal Length (cm)").
+   - Replace variable names with more readable labels.
+
+4. Write 2–3 sentences interpreting the coefficient on `Petal.Length`. Use inline math notation for the hypotheses about that coefficient.
+
+---
+
+## Practice: t-test Table
+
+Now practice presenting a t-test result.
+
+1. Form two groups based on sepal width:
+
+   - Group 1: `Sepal.Width` above the median.
+   - Group 2: `Sepal.Width` at or below the median.
+
+2. Run a two-sample t-test comparing mean `Sepal.Length` across these two groups.
+
+3. Create a small table with:
+
+   - Group labels.
+   - Group means.
+   - t statistic.
+   - p-value.
+
+4. Display your table using `stargazer` and write a short paragraph interpreting the result. Be explicit about:
+
+   - $H_0$ and $H_A$.
+   - Whether you reject $H_0$ at the 5% level.
+   - Substantive interpretation in plain language.
+
+---
+
+## Checklist Before You Knit
+
+Before you knit your R Markdown document, check that:
+
+- All required packages (`tidyverse`, `stargazer`) are loaded.
+- Your code chunks run without error from top to bottom.
+- Tables produced by `stargazer` look reasonable (variables and models are labeled clearly).
+- You have at least one regression table and one t-test table.
+- You use math notation at least once (for a model or hypothesis).
+
+Once everything looks good, knit your document to HTML and review the output as you would present it in a problem set or short paper.

@@ -283,6 +283,9 @@ $(document).ready(function () {
     <li>
       <a href="lab9.html">Week 9</a>
     </li>
+    <li>
+      <a href="lab10.html">Week 10</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -364,9 +367,10 @@ post-October 2023 (including October 2023) and <span
 class="math inline">\(0\)</span> for time periods pre-October 2023.</p>
 <pre class="r"><code># [Your Code Here]
 df &lt;- read.csv(&quot;acledpalestine.csv&quot;)
+
 df &lt;- df %&gt;%
   filter(Admin1 == &quot;West Bank&quot;) %&gt;%
-  mutate(prepost = ifelse((Month &gt;= 10 &amp; Year == 2023) | (Year &gt; 2023), 1, 0))</code></pre>
+  mutate(prepost = ifelse((Year == 2023 &amp; Month &gt;= 10) | Year &gt; 2023, 1, 0))</code></pre>
 </div>
 <div id="the-differenceinmeans-estimator" class="section level2">
 <h2>The Difference−in−means Estimator</h2>
@@ -374,11 +378,7 @@ df &lt;- df %&gt;%
 prior to October 2023? What is the average number after (and including)
 October 2023? Then compute the difference-in-means estimator.</p>
 <pre class="r"><code># [Your Code Here]
-mean(df[df$prepost == 1, ]$Fatalities)</code></pre>
-<pre><code>## [1] 5.585227</code></pre>
-<pre class="r"><code>mean(df[df$prepost == 0, ]$Fatalities)</code></pre>
-<pre><code>## [1] 1.052525</code></pre>
-<pre class="r"><code>diff_prepost &lt;- mean(df[df$prepost == 1, ]$Fatalities) - mean(df[df$prepost == 0, ]$Fatalities)
+acled_dif &lt;- mean(df$Fatalities[df$prepost == 1]) - mean(df$Fatalities[df$prepost == 0])
 
 df %&gt;%
   group_by(prepost) %&gt;%
@@ -405,15 +405,17 @@ SE = \sqrt{\frac{s^2_X}{n_X}+\frac{s^2_Y}{n_Y}}
 <p>where <span class="math inline">\(s_X^2\)</span> and <span
 class="math inline">\(s_Y^2\)</span> are the sample variances</p>
 <p>Compute the standard error of the difference-in-means estimator.</p>
-<pre class="r"><code>sd_post &lt;- sd(df[df$prepost == 1, ]$Fatalities)
-sd_pre &lt;- sd(df[df$prepost == 0, ]$Fatalities)
+<pre class="r"><code>sd_post &lt;- sd(df$Fatalities[df$prepost == 1])
+sd_pre &lt;- sd(df$Fatalities[df$prepost == 0])
 
-n_post &lt;- sum(df$prepost == 1)
+n_post &lt;- length(df$Fatalities[df$prepost == 1])
 n_pre &lt;- sum(df$prepost == 0)
 
-se_df &lt;- sqrt((sd_post^2 / n_post) + (sd_pre^2 / n_pre))
-se_df</code></pre>
-<pre><code>## [1] 0.6093912</code></pre>
+acled_se &lt;- sqrt(sd_post^2 / n_post + sd_pre^2 / n_pre)
+
+s_total &lt;- sd(df$Fatalities)
+
+acled_se_varequal &lt;- sqrt(s_total^2 * (1/n_post + 1/n_pre))</code></pre>
 </div>
 <div id="creating-the-confidence-interval" class="section level2">
 <h2>Creating the Confidence Interval</h2>
@@ -428,8 +430,8 @@ level under the standard normal distribution, but you can use 2.576 for
 99% CI and 1.645 for 90% CI.</p>
 <p>Calculate the 95% confidence intervals for the difference-in-means
 estimate.</p>
-<pre class="r"><code>ci_df &lt;- c(diff_prepost - se_df*1.96, diff_prepost + se_df*1.96)
-ci_df</code></pre>
+<pre class="r"><code>ci_diff &lt;- c(acled_dif - 1.96 * acled_se, acled_dif + 1.96 * acled_se)
+ci_diff</code></pre>
 <pre><code>## [1] 3.338295 5.727109</code></pre>
 <p>We want to know if the difference in means is statistically
 significant. To do so, we first compute the t-statistic, which for the
@@ -452,27 +454,36 @@ when there is no difference in means). We do so by using
 <code>q</code> for the <span
 class="math inline">\(t_{\texttt{df}}\)</span> distribution.</p>
 <p>You can conduct a t-test in R by using
-<code>t.test(x_values, y_values, "two.sided", mu=0, var.equal = TRUE)</code></p>
-<pre class="r"><code>t.test(df[df$prepost == 1, ]$Fatalities, df[df$prepost == 0, ]$Fatalities, alternative = &quot;two.sided&quot;, mu=0, var.equal = FALSE)</code></pre>
+<code>t.test(x_values, y_values, "two.sided", mu=0, var.equal = FALSE)</code></p>
+<pre class="r"><code>t.test(df[df$prepost == 1, ]$Fatalities, df[df$prepost == 0, ]$Fatalities, alternative = &quot;two.sided&quot;, mu=0, var.equal = TRUE)</code></pre>
 <pre><code>## 
-##  Welch Two Sample t-test
+##  Two Sample t-test
 ## 
 ## data:  df[df$prepost == 1, ]$Fatalities and df[df$prepost == 0, ]$Fatalities
-## t = 7.4381, df = 185.53, p-value = 3.673e-12
+## t = 11.399, df = 669, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  3.330475 5.734929
+##  3.751895 5.313509
 ## sample estimates:
 ## mean of x mean of y 
 ##  5.585227  1.052525</code></pre>
+<p>Let’s apply what we’ve learned to answer the following questions:</p>
+<ul>
+<li>Is there a significant difference in the number of armed conflict
+events in the West Bank before vs. after October 2023?</li>
+<li>Is there a significant difference in the number of armed conflict
+events in the West Bank vs. Gaza Strip for the period before October
+2023?</li>
+</ul>
+<pre class="r"><code># [Your Code Here]</code></pre>
 </div>
 <div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
 <li id="fn1"><p>When variances are equal, it is better to use the pooled
 standard error, <span
-class="math inline">\(\sqrt{\frac{s_{\text{total}}^2}{\frac{1}{n_X} +
-\frac{1}{n_Y}}}\)</span><a href="#fnref1"
+class="math inline">\(\sqrt{\frac{s_{\text{total}}^2}{(\frac{1}{n_X} +
+\frac{1}{n_Y})^{-1}}}\)</span><a href="#fnref1"
 class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>You don’t need to know the formula for this. R can
 calculate it for you. If you’re interested, it’s <span
