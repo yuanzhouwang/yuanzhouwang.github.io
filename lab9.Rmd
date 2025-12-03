@@ -26,9 +26,10 @@ Download the data (filename ``acledpalestine.csv``) [here](https://github.com/yu
 ```{r}
 # [Your Code Here]
 df <- read.csv("acledpalestine.csv")
+
 df <- df %>%
   filter(Admin1 == "West Bank") %>%
-  mutate(prepost = ifelse((Month >= 10 & Year == 2023) | (Year > 2023), 1, 0))
+  mutate(prepost = ifelse((Year == 2023 & Month >= 10) | Year > 2023, 1, 0))
 ```
 
 
@@ -38,9 +39,7 @@ What is the average number of monthly fatalities in the West Bank prior to Octob
 
 ```{r}
 # [Your Code Here]
-mean(df[df$prepost == 1, ]$Fatalities)
-mean(df[df$prepost == 0, ]$Fatalities)
-diff_prepost <- mean(df[df$prepost == 1, ]$Fatalities) - mean(df[df$prepost == 0, ]$Fatalities)
+acled_dif <- mean(df$Fatalities[df$prepost == 1]) - mean(df$Fatalities[df$prepost == 0])
 
 df %>%
   group_by(prepost) %>%
@@ -49,7 +48,7 @@ df %>%
 
 ## Calculating Standard Error
 
-For a sample of $n_X$ independent and identically distributed (IID) random variables $X_1, \cdots, X_{n_X}$ and another sample of $n_Y$ IID random variables $Y_1, \cdots, Y_{n_Y}$, the standard error for the difference-in-means estimator when variances are unequal^[When variances are equal, it is better to use the pooled standard error, $\sqrt{\frac{s_{\text{total}}^2}{\frac{1}{n_X} + \frac{1}{n_Y}}}$] is given by:
+For a sample of $n_X$ independent and identically distributed (IID) random variables $X_1, \cdots, X_{n_X}$ and another sample of $n_Y$ IID random variables $Y_1, \cdots, Y_{n_Y}$, the standard error for the difference-in-means estimator when variances are unequal^[When variances are equal, it is better to use the pooled standard error, $\sqrt{\frac{s_{\text{total}}^2}{(\frac{1}{n_X} + \frac{1}{n_Y})^{-1}}}$] is given by:
 
 $$
 SE = \sqrt{\frac{s^2_X}{n_X}+\frac{s^2_Y}{n_Y}}
@@ -60,14 +59,17 @@ where $s_X^2$ and $s_Y^2$ are the sample variances
 Compute the standard error of the difference-in-means estimator.
 
 ```{r}
-sd_post <- sd(df[df$prepost == 1, ]$Fatalities)
-sd_pre <- sd(df[df$prepost == 0, ]$Fatalities)
+sd_post <- sd(df$Fatalities[df$prepost == 1])
+sd_pre <- sd(df$Fatalities[df$prepost == 0])
 
-n_post <- sum(df$prepost == 1)
+n_post <- length(df$Fatalities[df$prepost == 1])
 n_pre <- sum(df$prepost == 0)
 
-se_df <- sqrt((sd_post^2 / n_post) + (sd_pre^2 / n_pre))
-se_df
+acled_se <- sqrt(sd_post^2 / n_post + sd_pre^2 / n_pre)
+
+s_total <- sd(df$Fatalities)
+
+acled_se_varequal <- sqrt(s_total^2 * (1/n_post + 1/n_pre))
 ```
 
 ## Creating the Confidence Interval
@@ -82,8 +84,8 @@ $$
 Calculate the 95% confidence intervals for the difference-in-means estimate.
 
 ```{r}
-ci_df <- c(diff_prepost - se_df*1.96, diff_prepost + se_df*1.96)
-ci_df
+ci_diff <- c(acled_dif - 1.96 * acled_se, acled_dif + 1.96 * acled_se)
+ci_diff
 ```
 
 We want to know if the difference in means is statistically significant. To do so, we first compute the t-statistic, which for the two-sample t-test is
@@ -94,8 +96,18 @@ Under the null hypothesis ($\hat{\delta} = 0$), the t-statistic should follow a 
 
 Thus, given some t-statistic we can calculate the p-value: the probability that we get this t-statistic when the null is true (i.e., when there is no difference in means). We do so by using ``pt(q, df)``, which calculates the area under the curve up to ``q`` for the $t_{\texttt{df}}$ distribution. 
 
-You can conduct a t-test in R by using ``t.test(x_values, y_values, "two.sided", mu=0, var.equal = TRUE)``
+You can conduct a t-test in R by using ``t.test(x_values, y_values, "two.sided", mu=0, var.equal = FALSE)``
 
 ```{r}
-t.test(df[df$prepost == 1, ]$Fatalities, df[df$prepost == 0, ]$Fatalities, alternative = "two.sided", mu=0, var.equal = FALSE)
+t.test(df[df$prepost == 1, ]$Fatalities, df[df$prepost == 0, ]$Fatalities, alternative = "two.sided", mu=0, var.equal = TRUE)
 ```
+
+Let's apply what we've learned to answer the following questions:
+
+- Is there a significant difference in the number of armed conflict events in the West Bank before vs. after October 2023?
+- Is there a significant difference in the number of armed conflict events in the West Bank vs. Gaza Strip for the period before October 2023?
+
+```{r}
+# [Your Code Here]
+```
+
