@@ -101,6 +101,8 @@ $$
 `stargazer` can show more than one model at a time. This is useful when you want to compare specifications.
 
 ```{r}
+# set results = 'asis' in chunk options
+
 fit2 <- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Species, data = iris)
 fit3 <- lm(Sepal.Length ~ Sepal.Width + Species + Sepal.Width * Species, data = iris)  # interaction
 
@@ -133,9 +135,9 @@ Note:
 
 It is often helpful to add notes below your table:
 
-```{r}
+```{r results = 'asis'}
 stargazer(fit1, fit2,
-          type = "text",
+          type = "html",
           title = "Sepal Length: Alternative Specifications",
           dep.var.labels = "Sepal Length",
           column.labels = c("Baseline", "Add Petal Length"),
@@ -243,10 +245,9 @@ t_summary
 
 Now present this summary:
 
-```{r}
+```{r results = 'asis'}
 stargazer(t_summary,
           type = "html",
-          results = "asis",
           summary = FALSE,
           title = "Summary Statistics: Sepal Length by Species",
           digits = 3,

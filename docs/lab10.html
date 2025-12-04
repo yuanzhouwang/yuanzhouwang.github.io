@@ -466,7 +466,9 @@ problem sets written in LaTeX).</li>
 <h2>Multiple Models in One Table</h2>
 <p><code>stargazer</code> can show more than one model at a time. This
 is useful when you want to compare specifications.</p>
-<pre class="r"><code>fit2 &lt;- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Species, data = iris)
+<pre class="r"><code># set results = &#39;asis&#39; in chunk options
+
+fit2 &lt;- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Species, data = iris)
 fit3 &lt;- lm(Sepal.Length ~ Sepal.Width + Species + Sepal.Width * Species, data = iris)  # interaction
 
 stargazer(fit1, fit2, fit3,
@@ -531,7 +533,7 @@ table.</li>
 <h2>Adding Notes and Custom Lines</h2>
 <p>It is often helpful to add notes below your table:</p>
 <pre class="r"><code>stargazer(fit1, fit2,
-          type = &quot;text&quot;,
+          type = &quot;html&quot;,
           title = &quot;Sepal Length: Alternative Specifications&quot;,
           dep.var.labels = &quot;Sepal Length&quot;,
           column.labels = c(&quot;Baseline&quot;, &quot;Add Petal Length&quot;),
@@ -545,37 +547,263 @@ table.</li>
           notes = &quot;Robust standard errors not used here; this is for illustration only.&quot;,
           notes.align = &quot;l&quot;
           )</code></pre>
-<pre><code>## 
-## Sepal Length: Alternative Specifications
-## =========================================================================================
-##                                              Dependent variable:                         
-##                     ---------------------------------------------------------------------
-##                                                 Sepal Length                             
-##                                  Baseline                       Add Petal Length         
-##                                    (1)                                (2)                
-## -----------------------------------------------------------------------------------------
-## Sepal Width                      0.884***                            0.231*              
-##                                  (0.162)                            (0.119)              
-##                                                                                          
-## Virginica                                                           0.858***             
-##                                                                     (0.074)              
-##                                                                                          
-## Petal Length                     0.472***                          -0.503***             
-##                                  (0.107)                            (0.109)              
-##                                                                                          
-## Constant                         3.488***                           1.642***             
-##                                  (0.453)                            (0.333)              
-##                                                                                          
-## -----------------------------------------------------------------------------------------
-## Controls                            No                                Yes                
-## Observations                       100                                100                
-## R2                                0.423                              0.761               
-## Adjusted R2                       0.411                              0.753               
-## Residual Std. Error          0.509 (df = 97)                    0.329 (df = 96)          
-## F Statistic               35.484*** (df = 2; 97)            101.704*** (df = 3; 96)      
-## =========================================================================================
-## Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01                                          
-##                     Robust standard errors not used here; this is for illustration only.</code></pre>
+<table style="text-align:center">
+<caption>
+<strong>Sepal Length: Alternative Specifications</strong>
+</caption>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+Sepal Length
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Baseline
+</td>
+<td>
+Add Petal Length
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sepal Width
+</td>
+<td>
+0.884<sup>***</sup>
+</td>
+<td>
+0.231<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.162)
+</td>
+<td>
+(0.119)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Virginica
+</td>
+<td>
+</td>
+<td>
+0.858<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.074)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Petal Length
+</td>
+<td>
+0.472<sup>***</sup>
+</td>
+<td>
+-0.503<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.107)
+</td>
+<td>
+(0.109)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+3.488<sup>***</sup>
+</td>
+<td>
+1.642<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.453)
+</td>
+<td>
+(0.333)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Controls
+</td>
+<td>
+No
+</td>
+<td>
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+100
+</td>
+<td>
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.423
+</td>
+<td>
+0.761
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.411
+</td>
+<td>
+0.753
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+0.509 (df = 97)
+</td>
+<td>
+0.329 (df = 96)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+35.484<sup>***</sup> (df = 2; 97)
+</td>
+<td>
+101.704<sup>***</sup> (df = 3; 96)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:left">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05;
+<sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2" style="text-align:left">
+Robust standard errors not used here; this is for illustration only.
+</td>
+</tr>
+</table>
 <ul>
 <li><code>add.lines</code> lets you add extra rows (e.g., “Controls”,
 “Fixed Effects”, etc.).</li>
@@ -599,7 +827,7 @@ LaTeX paper), you can save the output to a file with the
           )</code></pre>
 <pre><code>## 
 ## % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
-## % Date and time: Wed, Dec 03, 2025 - 10:55:53 AM
+## % Date and time: Wed, Dec 03, 2025 - 11:22:01 PM
 ## \begin{table}[!htbp] \centering 
 ##   \caption{Regression Results} 
 ##   \label{} 
@@ -680,7 +908,7 @@ tt_df</code></pre>
           )</code></pre>
 <pre><code>## 
 ## % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
-## % Date and time: Wed, Dec 03, 2025 - 10:55:53 AM
+## % Date and time: Wed, Dec 03, 2025 - 11:22:01 PM
 ## \begin{table}[!htbp] \centering 
 ##   \caption{T-test: Virginica vs. Versicolor Sepal Length} 
 ##   \label{} 
@@ -730,21 +958,70 @@ t_summary</code></pre>
 <p>Now present this summary:</p>
 <pre class="r"><code>stargazer(t_summary,
           type = &quot;html&quot;,
-          results = &quot;asis&quot;,
           summary = FALSE,
           title = &quot;Summary Statistics: Sepal Length by Species&quot;,
           digits = 3,
           rownames = FALSE
           )</code></pre>
-<pre><code>## 
-## &lt;table style=&quot;text-align:center&quot;&gt;&lt;caption&gt;&lt;strong&gt;Summary Statistics: Sepal Length by Species&lt;/strong&gt;&lt;/caption&gt;
-## &lt;tr&gt;&lt;td colspan=&quot;4&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Versicolor&lt;/td&gt;&lt;td&gt;5.936&lt;/td&gt;&lt;td&gt;0.516171147063863&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;
-## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Virginica&lt;/td&gt;&lt;td&gt;6.588&lt;/td&gt;&lt;td&gt;0.635879593274432&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;
-## &lt;tr&gt;&lt;td colspan=&quot;4&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-## 
-## &lt;table style=&quot;text-align:center&quot;&gt;&lt;caption&gt;&lt;strong&gt;Summary Statistics: Sepal Length by Species&lt;/strong&gt;&lt;/caption&gt;
-## &lt;tr&gt;&lt;td colspan=&quot;1&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;asis&lt;/td&gt;&lt;/tr&gt;
-## &lt;tr&gt;&lt;td colspan=&quot;1&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></pre>
+<table style="text-align:center">
+<caption>
+<strong>Summary Statistics: Sepal Length by Species</strong>
+</caption>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Species
+</td>
+<td>
+mean_sepal_length
+</td>
+<td>
+sd_sepal_length
+</td>
+<td>
+n
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Versicolor
+</td>
+<td>
+5.936
+</td>
+<td>
+0.516171147063863
+</td>
+<td>
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Virginica
+</td>
+<td>
+6.588
+</td>
+<td>
+0.635879593274432
+</td>
+<td>
+50
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
 <p>You can then describe your t-test results in the text using math
 notation, for example:</p>
 <p><span class="math display">\[
