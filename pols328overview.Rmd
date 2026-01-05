@@ -1,0 +1,12 @@
+---
+title: "Overview"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This section provides teaching materials for the 2025 Winter Quarter of POL S 328 - International Organizations.
+
+My Office Hours are Wednesdays 1:00 to 3:00 PM in Gowen 42. If you cannot make these times please email me to set up a different time.

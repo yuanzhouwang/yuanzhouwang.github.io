@@ -29,6 +29,10 @@ navbar:
         href: lab9.html
       - text: "Week 10"
         href: lab10.html
+    - text: "POLS 328"
+      menu:
+      - text: "Overview"
+        href: pols328overview.html
     - text: "Research"
       menu:
       - text: "Papers"
