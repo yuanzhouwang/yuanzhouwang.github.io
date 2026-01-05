@@ -7,12 +7,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-<<<<<<< HEAD
+
 This section provides teaching materials for the 2025 Winter Quarter of POL S 328 - International Organizations.
 
 My Office Hours are Wednesdays 1:00 to 3:00 PM in Gowen 42. If you cannot make these times please email me to set up a different time.
-=======
-This section provides teaching materials for the 2025 Autumn Quarter of CS&SS 321 - Data Science and Statistics for Social Sciences I.
 
-My Office Hours are Wednesdays 1:00 to 2:30 PM and and Fridays 1:30 - 2:30 PM in Gowen 42. If you cannot make these times please email me to set up a different time.
->>>>>>> 486382b20bd7cfc8d572d43601f18e562aecd948
+
