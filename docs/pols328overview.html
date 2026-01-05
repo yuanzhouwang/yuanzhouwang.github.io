@@ -11,7 +11,7 @@
 
 
 
-<title>Lab 9 - The t-test for Difference in Means</title>
+<title>Overview</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -345,166 +345,17 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Lab 9 - The t-test for Difference in
-Means</h1>
+<h1 class="title toc-ignore">Overview</h1>
 
 </div>
 
 
-<p>Today we’ll be applying the methods we’ve learned so far.</p>
-<p>The dataset we’ll be using comes from the <a
-href="https://acleddata.com">Armed Conflict Location and Event Data</a>
-database. It contains data on armed conflict events and fatalities in
-Palestine between January 2020 to January 2025. I’ve cleaned the data
-somewhat so that it contains the following variables:</p>
-<ul>
-<li><code>Admin1</code>: “West Bank” or “Gaza Strip”</li>
-<li><code>Admin2</code>: The city or town</li>
-<li><code>Month</code>: 1 to 12</li>
-<li><code>Year</code></li>
-<li><code>Events</code>: The number of armed conflict events in the
-given month and year, per ACLED’s definition.</li>
-<li><code>Fatalities</code>: The total number of fatalities across all
-events in the given month and year, per ACLED’s estimate.</li>
-</ul>
-<div id="importing-and-cleaning" class="section level2">
-<h2>Importing and Cleaning</h2>
-<p>Download the data (filename <code>acledpalestine.csv</code>) <a
-href="https://github.com/yuanzhouwang/yuanzhouwang.github.io/blob/main/acledpalestine.csv">here</a>.
-Import the data and filter out only the rows of data from the West Bank.
-We will only be looking at armed conflict events in the West Bank.
-Create a new numeric binary variable called <code>prepost</code> that
-takes on value <span class="math inline">\(1\)</span> for time periods
-post-October 2023 (including October 2023) and <span
-class="math inline">\(0\)</span> for time periods pre-October 2023.</p>
-<pre class="r"><code># [Your Code Here]
-df &lt;- read.csv(&quot;acledpalestine.csv&quot;)
-
-df &lt;- df %&gt;%
-  filter(Admin1 == &quot;West Bank&quot;) %&gt;%
-  mutate(prepost = ifelse((Year == 2023 &amp; Month &gt;= 10) | Year &gt; 2023, 1, 0))</code></pre>
-</div>
-<div id="the-differenceinmeans-estimator" class="section level2">
-<h2>The Difference−in−means Estimator</h2>
-<p>What is the average number of monthly fatalities in the West Bank
-prior to October 2023? What is the average number after (and including)
-October 2023? Then compute the difference-in-means estimator.</p>
-<pre class="r"><code># [Your Code Here]
-acled_dif &lt;- mean(df$Fatalities[df$prepost == 1]) - mean(df$Fatalities[df$prepost == 0])
-
-df %&gt;%
-  group_by(prepost) %&gt;%
-  summarize(mean_fatalities = mean(Fatalities))</code></pre>
-<pre><code>## # A tibble: 2 × 2
-##   prepost mean_fatalities
-##     &lt;dbl&gt;           &lt;dbl&gt;
-## 1       0            1.05
-## 2       1            5.59</code></pre>
-</div>
-<div id="calculating-standard-error" class="section level2">
-<h2>Calculating Standard Error</h2>
-<p>For a sample of <span class="math inline">\(n_X\)</span> independent
-and identically distributed (IID) random variables <span
-class="math inline">\(X_1, \cdots, X_{n_X}\)</span> and another sample
-of <span class="math inline">\(n_Y\)</span> IID random variables <span
-class="math inline">\(Y_1, \cdots, Y_{n_Y}\)</span>, the standard error
-for the difference-in-means estimator when variances are unequal<a
-href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> is given
-by:</p>
-<p><span class="math display">\[
-SE = \sqrt{\frac{s^2_X}{n_X}+\frac{s^2_Y}{n_Y}}
-\]</span></p>
-<p>where <span class="math inline">\(s_X^2\)</span> and <span
-class="math inline">\(s_Y^2\)</span> are the sample variances</p>
-<p>Compute the standard error of the difference-in-means estimator.</p>
-<pre class="r"><code>sd_post &lt;- sd(df$Fatalities[df$prepost == 1])
-sd_pre &lt;- sd(df$Fatalities[df$prepost == 0])
-
-n_post &lt;- length(df$Fatalities[df$prepost == 1])
-n_pre &lt;- sum(df$prepost == 0)
-
-acled_se &lt;- sqrt(sd_post^2 / n_post + sd_pre^2 / n_pre)
-
-s_total &lt;- sd(df$Fatalities)
-
-acled_se_varequal &lt;- sqrt(s_total^2 * (1/n_post + 1/n_pre))</code></pre>
-</div>
-<div id="creating-the-confidence-interval" class="section level2">
-<h2>Creating the Confidence Interval</h2>
-<p>The <strong>95% confidence interval (CI)</strong> for the difference
-in means estimator <span class="math inline">\(\hat{\delta}\)</span>
-(where the variance of the two groups is not equal) is given by:</p>
-<p><span class="math display">\[
-CI \approx \left( \hat{\delta} - 1.96 \times SE \; , \; \hat{\delta} +
-1.96 \times SE \right)
-\]</span> 1.96 is the (approximate) critical value for a 95% confidence
-level under the standard normal distribution, but you can use 2.576 for
-99% CI and 1.645 for 90% CI.</p>
-<p>Calculate the 95% confidence intervals for the difference-in-means
-estimate.</p>
-<pre class="r"><code>ci_diff &lt;- c(acled_dif - 1.96 * acled_se, acled_dif + 1.96 * acled_se)
-ci_diff</code></pre>
-<pre><code>## [1] 3.338295 5.727109</code></pre>
-<p>We want to know if the difference in means is statistically
-significant. To do so, we first compute the t-statistic, which for the
-two-sample t-test is <span class="math display">\[
-t = \frac{\hat{\delta}}{SE}
-\]</span> Under the null hypothesis (<span
-class="math inline">\(\hat{\delta} = 0\)</span>), the t-statistic should
-follow a t-distribution. The t-distribution has degrees of freedom <span
-class="math inline">\(\texttt{df} = n_X + n_Y - 2\)</span> if variances
-are equal or uses Welch’s approximation of the degrees of freedom<a
-href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> The
-t-distribution is very similar to the normal distribution but has fatter
-tails to capture the greater variability from using an estimate of the
-standard deviation rather than the population sample deviation (which is
-unknown).</p>
-<p>Thus, given some t-statistic we can calculate the p-value: the
-probability that we get this t-statistic when the null is true (i.e.,
-when there is no difference in means). We do so by using
-<code>pt(q, df)</code>, which calculates the area under the curve up to
-<code>q</code> for the <span
-class="math inline">\(t_{\texttt{df}}\)</span> distribution.</p>
-<p>You can conduct a t-test in R by using
-<code>t.test(x_values, y_values, "two.sided", mu=0, var.equal = FALSE)</code></p>
-<pre class="r"><code>t.test(df[df$prepost == 1, ]$Fatalities, df[df$prepost == 0, ]$Fatalities, alternative = &quot;two.sided&quot;, mu=0, var.equal = TRUE)</code></pre>
-<pre><code>## 
-##  Two Sample t-test
-## 
-## data:  df[df$prepost == 1, ]$Fatalities and df[df$prepost == 0, ]$Fatalities
-## t = 11.399, df = 669, p-value &lt; 2.2e-16
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  3.751895 5.313509
-## sample estimates:
-## mean of x mean of y 
-##  5.585227  1.052525</code></pre>
-<p>Let’s apply what we’ve learned to answer the following questions:</p>
-<ul>
-<li>Is there a significant difference in the number of armed conflict
-events in the West Bank before vs. after October 2023?</li>
-<li>Is there a significant difference in the number of armed conflict
-events in the West Bank vs. Gaza Strip for the period before October
-2023?</li>
-</ul>
-<pre class="r"><code># [Your Code Here]</code></pre>
-</div>
-<div class="footnotes footnotes-end-of-document">
-<hr />
-<ol>
-<li id="fn1"><p>When variances are equal, it is better to use the pooled
-standard error, <span
-class="math inline">\(\sqrt{\frac{s_{\text{total}}^2}{(\frac{1}{n_X} +
-\frac{1}{n_Y})^{-1}}}\)</span><a href="#fnref1"
-class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>You don’t need to know the formula for this. R can
-calculate it for you. If you’re interested, it’s <span
-class="math inline">\(df= \frac{
-\left(\dfrac{s_{1}^{2}}{n_1}+\dfrac{s_{2}^{2}}{n_2}\right)^{\!2} }{
-\dfrac{(s_{1}^{2}/n^{}_1)^2}{n_1-1}+ \dfrac{(s_{2}^{2}/n^{}_2)^2}{n_2-1}
-}\)</span>.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
+<p>This section provides teaching materials for the 2025 Autumn Quarter
+of CS&amp;SS 321 - Data Science and Statistics for Social Sciences
+I.</p>
+<p>My Office Hours are Wednesdays 1:00 to 2:30 PM and and Fridays 1:30 -
+2:30 PM in Gowen 42. If you cannot make these times please email me to
+set up a different time.</p>
 
 
 

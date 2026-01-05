@@ -8,6 +8,6 @@ My Office Hours are Thursday 2:00 - 3:30 and Friday 9:30 - 11:00 in Gowen 42. If
 
 ## R Markdown files
 
-[Lab 1](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/CSSS321%20Lab%201.Rmd)
+[Find here](https://github.com/yuanzhouwang/yzwang-teaching)
 
-[Lab 2 - Part 1](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/CSSS321%20Lab%202.Rmd)    [Lab 2 - Part 2](https://github.com/yuanzhouwang/yzwang-teaching/blob/main/Lab%202%20Pt2.Rmd)
+[Or here](https://github.com/yuanzhouwang/yuanzhouwang.github.io)
