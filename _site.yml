@@ -37,6 +37,10 @@ navbar:
       menu:
       - text: "Papers"
         href: research.html
+      - text: "IPPs"
+        href: ipps.html
+      - text: "ConformalHMM"
+        href: conformalhmm.html
       - text: "CV"
         href: CV.html
     - text: "Toys"

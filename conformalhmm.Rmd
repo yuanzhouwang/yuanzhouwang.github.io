@@ -1,0 +1,42 @@
+---
+title: "ConformalHMM: Inference under Latent Regime Shifts"
+---
+
+**Andrew Wang**
+
+*Latent-State Conformal Prediction for Synthetic Controls · In progress*
+
+[Code on GitHub](https://github.com/yuanzhouwang/ConformalHMM) · [Open the demonstration in Colab](https://colab.research.google.com/github/yuanzhouwang/ConformalHMM/blob/main/latent_regime_conformal_main.ipynb) · [All papers](research.html)
+
+## The problem
+
+Synthetic controls estimate what would have happened to a treated unit in the absence of an intervention. Quantifying uncertainty becomes difficult when prediction residuals shift between latent volatility regimes: a turbulent post-treatment period may be poorly calibrated against a calm pre-treatment period.
+
+ConformalHMM develops latent-regime block conformal inference for these settings, combining synthetic control prediction with a hidden Markov model of the residual process.
+
+## The approach
+
+1. Fit a first-stage synthetic control predictor and calculate residuals for a candidate untreated outcome path.
+2. Learn a residual discretization from pre-treatment data and use the paired regime and discretized-residual sequence to construct blocks.
+3. Permute those blocks and evaluate conformity scores on the original continuous residuals.
+4. Retain candidate paths that pass the conformal test to form a prediction set.
+
+Discretization defines the block structure while continuous residuals retain information for scoring. The theoretical guarantee is conditional on assumptions about the latent regime process and block exchangeability; exact validity with known regime labels does not automatically extend to estimated labels.
+
+## Simulation evidence
+
+The saved simulation results compare global residual conformal inference with latent-regime block conformal inference at a nominal 90% path coverage target. Each design contains 100 replications, with 25 donors and one treated unit observed over 20 periods (15 pre-treatment and 5 post-treatment).
+
+| Simulation design | Global residual conformal | Latent-regime block conformal |
+|:--|--:|--:|
+| Markov-switching volatility | 62% | 89% |
+| Smooth stochastic volatility | 54% | 94% |
+| State-dependent heavy tails | 64% | 90% |
+
+These are empirical results from the saved experiments, rather than a guarantee for every dataset. The demonstration notebook uses a separate, smaller simulation configuration.
+
+## Code and manuscript
+
+The implementation uses Python, PyTorch, NumPy, and scikit-learn, with generalized synthetic control fitted using R's `gsynth` through `rpy2`. The repository includes a demonstration notebook, a GPU-batched implementation, the saved simulation results, and the current manuscript.
+
+[Current manuscript source](https://github.com/yuanzhouwang/ConformalHMM/blob/main/ConformalHMM_Manuscript/main_v2.tex) · [Simulation results and notebooks](https://github.com/yuanzhouwang/ConformalHMM)

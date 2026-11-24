@@ -5,3 +5,7 @@ title: "About"
 I am a PhD student in Political Science at the University of Washington. My research interests are in two distinct topics: Chinese industrial policy and the nexus of collective action and repression. I am also interested in a variety of methodological themes, especially estimation of latent variables and machine learning applications in causal inference.
 
 I previously earned my BA (First-class) in Philosophy, Politics, and Economics (PPE) from the University of Oxford, where I was avidly involved in student journalism.
+
+## Current projects
+
+My current projects include [IPPs](ipps.html), a study with Hassan Aziz of Chinese sponsorship and contract renegotiation in Pakistan's power sector, and [ConformalHMM](conformalhmm.html), a method for conformal inference in synthetic controls under latent regime shifts. See [Papers](research.html) for my current research and conference presentations.

@@ -1,0 +1,35 @@
+---
+title: "IPPs: Political Integration and Contract Renegotiation"
+---
+
+**Andrew Wang and Hassan Aziz**
+
+*Ongoing research · Accepted at APSA 2026*
+
+[Code and data on GitHub](https://github.com/yuanzhouwang/ipps) · [All papers](research.html)
+
+## Research question
+
+Does Chinese sponsorship protect independent power producers (IPPs) in Pakistan from contract renegotiation? This project studies how foreign investment relationships sustain political commitments when formal institutional guarantees are weak.
+
+The paper, **Foreign Political Integration: Chinese Sponsorship Reduces Renegotiation Hazard for Pakistani IPPs**, examines long-term power purchase agreements in Pakistan's energy sector, including projects associated with the China-Pakistan Economic Corridor.
+
+## Political integration
+
+The theoretical framework draws on vertical political integration: coalitions linking governments, investors, and third-party enforcers can sustain investment relationships through political commitments. We examine whether ties to Chinese sponsors raise the costs of renegotiation and insulate firms from domestic fiscal and political pressure.
+
+## Data and methods
+
+The project combines original project-level data on sponsorship, plant capacity, and renegotiation events with source links and a Business Recorder news collection pipeline. The analysis uses Cox proportional hazards models to compare renegotiation risk across Chinese-sponsored and other IPPs while accounting for plant capacity, alongside a logit comparison.
+
+The repository includes:
+
+- A renegotiation dataset and R scripts for duration models, simulations, and plots.
+- News scraping and article-processing tools, with dictionaries of IPP and group names and aliases.
+- A working manuscript developing the political integration framework.
+
+## Project status
+
+Research and data collection are ongoing. Chinese sponsorship is the hypothesis under investigation; the current research summary reports null findings. The repository provides the analysis and its supporting materials for further development.
+
+[Explore the IPPs repository](https://github.com/yuanzhouwang/ipps)

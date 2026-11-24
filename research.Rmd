@@ -1,13 +1,33 @@
 ---
-title: "Research"
+title: "Papers"
 ---
 
-### CONFERENCES
-Andrew Wang. “A Simultaneous Model of Protest-Repression Events,” *American Political Science Association Annual Meeting*, 2025.
+## Working papers
 
-### IN PROGRESS
-Andrew Wang. “Do Chemical Agents Work for Crowd Control? A Synthetic Control Approach.”
+### Latent-State Conformal Prediction for Synthetic Controls
 
-Hassan Aziz, Andrew Wang. “Does Chinese Ownership Affect Contract Renegotiation for Independent Power Producers in Pakistan?”
+**Andrew Wang** · In progress
 
-Andrew Wang. “Detecting Collective Action: Protest Size Classification with Machine Learning Methods.”
+I develop conformal prediction sets for synthetic control counterfactuals under latent regime shifts. The project combines hidden Markov models and block conformal inference, with simulations in Python and R using PyTorch.
+
+[Project: ConformalHMM](conformalhmm.html) · [Code](https://github.com/yuanzhouwang/ConformalHMM)
+
+### A State-Switching Model of Political Unrest
+
+**Andrew Wang** · Presented at MPSA 2026 and APSA 2025
+
+This paper develops a game-theoretic model of the reciprocal dynamics of protest and state repression. Ongoing work designs a hidden Markov model to learn protest-repression state-switching dynamics.
+
+### Strategic Complementarity: Explaining Economic Growth in China's Frontier Regions
+
+**Andrew Wang** · Presented at MPSA 2026
+
+I examine how political insecurity and state institutions shape divergent industrial development across Xinjiang, Tibet, and Inner Mongolia. The project combines a game-theoretic explanation with historical fiscal, industrial, and employment data and a triple-differences research design.
+
+### Foreign Political Integration: Chinese Sponsorship Reduces Renegotiation Hazard for Pakistani IPPs
+
+**Andrew Wang and Hassan Aziz** · First author · Accepted at APSA 2026
+
+We study whether Chinese-sponsored independent power producers receive more stable contracts from the Pakistani government, using original project-level data and proportional hazards models in R.
+
+[Project: IPPs](ipps.html) · [Code and data](https://github.com/yuanzhouwang/ipps)
